@@ -10,6 +10,19 @@ import UIKit
 
 class ViewController: UIViewController {
 
+    
+    @IBOutlet weak var userNameTextField: UITextField!
+    @IBOutlet weak var passwordTextField: UITextField!
+    @IBOutlet weak var statusLabel: UILabel!
+    
+    @IBAction func onSignInButtonPress(sender: AnyObject) {
+    
+    }
+    
+    @IBAction func onSignUpButtonPress(sender: AnyObject) {
+    
+    }
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         // Do any additional setup after loading the view, typically from a nib.
