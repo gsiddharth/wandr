@@ -13,6 +13,8 @@
 		359092741A99374400723DBD /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 359092731A99374400723DBD /* Images.xcassets */; };
 		359092771A99374400723DBD /* LaunchScreen.xib in Resources */ = {isa = PBXBuildFile; fileRef = 359092751A99374400723DBD /* LaunchScreen.xib */; };
 		359092831A99374500723DBD /* WanderTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 359092821A99374500723DBD /* WanderTests.swift */; };
+		3590928D1A99A8F200723DBD /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3590928C1A99A8F200723DBD /* LoginViewController.swift */; };
+		3590928F1A99AB6B00723DBD /* RegisterViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3590928E1A99AB6B00723DBD /* RegisterViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -36,6 +38,8 @@
 		3590927C1A99374500723DBD /* WanderTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = WanderTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		359092811A99374500723DBD /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		359092821A99374500723DBD /* WanderTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WanderTests.swift; sourceTree = "<group>"; };
+		3590928C1A99A8F200723DBD /* LoginViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LoginViewController.swift; sourceTree = "<group>"; };
+		3590928E1A99AB6B00723DBD /* RegisterViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RegisterViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -79,6 +83,8 @@
 			children = (
 				3590926C1A99374400723DBD /* AppDelegate.swift */,
 				3590926E1A99374400723DBD /* ViewController.swift */,
+				3590928C1A99A8F200723DBD /* LoginViewController.swift */,
+				3590928E1A99AB6B00723DBD /* RegisterViewController.swift */,
 				359092701A99374400723DBD /* Main.storyboard */,
 				359092731A99374400723DBD /* Images.xcassets */,
 				359092751A99374400723DBD /* LaunchScreen.xib */,
@@ -212,8 +218,10 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				3590928D1A99A8F200723DBD /* LoginViewController.swift in Sources */,
 				3590926F1A99374400723DBD /* ViewController.swift in Sources */,
 				3590926D1A99374400723DBD /* AppDelegate.swift in Sources */,
+				3590928F1A99AB6B00723DBD /* RegisterViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
