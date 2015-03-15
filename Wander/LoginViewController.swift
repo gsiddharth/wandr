@@ -22,6 +22,8 @@ class LoginViewController: UIViewController {
         var username = "sid"
         var password = "sid"
         
+        self.resignFirstResponder()
+        
         if identifier == "LoginSuccessSegue" {
             if self.usernameTextField.text == username && self.passwordTextField.text == password {
                 return true
@@ -43,5 +45,6 @@ class LoginViewController: UIViewController {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
     }
+    
 
 }
