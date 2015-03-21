@@ -26,6 +26,8 @@ class RegisterViewController: UIViewController {
     
     @IBOutlet weak var backgroundScrollView: UIScrollView!
     
+    @IBOutlet weak var backgroundContentView: UIScrollView!
+    
     override func shouldPerformSegueWithIdentifier(identifier: String?, sender: AnyObject?) -> Bool {
         
         // Conditions to be coded
@@ -52,10 +54,8 @@ class RegisterViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         // Do any additional setup after loading the view, typically from a nib.
-        self.backgroundScrollView.sc
+        
         registerForKeyboardNotifications()
-        
-        
     }
     
     override func didReceiveMemoryWarning() {
@@ -64,7 +64,7 @@ class RegisterViewController: UIViewController {
     }
     
     func registerForKeyboardNotifications() {
-        
+    
         NSNotificationCenter.defaultCenter().addObserver(self, selector: "keyboardWillShow:", name:UIKeyboardWillShowNotification, object: nil)
         
         NSNotificationCenter.defaultCenter().addObserver(self, selector: "keyboardWillHide:", name:UIKeyboardWillHideNotification, object: nil)
