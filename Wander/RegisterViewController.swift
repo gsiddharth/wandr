@@ -52,7 +52,7 @@ class RegisterViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         // Do any additional setup after loading the view, typically from a nib.
-        self.backgroundScrollView.contentSize = CGSizeMake(300,10)
+        self.backgroundScrollView.sc
         registerForKeyboardNotifications()
         
         
@@ -97,19 +97,20 @@ class RegisterViewController: UIViewController {
     func keyboardWillShow(aNotification:NSNotification) {
     
         if let info = aNotification.userInfo {
-            if let kbSize = info[UIKeyboardFrameEndUserInfoKey]?.CGRectValue().size {
-                var frame = self.view.frame;
-                frame.size.height -= kbSize.height;
-        
-                if let obj = getActiveObject() {
-                    print("got object")
-                var fOrigin = obj.frame.origin;
-                fOrigin.y -= backgroundScrollView.contentOffset.y;
-                //fOrigin.y += obj.frame.size.height;
-                //if (!CGRectContainsPoint(frame, fOrigin)) {
-                    var scrollPoint = CGPointMake(0.0, obj.frame.origin.y + obj.frame.size.height - frame.size.height)
-                    backgroundScrollView.setContentOffset(scrollPoint, animated:true)
-                //}
+            if var kbRect = info[UIKeyboardFrameBeginUserInfoKey]?.CGRectValue() {
+                kbRect = self.view.convertRect(kbRect, fromView : nil)
+                var contentInsets = UIEdgeInsetsMake(0.0, 0.0, kbRect.size.height, 0.0)
+                self.backgroundScrollView.contentInset = contentInsets
+                self.backgroundScrollView.scrollIndicatorInsets = contentInsets
+                
+                var aRect = self.view.frame
+                aRect.size.height -= kbRect.size.height
+                
+                if let activeField = getActiveObject(){
+                
+                    if (!CGRectContainsPoint(aRect, activeField.frame.origin)){
+                        self.backgroundScrollView.scrollRectToVisible(activeField.frame, animated: true)
+                    }
                 }
             }
         }
