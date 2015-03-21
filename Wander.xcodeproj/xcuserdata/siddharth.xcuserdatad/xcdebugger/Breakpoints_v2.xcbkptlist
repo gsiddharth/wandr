@@ -20,15 +20,29 @@
                   shouldBeEnabled = "Yes"
                   ignoreCount = "0"
                   continueAfterRunningActions = "No"
-                  symbolName = "Wander.LoginViewController.usernameTextField.setter : weak Swift.ImplicitlyUnwrappedOptional&lt;ObjectiveC.UITextField&gt;"
+                  symbolName = "Wander.LoginViewController.usernameTextField.getter : weak Swift.ImplicitlyUnwrappedOptional&lt;ObjectiveC.UITextField&gt;"
                   moduleName = "Wander"
                   urlString = "file:///Users/siddharth/xworkspace/Wander/Wander/LoginViewController.swift"
-                  timestampString = "446308434.416229"
+                  timestampString = "448563573.990688"
                   startingColumnNumber = "9223372036854775807"
                   endingColumnNumber = "9223372036854775807"
                   startingLineNumber = "0"
                   endingLineNumber = "0"
-                  offsetFromSymbolStart = "16">
+                  offsetFromSymbolStart = "24">
+               </Location>
+               <Location
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "Wander.LoginViewController.usernameTextField.setter : weak Swift.ImplicitlyUnwrappedOptional&lt;ObjectiveC.UITextField&gt;"
+                  moduleName = "Wander"
+                  urlString = "file:///Users/siddharth/xworkspace/Wander/Wander/LoginViewController.swift"
+                  timestampString = "448563574.0136"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "0"
+                  endingLineNumber = "0"
+                  offsetFromSymbolStart = "28">
                </Location>
                <Location
                   shouldBeEnabled = "Yes"
@@ -37,7 +51,7 @@
                   symbolName = "Wander.LoginViewController.usernameTextField.materializeForSet : weak Swift.ImplicitlyUnwrappedOptional&lt;ObjectiveC.UITextField&gt;"
                   moduleName = "Wander"
                   urlString = "file:///Users/siddharth/xworkspace/Wander/Wander/LoginViewController.swift"
-                  timestampString = "446308434.416465"
+                  timestampString = "448563574.013828"
                   startingColumnNumber = "9223372036854775807"
                   endingColumnNumber = "9223372036854775807"
                   startingLineNumber = "0"
@@ -51,12 +65,12 @@
                   symbolName = "Wander.LoginViewController.init (Wander.LoginViewController.Type)(nibName : Swift.Optional&lt;Swift.String&gt;, bundle : Swift.Optional&lt;ObjectiveC.NSBundle&gt;) -&gt; Wander.LoginViewController"
                   moduleName = "Wander"
                   urlString = "file:///Users/siddharth/xworkspace/Wander/Wander/LoginViewController.swift"
-                  timestampString = "446308434.416678"
+                  timestampString = "448563574.014064"
                   startingColumnNumber = "9223372036854775807"
                   endingColumnNumber = "9223372036854775807"
                   startingLineNumber = "13"
                   endingLineNumber = "13"
-                  offsetFromSymbolStart = "53">
+                  offsetFromSymbolStart = "76">
                </Location>
                <Location
                   shouldBeEnabled = "Yes"
@@ -65,12 +79,12 @@
                   symbolName = "Wander.LoginViewController.init (Wander.LoginViewController.Type)() -&gt; Wander.LoginViewController"
                   moduleName = "Wander"
                   urlString = "file:///Users/siddharth/xworkspace/Wander/Wander/LoginViewController.swift"
-                  timestampString = "446308434.416923"
+                  timestampString = "448563574.014246"
                   startingColumnNumber = "9223372036854775807"
                   endingColumnNumber = "9223372036854775807"
                   startingLineNumber = "13"
                   endingLineNumber = "13"
-                  offsetFromSymbolStart = "24">
+                  offsetFromSymbolStart = "48">
                </Location>
                <Location
                   shouldBeEnabled = "Yes"
@@ -79,14 +93,132 @@
                   symbolName = "Wander.LoginViewController.init (Wander.LoginViewController.Type)(coder : ObjectiveC.NSCoder) -&gt; Wander.LoginViewController"
                   moduleName = "Wander"
                   urlString = "file:///Users/siddharth/xworkspace/Wander/Wander/LoginViewController.swift"
-                  timestampString = "446308434.417185"
+                  timestampString = "448563574.014428"
                   startingColumnNumber = "9223372036854775807"
                   endingColumnNumber = "9223372036854775807"
                   startingLineNumber = "13"
                   endingLineNumber = "13"
-                  offsetFromSymbolStart = "31">
+                  offsetFromSymbolStart = "52">
                </Location>
             </Locations>
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "Wander/RegisterViewController.swift"
+            timestampString = "448485127.129622"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "17"
+            endingLineNumber = "17"
+            landmarkName = "RegisterViewController"
+            landmarkType = "3">
+            <Locations>
+               <Location
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "Wander.RegisterViewController.emailTextField.getter : weak Swift.ImplicitlyUnwrappedOptional&lt;ObjectiveC.UITextField&gt;"
+                  moduleName = "Wander"
+                  urlString = "file:///Users/siddharth/xworkspace/Wander/Wander/RegisterViewController.swift"
+                  timestampString = "448563574.024732"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "0"
+                  endingLineNumber = "0"
+                  offsetFromSymbolStart = "24">
+               </Location>
+               <Location
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "Wander.RegisterViewController.emailTextField.setter : weak Swift.ImplicitlyUnwrappedOptional&lt;ObjectiveC.UITextField&gt;"
+                  moduleName = "Wander"
+                  urlString = "file:///Users/siddharth/xworkspace/Wander/Wander/RegisterViewController.swift"
+                  timestampString = "448563574.024977"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "0"
+                  endingLineNumber = "0"
+                  offsetFromSymbolStart = "28">
+               </Location>
+               <Location
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "Wander.RegisterViewController.emailTextField.materializeForSet : weak Swift.ImplicitlyUnwrappedOptional&lt;ObjectiveC.UITextField&gt;"
+                  moduleName = "Wander"
+                  urlString = "file:///Users/siddharth/xworkspace/Wander/Wander/RegisterViewController.swift"
+                  timestampString = "448563574.025159"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "0"
+                  endingLineNumber = "0"
+                  offsetFromSymbolStart = "16">
+               </Location>
+               <Location
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "Wander.RegisterViewController.init (Wander.RegisterViewController.Type)(nibName : Swift.Optional&lt;Swift.String&gt;, bundle : Swift.Optional&lt;ObjectiveC.NSBundle&gt;) -&gt; Wander.RegisterViewController"
+                  moduleName = "Wander"
+                  urlString = "file:///Users/siddharth/xworkspace/Wander/Wander/RegisterViewController.swift"
+                  timestampString = "448563574.025343"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "18"
+                  endingLineNumber = "18"
+                  offsetFromSymbolStart = "236">
+               </Location>
+               <Location
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "Wander.RegisterViewController.init (Wander.RegisterViewController.Type)() -&gt; Wander.RegisterViewController"
+                  moduleName = "Wander"
+                  urlString = "file:///Users/siddharth/xworkspace/Wander/Wander/RegisterViewController.swift"
+                  timestampString = "448563574.025522"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "18"
+                  endingLineNumber = "18"
+                  offsetFromSymbolStart = "200">
+               </Location>
+               <Location
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "Wander.RegisterViewController.init (Wander.RegisterViewController.Type)(coder : ObjectiveC.NSCoder) -&gt; Wander.RegisterViewController"
+                  moduleName = "Wander"
+                  urlString = "file:///Users/siddharth/xworkspace/Wander/Wander/RegisterViewController.swift"
+                  timestampString = "448563574.025713"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "18"
+                  endingLineNumber = "18"
+                  offsetFromSymbolStart = "204">
+               </Location>
+            </Locations>
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "Wander/RegisterViewController.swift"
+            timestampString = "448566226.822006"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "100"
+            endingLineNumber = "100"
+            landmarkName = "keyboardWillShow(_:)"
+            landmarkType = "5">
          </BreakpointContent>
       </BreakpointProxy>
    </Breakpoints>

@@ -434,6 +434,7 @@
 				359092881A99374500723DBD /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		359092891A99374500723DBD /* Build configuration list for PBXNativeTarget "WanderTests" */ = {
 			isa = XCConfigurationList;
@@ -442,6 +443,7 @@
 				3590928B1A99374500723DBD /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};
