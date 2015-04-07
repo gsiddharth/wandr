@@ -23,7 +23,7 @@
                   symbolName = "Wander.LoginViewController.usernameTextField.getter : weak Swift.ImplicitlyUnwrappedOptional&lt;ObjectiveC.UITextField&gt;"
                   moduleName = "Wander"
                   urlString = "file:///Users/siddharth/xworkspace/Wander/Wander/LoginViewController.swift"
-                  timestampString = "448563573.990688"
+                  timestampString = "448998202.838178"
                   startingColumnNumber = "9223372036854775807"
                   endingColumnNumber = "9223372036854775807"
                   startingLineNumber = "0"
@@ -37,7 +37,7 @@
                   symbolName = "Wander.LoginViewController.usernameTextField.setter : weak Swift.ImplicitlyUnwrappedOptional&lt;ObjectiveC.UITextField&gt;"
                   moduleName = "Wander"
                   urlString = "file:///Users/siddharth/xworkspace/Wander/Wander/LoginViewController.swift"
-                  timestampString = "448563574.0136"
+                  timestampString = "448998202.851239"
                   startingColumnNumber = "9223372036854775807"
                   endingColumnNumber = "9223372036854775807"
                   startingLineNumber = "0"
@@ -51,7 +51,7 @@
                   symbolName = "Wander.LoginViewController.usernameTextField.materializeForSet : weak Swift.ImplicitlyUnwrappedOptional&lt;ObjectiveC.UITextField&gt;"
                   moduleName = "Wander"
                   urlString = "file:///Users/siddharth/xworkspace/Wander/Wander/LoginViewController.swift"
-                  timestampString = "448563574.013828"
+                  timestampString = "448998202.851471"
                   startingColumnNumber = "9223372036854775807"
                   endingColumnNumber = "9223372036854775807"
                   startingLineNumber = "0"
@@ -65,7 +65,7 @@
                   symbolName = "Wander.LoginViewController.init (Wander.LoginViewController.Type)(nibName : Swift.Optional&lt;Swift.String&gt;, bundle : Swift.Optional&lt;ObjectiveC.NSBundle&gt;) -&gt; Wander.LoginViewController"
                   moduleName = "Wander"
                   urlString = "file:///Users/siddharth/xworkspace/Wander/Wander/LoginViewController.swift"
-                  timestampString = "448563574.014064"
+                  timestampString = "448998202.85178"
                   startingColumnNumber = "9223372036854775807"
                   endingColumnNumber = "9223372036854775807"
                   startingLineNumber = "13"
@@ -79,7 +79,7 @@
                   symbolName = "Wander.LoginViewController.init (Wander.LoginViewController.Type)() -&gt; Wander.LoginViewController"
                   moduleName = "Wander"
                   urlString = "file:///Users/siddharth/xworkspace/Wander/Wander/LoginViewController.swift"
-                  timestampString = "448563574.014246"
+                  timestampString = "448998202.851997"
                   startingColumnNumber = "9223372036854775807"
                   endingColumnNumber = "9223372036854775807"
                   startingLineNumber = "13"
@@ -93,7 +93,7 @@
                   symbolName = "Wander.LoginViewController.init (Wander.LoginViewController.Type)(coder : ObjectiveC.NSCoder) -&gt; Wander.LoginViewController"
                   moduleName = "Wander"
                   urlString = "file:///Users/siddharth/xworkspace/Wander/Wander/LoginViewController.swift"
-                  timestampString = "448563574.014428"
+                  timestampString = "448998202.852213"
                   startingColumnNumber = "9223372036854775807"
                   endingColumnNumber = "9223372036854775807"
                   startingLineNumber = "13"
@@ -125,7 +125,7 @@
                   symbolName = "Wander.RegisterViewController.emailTextField.getter : weak Swift.ImplicitlyUnwrappedOptional&lt;ObjectiveC.UITextField&gt;"
                   moduleName = "Wander"
                   urlString = "file:///Users/siddharth/xworkspace/Wander/Wander/RegisterViewController.swift"
-                  timestampString = "448563574.024732"
+                  timestampString = "448998202.855243"
                   startingColumnNumber = "9223372036854775807"
                   endingColumnNumber = "9223372036854775807"
                   startingLineNumber = "0"
@@ -139,7 +139,7 @@
                   symbolName = "Wander.RegisterViewController.emailTextField.setter : weak Swift.ImplicitlyUnwrappedOptional&lt;ObjectiveC.UITextField&gt;"
                   moduleName = "Wander"
                   urlString = "file:///Users/siddharth/xworkspace/Wander/Wander/RegisterViewController.swift"
-                  timestampString = "448563574.024977"
+                  timestampString = "448998202.855448"
                   startingColumnNumber = "9223372036854775807"
                   endingColumnNumber = "9223372036854775807"
                   startingLineNumber = "0"
@@ -153,7 +153,7 @@
                   symbolName = "Wander.RegisterViewController.emailTextField.materializeForSet : weak Swift.ImplicitlyUnwrappedOptional&lt;ObjectiveC.UITextField&gt;"
                   moduleName = "Wander"
                   urlString = "file:///Users/siddharth/xworkspace/Wander/Wander/RegisterViewController.swift"
-                  timestampString = "448563574.025159"
+                  timestampString = "448998202.855634"
                   startingColumnNumber = "9223372036854775807"
                   endingColumnNumber = "9223372036854775807"
                   startingLineNumber = "0"
@@ -167,12 +167,12 @@
                   symbolName = "Wander.RegisterViewController.init (Wander.RegisterViewController.Type)(nibName : Swift.Optional&lt;Swift.String&gt;, bundle : Swift.Optional&lt;ObjectiveC.NSBundle&gt;) -&gt; Wander.RegisterViewController"
                   moduleName = "Wander"
                   urlString = "file:///Users/siddharth/xworkspace/Wander/Wander/RegisterViewController.swift"
-                  timestampString = "448563574.025343"
+                  timestampString = "448998202.855848"
                   startingColumnNumber = "9223372036854775807"
                   endingColumnNumber = "9223372036854775807"
                   startingLineNumber = "18"
                   endingLineNumber = "18"
-                  offsetFromSymbolStart = "236">
+                  offsetFromSymbolStart = "248">
                </Location>
                <Location
                   shouldBeEnabled = "Yes"
@@ -181,12 +181,12 @@
                   symbolName = "Wander.RegisterViewController.init (Wander.RegisterViewController.Type)() -&gt; Wander.RegisterViewController"
                   moduleName = "Wander"
                   urlString = "file:///Users/siddharth/xworkspace/Wander/Wander/RegisterViewController.swift"
-                  timestampString = "448563574.025522"
+                  timestampString = "448998202.85603"
                   startingColumnNumber = "9223372036854775807"
                   endingColumnNumber = "9223372036854775807"
                   startingLineNumber = "18"
                   endingLineNumber = "18"
-                  offsetFromSymbolStart = "200">
+                  offsetFromSymbolStart = "208">
                </Location>
                <Location
                   shouldBeEnabled = "Yes"
@@ -195,14 +195,222 @@
                   symbolName = "Wander.RegisterViewController.init (Wander.RegisterViewController.Type)(coder : ObjectiveC.NSCoder) -&gt; Wander.RegisterViewController"
                   moduleName = "Wander"
                   urlString = "file:///Users/siddharth/xworkspace/Wander/Wander/RegisterViewController.swift"
-                  timestampString = "448563574.025713"
+                  timestampString = "448998202.856214"
                   startingColumnNumber = "9223372036854775807"
                   endingColumnNumber = "9223372036854775807"
                   startingLineNumber = "18"
                   endingLineNumber = "18"
-                  offsetFromSymbolStart = "204">
+                  offsetFromSymbolStart = "212">
                </Location>
             </Locations>
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "Wander/VideoCameraInputManager.swift"
+            timestampString = "449327191.767455"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "42"
+            endingLineNumber = "42"
+            landmarkName = "setupSessionWithPreset(_:withCaptureDevice:withTorchMode:withError:)"
+            landmarkType = "5">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "Wander/VideoCameraInputManager.swift"
+            timestampString = "449328638.196735"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "52"
+            endingLineNumber = "52"
+            landmarkName = "setupSessionWithPreset(_:withCaptureDevice:withTorchMode:withError:)"
+            landmarkType = "5">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "Wander/VideoCameraInputManager.swift"
+            timestampString = "449330000.364182"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "83"
+            endingLineNumber = "83"
+            landmarkName = "startRecording()"
+            landmarkType = "5">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "Wander/VideoCameraInputManager.swift"
+            timestampString = "449330344.936533"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "13"
+            endingLineNumber = "13"
+            landmarkName = "VideoCameraInputManager"
+            landmarkType = "3">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "Wander/VideoCameraInputManager.swift"
+            timestampString = "449333736.070976"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "106"
+            endingLineNumber = "106"
+            landmarkName = "resumeRecording()"
+            landmarkType = "5">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "Wander/AVAssetStitcher.swift"
+            timestampString = "449431708.652437"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "25"
+            endingLineNumber = "25"
+            landmarkName = "init(outSize:)"
+            landmarkType = "5">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "Wander/AVAssetStitcher.swift"
+            timestampString = "450035223.613993"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "36"
+            endingLineNumber = "36"
+            landmarkName = "addAsset(_:withTransform:withErrorHandler:)"
+            landmarkType = "5">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "Wander/AVAssetStitcher.swift"
+            timestampString = "450035836.216394"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "37"
+            endingLineNumber = "37"
+            landmarkName = "addAsset(_:withTransform:withErrorHandler:)"
+            landmarkType = "5">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "Wander/AVAssetStitcher.swift"
+            timestampString = "450117164.737744"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "57"
+            endingLineNumber = "57"
+            landmarkName = "addAsset(_:withTransform:withErrorHandler:)"
+            landmarkType = "5">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "Wander/AVAssetStitcher.swift"
+            timestampString = "450117166.355948"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "58"
+            endingLineNumber = "58"
+            landmarkName = "addAsset(_:withTransform:withErrorHandler:)"
+            landmarkType = "5">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "Wander/AVAssetStitcher.swift"
+            timestampString = "450117681.479298"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "62"
+            endingLineNumber = "62"
+            landmarkName = "addAsset(_:withTransform:withErrorHandler:)"
+            landmarkType = "5">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "Wander/AVAssetStitcher.swift"
+            timestampString = "450119759.195475"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "91"
+            endingLineNumber = "91"
+            landmarkName = "exportTo(_:withPreset:withCompletionHandler:)"
+            landmarkType = "5">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "Wander/AVAssetStitcher.swift"
+            timestampString = "450119857.275353"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "89"
+            endingLineNumber = "89"
+            landmarkName = "exportTo(_:withPreset:_:_:)"
+            landmarkType = "5">
          </BreakpointContent>
       </BreakpointProxy>
    </Breakpoints>

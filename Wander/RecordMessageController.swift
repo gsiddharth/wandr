@@ -9,12 +9,14 @@
 import UIKit
 import AVFoundation
 
-class RecordMessageController: UIImagePickerController {
-
+class RecordMessageController: UIViewController {
+    
+    @IBOutlet weak var videoPreviewView: UIView!
+    @IBOutlet weak var recordMessageButton: UIButton!
+    
     let captureSession = AVCaptureSession()
     var previewLayer : AVCaptureVideoPreviewLayer?
-    @IBOutlet weak var recordMessageButton: UIButton!
-
+    
     // If we find a device we'll store it here for later use
     var captureDevice : AVCaptureDevice?
     
@@ -51,8 +53,8 @@ class RecordMessageController: UIImagePickerController {
         }
         
         previewLayer = AVCaptureVideoPreviewLayer(session: captureSession)
-        self.view.layer.addSublayer(previewLayer)
-        previewLayer?.frame = self.view.layer.frame
+        self.videoPreviewView.layer.addSublayer(previewLayer)
+        previewLayer?.frame = self.videoPreviewView.layer.frame
         captureSession.startRunning()
     }
     
