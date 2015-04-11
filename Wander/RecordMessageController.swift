@@ -57,7 +57,7 @@ class RecordMessageController: UIViewController {
         previewLayer?.frame = self.videoPreviewView.layer.frame
         captureSession.startRunning()
     }
-    
+        
     func configureDevice() {
         if let device = captureDevice {
             device.lockForConfiguration(nil)

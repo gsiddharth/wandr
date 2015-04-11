@@ -27,7 +27,7 @@ class AVAssetStitcher {
         self.compositionAudioTrack = composition.addMutableTrackWithMediaType(AVMediaTypeAudio,preferredTrackID:Int32(kCMPersistentTrackID_Invalid))
     }
     
-    func addAsset(asset : AVURLAsset, withTransform transformToApply: ((AVAssetTrack) -> CGAffineTransform)!, withErrorHandler errorHandler : ((NSErrorPointer) -> Void)!){
+    func addAsset(asset : AVURLAsset, withTransform transformToApply: ((AVAssetTrack) -> CGAffineTransform)!, withErrorHandler errorHandler : ((NSError) -> Void)!){
         
         var videoTrack : AVAssetTrack = (asset.tracksWithMediaType(AVMediaTypeVideo)).first as AVAssetTrack
         var instruction = AVMutableVideoCompositionInstruction()
@@ -50,21 +50,21 @@ class AVAssetStitcher {
         instruction.timeRange = CMTimeRangeMake(startTime, asset.duration)
         instructions.append(instruction)
         
-        var error : NSErrorPointer = NSErrorPointer()
+        var error : NSError? = NSError()
         
-        compositionVideoTrack.insertTimeRange(CMTimeRangeMake(kCMTimeZero, asset.duration), ofTrack: videoTrack, atTime: kCMTimeZero, error: error)
+        compositionVideoTrack.insertTimeRange(CMTimeRangeMake(kCMTimeZero, asset.duration), ofTrack: videoTrack, atTime: kCMTimeZero, error: &error)
         
         if error != nil {
-            errorHandler(error)
+            errorHandler(error!)
             return
         }
         
         var audioTrack : AVAssetTrack = asset.tracksWithMediaType(AVMediaTypeAudio).first as AVAssetTrack
        
-        compositionAudioTrack.insertTimeRange(CMTimeRangeMake(kCMTimeZero, asset.duration), ofTrack: audioTrack, atTime: kCMTimeZero, error: error)
+        compositionAudioTrack.insertTimeRange(CMTimeRangeMake(kCMTimeZero, asset.duration), ofTrack: audioTrack, atTime: kCMTimeZero, error: &error)
         
         if error != nil {
-            errorHandler(error)
+            errorHandler(error!)
             return
         }
         
@@ -74,7 +74,7 @@ class AVAssetStitcher {
         
         var videoComposition : AVMutableVideoComposition = AVMutableVideoComposition()
         videoComposition.instructions = self.instructions
-        videoComposition.renderSize = outputSize
+        videoComposition.renderSize = self.outputSize
         videoComposition.frameDuration = CMTimeMake(1, 30)
         
         var exporter : AVAssetExportSession = AVAssetExportSession(asset : self.composition, presetName : preset)

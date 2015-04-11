@@ -286,10 +286,10 @@
                                 <exclude reference="fAK-oz-qSW"/>
                             </mask>
                             <mask key="constraints">
-                                <exclude reference="orw-Tb-N76"/>
-                                <exclude reference="uXA-I0-3pD"/>
                                 <exclude reference="97t-cM-jt1"/>
                                 <exclude reference="SLq-by-oVe"/>
+                                <exclude reference="orw-Tb-N76"/>
+                                <exclude reference="uXA-I0-3pD"/>
                             </mask>
                         </variation>
                         <variation key="widthClass=compact">
@@ -298,10 +298,10 @@
                                 <include reference="fAK-oz-qSW"/>
                             </mask>
                             <mask key="constraints">
-                                <include reference="orw-Tb-N76"/>
-                                <include reference="uXA-I0-3pD"/>
                                 <include reference="97t-cM-jt1"/>
                                 <include reference="SLq-by-oVe"/>
+                                <include reference="orw-Tb-N76"/>
+                                <include reference="uXA-I0-3pD"/>
                             </mask>
                         </variation>
                     </view>

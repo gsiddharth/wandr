@@ -10,7 +10,12 @@
 import UIKit
 import AVFoundation
 
-class VideoCameraInputManager : AVCaptureFileOutputRecordingDelegate {
+extension CMTime {
+    var isValid:Bool { return (flags & .Valid) != nil }
+}
+
+class VideoCameraInputManager : NSObject, AVCaptureFileOutputRecordingDelegate {
+    
     var setupComplete : Bool = false
     var videoInput : AVCaptureDeviceInput!
     var audioInput : AVCaptureDeviceInput!
@@ -27,10 +32,17 @@ class VideoCameraInputManager : AVCaptureFileOutputRecordingDelegate {
     var isPaused : Bool = false
     var maxDuration : Float64 = 0
     var captureSession : AVCaptureSession!
+    var asyncErrorHandler : ((NSError!) -> Void)!
     
-    func setupSessionWithPreset(preset : String, withCaptureDevice cd : AVCaptureDevicePosition, withTorchMode tm : AVCaptureTorchMode, withError error : NSError){
+    var deviceConnectedObserver : NSObjectProtocol!
+    var deviceDisconnectedObserver : NSObjectProtocol!
+    var deviceOrientationDidChangeObserver : NSObjectProtocol!
+    
+    
+    func setupSessionWithPreset(preset : String, withCaptureDevice cd : AVCaptureDevicePosition, withTorchMode tm : AVCaptureTorchMode, inout withError error : NSError!){
         
         if setupComplete {
+            error = NSError(domain : "Setup session already complete", code: 102, userInfo: nil)
             return
         }
         
@@ -81,7 +93,7 @@ class VideoCameraInputManager : AVCaptureFileOutputRecordingDelegate {
         var outputFileURL : NSURL! = NSURL(fileURLWithPath: self.constructCurrentTemporaryFilename())
         temporaryFileURLs.append(outputFileURL)
         if self.maxDuration > 0 {
-            self.movieFileOutput.maxRecordedDuration = CMTimeMakeWithSeconds(self.maxDuration, 600)
+            self.movieFileOutput.maxRecordedDuration = CMTimeMakeWithSeconds(self.maxDuration, 60)
         } else {
             self.movieFileOutput.maxRecordedDuration = kCMTimeInvalid
         }
@@ -119,7 +131,8 @@ class VideoCameraInputManager : AVCaptureFileOutputRecordingDelegate {
         self.isPaused = false
     }
     
-    func finalizeRecordingToFile(finalVideoLocationURL : NSURL, withVideoSize videoSize : CGSize, withPreset preset : String) {
+    func finalizeRecordingToFile(finalVideoLocationURL : NSURL, withVideoSize videoSize : CGSize, withPreset preset : String,
+        withCompletionHandler completionHandler : ((NSError!) -> Void)!) {
         self.reset()
         var error = NSErrorPointer()
         
@@ -131,39 +144,224 @@ class VideoCameraInputManager : AVCaptureFileOutputRecordingDelegate {
             return
         }
         
-        AVAssetSti
+        var stitcher : AVAssetStitcher = AVAssetStitcher(outSize : videoSize)
+        var stitcherError : NSError!
+        
+        for url in temporaryFileURLs.reverse() {
+            stitcher.addAsset(AVURLAsset.assetWithURL(url) as AVURLAsset, withTransform: { (videoTrack: AVAssetTrack) -> CGAffineTransform in
+                var ratioW : CGFloat = videoSize.width / videoTrack.naturalSize.width
+                var ratioH : CGFloat = videoSize.height / videoTrack.naturalSize.height
+                
+                if ratioW < ratioH {
+                    var neg : CGFloat = -1.0
+                    if ratioH > 1.0 {
+                        neg = 1.0
+                    }
+                    
+                    var diffH : CGFloat = videoTrack.naturalSize.height - (videoTrack.naturalSize.height * ratioH)
+                    return CGAffineTransformConcat(CGAffineTransformMakeTranslation(0.0, neg*diffH/2.0), CGAffineTransformMakeScale(ratioH, ratioH))
+                } else {
+                    var neg : CGFloat = -1.0
+                    if ratioW > 1.0 {
+                        neg = 1.0
+                    }
+                    
+                    var diffW : CGFloat =  videoTrack.naturalSize.width - (videoTrack.naturalSize.width * ratioW)
+                    return CGAffineTransformConcat(CGAffineTransformMakeTranslation(neg * diffW / 2.0, 0.0), CGAffineTransformMakeScale(ratioW, ratioW))
+                    
+                }
+                
+                }, withErrorHandler: { (err : NSError) -> Void in
+                    stitcherError = err
+                    return
+            })
+        }
+        
+        if stitcherError != nil {
+            completionHandler(stitcherError)
+            return
+        }
+        
+        stitcher.exportTo(finalVideoLocationURL, withPreset: preset) { (error : NSError!) -> Void in
+            if error != nil {
+                completionHandler(error)
+            } else {
+                self.cleanTemporaryFiles()
+                self.temporaryFileURLs.removeAll(keepCapacity : false)
+                completionHandler(nil)
+            }
+        }
+            
+            
+        
     }
     
     func totalRecordingDuration() -> CMTime {
+        if CMTimeCompare(kCMTimeZero, self.currentFinalDuration!) == 0 {
+            
+            return movieFileOutput.recordedDuration
+        } else {
+            
+            var returnTime : CMTime = CMTimeAdd(self.currentFinalDuration!, movieFileOutput.recordedDuration)
+            if returnTime.isValid {
+                return self.currentFinalDuration!
+            } else {
+                return returnTime
+            }
+        }
+    }
+    
+    func captureOutput(captureOutput: AVCaptureFileOutput!, didStartRecordingToOutputFileAtURL fileURL: NSURL!, fromConnections connections: [AnyObject]!) {
+        self.inFlightWrites++;
+    }
+    
+    func captureOutput(captureOutput: AVCaptureFileOutput!, didFinishRecordingToOutputFileAtURL outputFileURL: NSURL!, fromConnections connections: [AnyObject]!, error: NSError!) {
+        if error != nil {
+            if self.asyncErrorHandler != nil {
+                self.asyncErrorHandler(error)
+            } else {
+                NSLog("Error capturing output" + error.localizedDescription)
+            }
+        }
         
+        inFlightWrites--
     }
     
     private func startNotificationObserver() {
         
+        var notificationCenter : NSNotificationCenter = NSNotificationCenter.defaultCenter()
+        
+        self.deviceConnectedObserver = notificationCenter.addObserverForName(AVCaptureDeviceWasConnectedNotification, object: nil, queue: nil) { (notification : NSNotification!) -> Void in
+            var device : AVCaptureDevice = notification.object as AVCaptureDevice
+            var deviceMediaType : String! = ""
+            if device.hasMediaType(AVMediaTypeAudio) {
+                deviceMediaType = AVMediaTypeAudio
+            } else if device.hasMediaType(AVMediaTypeVideo) {
+                deviceMediaType = AVMediaTypeVideo
+            }
+            
+            if deviceMediaType != nil {
+                for (idx, value) in enumerate(self.captureSession.inputs) {
+                    var input : AVCaptureDeviceInput = value as AVCaptureDeviceInput
+                    if input.device.hasMediaType(deviceMediaType) {
+                        var error : NSError? = NSError()
+                        var deviceInput : AVCaptureDeviceInput = AVCaptureDeviceInput.deviceInputWithDevice(device, error: &error) as AVCaptureDeviceInput
+                        if self.captureSession.canAddInput(deviceInput) {
+                            self.captureSession.addInput(deviceInput)
+                        }
+                        
+                        if error != nil {
+                            if self.asyncErrorHandler != nil {
+                                self.asyncErrorHandler(error)
+                            } else {
+                                NSLog("Error reconnecting devices" + error!.localizedDescription)
+                            }
+                        }
+                        
+                        break
+                    }
+                }
+            }
+        }
+        
+        self.deviceDisconnectedObserver = notificationCenter.addObserverForName(AVCaptureDeviceWasDisconnectedNotification, object: nil, queue: nil, usingBlock: { (notification : NSNotification!) -> Void in
+            var device : AVCaptureDevice = notification.object as AVCaptureDevice
+            
+            if device.hasMediaType(AVMediaTypeAudio) {
+                self.captureSession.removeInput(self.audioInput)
+                self.audioInput = nil
+            } else if device.hasMediaType(AVMediaTypeVideo) {
+                self.captureSession.removeInput(self.videoInput)
+                self.videoInput = nil
+            }
+        })
+        
+        self.orientation = AVCaptureVideoOrientation.Portrait
+        
+        self.deviceOrientationDidChangeObserver = notificationCenter.addObserverForName(UIDeviceOrientationDidChangeNotification, object: nil, queue: nil, usingBlock: { (note : NSNotification!) -> Void in
+            var currOrientation = UIDevice.currentDevice().orientation
+            
+            if currOrientation == UIDeviceOrientation.Portrait {
+                self.orientation = AVCaptureVideoOrientation.Portrait
+            } else if currOrientation == UIDeviceOrientation.PortraitUpsideDown {
+                self.orientation = AVCaptureVideoOrientation.PortraitUpsideDown
+            } else if currOrientation == UIDeviceOrientation.LandscapeLeft {
+                self.orientation = AVCaptureVideoOrientation.LandscapeLeft
+            } else if currOrientation == UIDeviceOrientation.LandscapeRight {
+                self.orientation = AVCaptureVideoOrientation.LandscapeRight
+            } else {
+                self.orientation = AVCaptureVideoOrientation.Portrait
+            }
+            
+        })
+        
+        UIDevice.currentDevice().beginGeneratingDeviceOrientationNotifications()
+        
     }
     
     private func endNotificationObservers() {
+        UIDevice.currentDevice().endGeneratingDeviceOrientationNotifications()
         
+        NSNotificationCenter.defaultCenter().removeObserver(self.deviceConnectedObserver)
+        NSNotificationCenter.defaultCenter().removeObserver(self.deviceDisconnectedObserver)
+        NSNotificationCenter.defaultCenter().removeObserver(self.deviceOrientationDidChangeObserver)
     }
     
-    private func cameraWithPosition(position: AVCaptureDevicePosition) -> AVCaptureDevice{
+    private func cameraWithPosition(position: AVCaptureDevicePosition) -> AVCaptureDevice! {
+        var foundDevice : AVCaptureDevice! = nil
+        for (index, value) in enumerate(AVCaptureDevice.devicesWithMediaType(AVMediaTypeVideo)) {
+            var device : AVCaptureDevice = value as AVCaptureDevice
+            if device.position == position {
+                foundDevice = device
+                break
+            }
+        }
         
+        return foundDevice
     }
     
-    private func audioDevice() -> AVCaptureDevice {
+    private func audioDevice() -> AVCaptureDevice! {
+        var devices = AVCaptureDevice.devicesWithMediaType(AVMediaTypeAudio)
         
+        if devices.count > 0 {
+            return devices[0] as AVCaptureDevice
+        }
+        
+        return nil
     }
     
     private func connectionWithMediaType(mediaType : String, fromConnections connections : [AnyObject]) -> AVCaptureConnection{
+        var foundConnection : AVCaptureConnection! = nil
         
+        for (index, value) in enumerate(connections) {
+            var connection : AVCaptureConnection = value as AVCaptureConnection
+            var connectionStop: Bool = false
+            for (index1, value1) in enumerate(connection.inputPorts) {
+                var port : AVCaptureInputPort = value1 as AVCaptureInputPort
+                if port.mediaType == mediaType {
+                    foundConnection = connection
+                    connectionStop = true
+                    break
+                }
+            }
+            
+            if connectionStop {
+                break
+            }
+        }
+        
+        return foundConnection
     }
     
-    private func constructCurrentTemporaryFilename() -> String{
-        
+    private func constructCurrentTemporaryFilename() -> String {
+        return NSTemporaryDirectory() + self.uniqueTimeStamp!.description + self.currentRecordingSegment!.description
     }
     
     private func cleanTemporaryFiles() {
-        
+        for (idx, val) in enumerate(self.temporaryFileURLs) {
+            var temporaryFiles : NSURL = val as NSURL
+            NSFileManager.defaultManager().removeItemAtURL(temporaryFiles, error: nil)
+        }
     }
     
 }
