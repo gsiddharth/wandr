@@ -20,7 +20,7 @@ class VideoCameraInputManager : NSObject, AVCaptureFileOutputRecordingDelegate {
     var videoInput : AVCaptureDeviceInput!
     var audioInput : AVCaptureDeviceInput!
     var movieFileOutput : AVCaptureMovieFileOutput = AVCaptureMovieFileOutput()
-    var orientation : AVCaptureVideoOrientation?
+    var orientation : AVCaptureVideoOrientation? = AVCaptureVideoOrientation.Portrait
     
     var temporaryFileURLs = [NSURL]()
     
@@ -30,6 +30,7 @@ class VideoCameraInputManager : NSObject, AVCaptureFileOutputRecordingDelegate {
     var currentFinalDuration : CMTime?
     var inFlightWrites : Int32 = 0
     var isPaused : Bool = false
+    var isStarted : Bool = false
     var maxDuration : Float64 = 0
     var captureSession : AVCaptureSession!
     var asyncErrorHandler : ((NSError!) -> Void)!
@@ -73,6 +74,18 @@ class VideoCameraInputManager : NSObject, AVCaptureFileOutputRecordingDelegate {
         if self.captureSession!.canAddOutput(self.movieFileOutput) {
            self.captureSession!.addOutput(movieFileOutput)
         }
+    }
+    
+    func startPreview(previewView : UIView!) {
+        
+        var err : NSError? = nil
+        
+        var avPreviewLayer = AVCaptureVideoPreviewLayer(session: self.captureSession)
+        avPreviewLayer.frame = previewView.bounds
+        avPreviewLayer.position = CGPointMake(CGRectGetMidX(previewView.bounds), CGRectGetMidY(previewView.bounds))
+        avPreviewLayer.videoGravity = AVLayerVideoGravityResizeAspect
+        previewView.layer.addSublayer(avPreviewLayer)
+        captureSession.startRunning()
         
     }
     
@@ -82,6 +95,7 @@ class VideoCameraInputManager : NSObject, AVCaptureFileOutputRecordingDelegate {
         self.uniqueTimeStamp = NSDate().timeIntervalSince1970
         self.currentRecordingSegment = 0
         self.isPaused = false
+        self.isStarted = true
         self.currentFinalDuration = kCMTimeZero
         
         var videoConnection : AVCaptureConnection = self.connectionWithMediaType(AVMediaTypeVideo, fromConnections: movieFileOutput.connections)
@@ -129,6 +143,7 @@ class VideoCameraInputManager : NSObject, AVCaptureFileOutputRecordingDelegate {
         }
         
         self.isPaused = false
+        self.isStarted = false
     }
     
     func finalizeRecordingToFile(finalVideoLocationURL : NSURL, withVideoSize videoSize : CGSize, withPreset preset : String,
@@ -148,7 +163,7 @@ class VideoCameraInputManager : NSObject, AVCaptureFileOutputRecordingDelegate {
         var stitcherError : NSError!
         
         for url in temporaryFileURLs.reverse() {
-            stitcher.addAsset(AVURLAsset.assetWithURL(url) as AVURLAsset, withTransform: { (videoTrack: AVAssetTrack) -> CGAffineTransform in
+            stitcher.addAsset(AVURLAsset.assetWithURL(url) as! AVURLAsset, withTransform: { (videoTrack: AVAssetTrack) -> CGAffineTransform in
                 var ratioW : CGFloat = videoSize.width / videoTrack.naturalSize.width
                 var ratioH : CGFloat = videoSize.height / videoTrack.naturalSize.height
                 
@@ -191,9 +206,6 @@ class VideoCameraInputManager : NSObject, AVCaptureFileOutputRecordingDelegate {
                 completionHandler(nil)
             }
         }
-            
-            
-        
     }
     
     func totalRecordingDuration() -> CMTime {
@@ -232,7 +244,7 @@ class VideoCameraInputManager : NSObject, AVCaptureFileOutputRecordingDelegate {
         var notificationCenter : NSNotificationCenter = NSNotificationCenter.defaultCenter()
         
         self.deviceConnectedObserver = notificationCenter.addObserverForName(AVCaptureDeviceWasConnectedNotification, object: nil, queue: nil) { (notification : NSNotification!) -> Void in
-            var device : AVCaptureDevice = notification.object as AVCaptureDevice
+            var device : AVCaptureDevice = notification.object as! AVCaptureDevice
             var deviceMediaType : String! = ""
             if device.hasMediaType(AVMediaTypeAudio) {
                 deviceMediaType = AVMediaTypeAudio
@@ -242,10 +254,10 @@ class VideoCameraInputManager : NSObject, AVCaptureFileOutputRecordingDelegate {
             
             if deviceMediaType != nil {
                 for (idx, value) in enumerate(self.captureSession.inputs) {
-                    var input : AVCaptureDeviceInput = value as AVCaptureDeviceInput
+                    var input : AVCaptureDeviceInput = value as! AVCaptureDeviceInput
                     if input.device.hasMediaType(deviceMediaType) {
                         var error : NSError? = NSError()
-                        var deviceInput : AVCaptureDeviceInput = AVCaptureDeviceInput.deviceInputWithDevice(device, error: &error) as AVCaptureDeviceInput
+                        var deviceInput : AVCaptureDeviceInput = AVCaptureDeviceInput.deviceInputWithDevice(device, error: &error) as! AVCaptureDeviceInput
                         if self.captureSession.canAddInput(deviceInput) {
                             self.captureSession.addInput(deviceInput)
                         }
@@ -265,7 +277,7 @@ class VideoCameraInputManager : NSObject, AVCaptureFileOutputRecordingDelegate {
         }
         
         self.deviceDisconnectedObserver = notificationCenter.addObserverForName(AVCaptureDeviceWasDisconnectedNotification, object: nil, queue: nil, usingBlock: { (notification : NSNotification!) -> Void in
-            var device : AVCaptureDevice = notification.object as AVCaptureDevice
+            var device : AVCaptureDevice = notification.object as! AVCaptureDevice
             
             if device.hasMediaType(AVMediaTypeAudio) {
                 self.captureSession.removeInput(self.audioInput)
@@ -310,7 +322,7 @@ class VideoCameraInputManager : NSObject, AVCaptureFileOutputRecordingDelegate {
     private func cameraWithPosition(position: AVCaptureDevicePosition) -> AVCaptureDevice! {
         var foundDevice : AVCaptureDevice! = nil
         for (index, value) in enumerate(AVCaptureDevice.devicesWithMediaType(AVMediaTypeVideo)) {
-            var device : AVCaptureDevice = value as AVCaptureDevice
+            var device : AVCaptureDevice = value as! AVCaptureDevice
             if device.position == position {
                 foundDevice = device
                 break
@@ -324,7 +336,7 @@ class VideoCameraInputManager : NSObject, AVCaptureFileOutputRecordingDelegate {
         var devices = AVCaptureDevice.devicesWithMediaType(AVMediaTypeAudio)
         
         if devices.count > 0 {
-            return devices[0] as AVCaptureDevice
+            return devices[0] as! AVCaptureDevice
         }
         
         return nil
@@ -334,10 +346,10 @@ class VideoCameraInputManager : NSObject, AVCaptureFileOutputRecordingDelegate {
         var foundConnection : AVCaptureConnection! = nil
         
         for (index, value) in enumerate(connections) {
-            var connection : AVCaptureConnection = value as AVCaptureConnection
+            var connection : AVCaptureConnection = value as! AVCaptureConnection
             var connectionStop: Bool = false
             for (index1, value1) in enumerate(connection.inputPorts) {
-                var port : AVCaptureInputPort = value1 as AVCaptureInputPort
+                var port : AVCaptureInputPort = value1 as! AVCaptureInputPort
                 if port.mediaType == mediaType {
                     foundConnection = connection
                     connectionStop = true

@@ -8,6 +8,7 @@
 
 import UIKit
 import AVFoundation
+import Foundation
 
 class RecordMessageController: UIViewController {
     
@@ -19,29 +20,16 @@ class RecordMessageController: UIViewController {
     
     // If we find a device we'll store it here for later use
     var captureDevice : AVCaptureDevice?
-    
+    var videoCameraView : VideoCameraInputManager!
     override func viewDidLoad() {
         
         super.viewDidLoad()
         
-        // Do any additional setup after loading the view, typically from a nib.
-        captureSession.sessionPreset = AVCaptureSessionPresetLow
-        let devices = AVCaptureDevice.devices()
-        
-        // Loop through all the capture devices on this phone
-        for device in devices {
-            // Make sure this particular device supports video
-            if (device.hasMediaType(AVMediaTypeVideo)) {
-                // Finally check the position and confirm we've got the back camera
-                if(device.position == AVCaptureDevicePosition.Back) {
-                    captureDevice = device as? AVCaptureDevice
-                    if captureDevice != nil {
-                        println("Capture device found")
-                        beginSession()
-                    }
-                }
-            }
-        }
+        var err : NSError! = nil
+        self.videoCameraView = VideoCameraInputManager()    
+        self.videoCameraView.setupSessionWithPreset(AVCaptureSessionPreset640x480, withCaptureDevice: AVCaptureDevicePosition.Back, withTorchMode: AVCaptureTorchMode.Off, withError: &err)
+        self.videoCameraView.startPreview(self.videoPreviewView)
+
     }
     
     func beginSession() {
@@ -67,6 +55,46 @@ class RecordMessageController: UIViewController {
     }
 
     @IBAction func onRecordMessageButtonPress(sender: AnyObject) {
+        if self.videoCameraView.isStarted {
+            if self.videoCameraView.isPaused {
+                self.recordMessageButton.backgroundColor = UIColor.greenColor()
+                self.videoCameraView.startRecording()
+            } else {
+                self.recordMessageButton.backgroundColor = UIColor.redColor()
+                self.videoCameraView.pauseRecording()
+            }
+        } else {
+            self.recordMessageButton.backgroundColor = UIColor.greenColor()
+            self.videoCameraView.startRecording()
+        }
+    }
+    
+    
+    @IBAction func onDoneRecording(sender: AnyObject) {
+        self.videoCameraView.finalizeRecordingToFile(videoFilePath(), withVideoSize: self.videoPreviewView.intrinsicContentSize(), withPreset: AVCaptureSessionPreset640x480, withCompletionHandler: nil)
+    }
 
+    func videoFilePath() -> NSURL! {
+        var sharedFM : NSFileManager = NSFileManager.defaultManager()
+        var possibleURLs = sharedFM.URLsForDirectory(NSSearchPathDirectory.ApplicationSupportDirectory, inDomains: NSSearchPathDomainMask.UserDomainMask)
+        var appSupportDir : NSURL! = nil
+        var appDirectory : NSURL! = nil
+        
+        if possibleURLs.count >= 1 {
+            appSupportDir = possibleURLs[0] as! NSURL
+        }
+        
+        if appSupportDir != nil {
+            var appBundleID : String! = NSBundle.mainBundle().bundleIdentifier
+            appDirectory = appSupportDir.URLByAppendingPathComponent(appBundleID)
+        }
+        
+        if appDirectory != nil {
+            var file =  appDirectory.URLByAppendingPathComponent( NSDate().timeIntervalSince1970.description)
+            return file
+        }
+        
+        return nil
+        
     }
 }

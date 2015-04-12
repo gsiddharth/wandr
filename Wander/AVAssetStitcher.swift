@@ -29,7 +29,7 @@ class AVAssetStitcher {
     
     func addAsset(asset : AVURLAsset, withTransform transformToApply: ((AVAssetTrack) -> CGAffineTransform)!, withErrorHandler errorHandler : ((NSError) -> Void)!){
         
-        var videoTrack : AVAssetTrack = (asset.tracksWithMediaType(AVMediaTypeVideo)).first as AVAssetTrack
+        var videoTrack : AVAssetTrack = (asset.tracksWithMediaType(AVMediaTypeVideo)).first as! AVAssetTrack
         var instruction = AVMutableVideoCompositionInstruction()
         var layerInstruction = AVMutableVideoCompositionLayerInstruction(assetTrack: videoTrack)
         
@@ -59,7 +59,7 @@ class AVAssetStitcher {
             return
         }
         
-        var audioTrack : AVAssetTrack = asset.tracksWithMediaType(AVMediaTypeAudio).first as AVAssetTrack
+        var audioTrack : AVAssetTrack = asset.tracksWithMediaType(AVMediaTypeAudio).first as! AVAssetTrack
        
         compositionAudioTrack.insertTimeRange(CMTimeRangeMake(kCMTimeZero, asset.duration), ofTrack: audioTrack, atTime: kCMTimeZero, error: &error)
         
