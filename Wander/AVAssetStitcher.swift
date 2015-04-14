@@ -9,7 +9,7 @@
 import UIKit
 import AVFoundation
 
-class AVAssetStitcher {
+class AVAssetStitcher : NSObject{
     
     var outputSize : CGSize!
     var composition : AVMutableComposition!
@@ -20,6 +20,7 @@ class AVAssetStitcher {
     
     
     init(outSize: CGSize){
+        
         self.outputSize = outSize
         self.composition = AVMutableComposition()
         self.compositionVideoTrack = composition.addMutableTrackWithMediaType(AVMediaTypeVideo,preferredTrackID:Int32(kCMPersistentTrackID_Invalid))
@@ -28,7 +29,7 @@ class AVAssetStitcher {
     }
     
     func addAsset(asset : AVURLAsset, withTransform transformToApply: ((AVAssetTrack) -> CGAffineTransform)!, withErrorHandler errorHandler : ((NSError) -> Void)!){
-        
+      
         var videoTrack : AVAssetTrack = (asset.tracksWithMediaType(AVMediaTypeVideo)).first as! AVAssetTrack
         var instruction = AVMutableVideoCompositionInstruction()
         var layerInstruction = AVMutableVideoCompositionLayerInstruction(assetTrack: videoTrack)
@@ -50,9 +51,9 @@ class AVAssetStitcher {
         instruction.timeRange = CMTimeRangeMake(startTime, asset.duration)
         instructions.append(instruction)
         
-        var error : NSError? = NSError()
+        var error : NSError?
         
-        compositionVideoTrack.insertTimeRange(CMTimeRangeMake(kCMTimeZero, asset.duration), ofTrack: videoTrack, atTime: kCMTimeZero, error: &error)
+        self.compositionVideoTrack.insertTimeRange(CMTimeRangeMake(kCMTimeZero, asset.duration), ofTrack: videoTrack, atTime: kCMTimeZero, error: &error)
         
         if error != nil {
             errorHandler(error!)
@@ -61,7 +62,7 @@ class AVAssetStitcher {
         
         var audioTrack : AVAssetTrack = asset.tracksWithMediaType(AVMediaTypeAudio).first as! AVAssetTrack
        
-        compositionAudioTrack.insertTimeRange(CMTimeRangeMake(kCMTimeZero, asset.duration), ofTrack: audioTrack, atTime: kCMTimeZero, error: &error)
+        self.compositionAudioTrack.insertTimeRange(CMTimeRangeMake(kCMTimeZero, asset.duration), ofTrack: audioTrack, atTime: kCMTimeZero, error: &error)
         
         if error != nil {
             errorHandler(error!)
@@ -95,4 +96,5 @@ class AVAssetStitcher {
         })
         
     }
+    
 }

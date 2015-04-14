@@ -19,8 +19,8 @@ class LoginViewController: UIViewController {
     
     override func shouldPerformSegueWithIdentifier(identifier: String?, sender: AnyObject?) -> Bool {
         
-        var username = "sid"
-        var password = "sid"
+        var username = ""
+        var password = ""
         
         self.resignFirstResponder()
         

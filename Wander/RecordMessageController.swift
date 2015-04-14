@@ -13,17 +13,30 @@ import Foundation
 class RecordMessageController: UIViewController {
     
     @IBOutlet weak var videoPreviewView: UIView!
-    @IBOutlet weak var recordMessageButton: UIButton!
+    @IBOutlet weak var recordMessageButton: CircleProgressView! {
+        didSet {
+            self.recordMessageButton.setupViews()
+            self.recordMessageButton.timeLimit = 3600
+            self.recordMessageButton.status = "circle-progress-view.status-not-started"
+            self.recordMessageButton.tintColor = UIColor.whiteColor()
+            self.recordMessageButton.elapsedTime = 0
+            
+        }
+    }
     
     let captureSession = AVCaptureSession()
     var previewLayer : AVCaptureVideoPreviewLayer?
+    var library : ALAssetsLibrary!
     
     // If we find a device we'll store it here for later use
     var captureDevice : AVCaptureDevice?
     var videoCameraView : VideoCameraInputManager!
+    
     override func viewDidLoad() {
         
         super.viewDidLoad()
+        
+        self.library = ALAssetsLibrary()
         
         var err : NSError! = nil
         self.videoCameraView = VideoCameraInputManager()    
@@ -58,7 +71,7 @@ class RecordMessageController: UIViewController {
         if self.videoCameraView.isStarted {
             if self.videoCameraView.isPaused {
                 self.recordMessageButton.backgroundColor = UIColor.greenColor()
-                self.videoCameraView.startRecording()
+                self.videoCameraView.resumeRecording()
             } else {
                 self.recordMessageButton.backgroundColor = UIColor.redColor()
                 self.videoCameraView.pauseRecording()
@@ -71,30 +84,18 @@ class RecordMessageController: UIViewController {
     
     
     @IBAction func onDoneRecording(sender: AnyObject) {
-        self.videoCameraView.finalizeRecordingToFile(videoFilePath(), withVideoSize: self.videoPreviewView.intrinsicContentSize(), withPreset: AVCaptureSessionPreset640x480, withCompletionHandler: nil)
+        
+        var file = FileUtils.videoFilePath()
+        
+        self.videoCameraView.finalizeRecordingToFile(file, withVideoSize: CGSize(width : self.videoPreviewView.frame.width, height : self.videoPreviewView.frame.height), withPreset: AVAssetExportPreset640x480, withCompletionHandler: {(error : NSError!) -> Void in
+            
+            if error == nil {
+                FileUtils.addVideoToAlbum(self.library, videourl : file, album: Constants.albumName)
+            } else {
+                print("done exporting file")
+            }
+        })
+        
     }
 
-    func videoFilePath() -> NSURL! {
-        var sharedFM : NSFileManager = NSFileManager.defaultManager()
-        var possibleURLs = sharedFM.URLsForDirectory(NSSearchPathDirectory.ApplicationSupportDirectory, inDomains: NSSearchPathDomainMask.UserDomainMask)
-        var appSupportDir : NSURL! = nil
-        var appDirectory : NSURL! = nil
-        
-        if possibleURLs.count >= 1 {
-            appSupportDir = possibleURLs[0] as! NSURL
-        }
-        
-        if appSupportDir != nil {
-            var appBundleID : String! = NSBundle.mainBundle().bundleIdentifier
-            appDirectory = appSupportDir.URLByAppendingPathComponent(appBundleID)
-        }
-        
-        if appDirectory != nil {
-            var file =  appDirectory.URLByAppendingPathComponent( NSDate().timeIntervalSince1970.description)
-            return file
-        }
-        
-        return nil
-        
-    }
 }

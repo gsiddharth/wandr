@@ -7,6 +7,10 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		35633EB01ADC497C002042B5 /* FileUtils.swift in Sources */ = {isa = PBXBuildFile; fileRef = 35633EAF1ADC497C002042B5 /* FileUtils.swift */; };
+		35633EB21ADC555F002042B5 /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 35633EB11ADC555F002042B5 /* Constants.swift */; };
+		35633EBB1ADCD5FD002042B5 /* CircleProgressView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 35633EBA1ADCD5FD002042B5 /* CircleProgressView.swift */; };
+		35633EBD1ADCD609002042B5 /* CircleShapeLayer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 35633EBC1ADCD609002042B5 /* CircleShapeLayer.swift */; };
 		3584BCC61ABDCAE10097DCA9 /* UserController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3584BCC51ABDCAE10097DCA9 /* UserController.swift */; };
 		3584BCC81ABDCB000097DCA9 /* User.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3584BCC71ABDCB000097DCA9 /* User.swift */; };
 		3584BCCA1ABE159D0097DCA9 /* Errors.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3584BCC91ABE159D0097DCA9 /* Errors.swift */; };
@@ -37,6 +41,10 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		35633EAF1ADC497C002042B5 /* FileUtils.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FileUtils.swift; sourceTree = "<group>"; };
+		35633EB11ADC555F002042B5 /* Constants.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Constants.swift; sourceTree = "<group>"; };
+		35633EBA1ADCD5FD002042B5 /* CircleProgressView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CircleProgressView.swift; sourceTree = "<group>"; };
+		35633EBC1ADCD609002042B5 /* CircleShapeLayer.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CircleShapeLayer.swift; sourceTree = "<group>"; };
 		3584BCC51ABDCAE10097DCA9 /* UserController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UserController.swift; sourceTree = "<group>"; };
 		3584BCC71ABDCB000097DCA9 /* User.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = User.swift; sourceTree = "<group>"; };
 		3584BCC91ABE159D0097DCA9 /* Errors.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Errors.swift; sourceTree = "<group>"; };
@@ -79,6 +87,15 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		35633EB91ADCD5D4002042B5 /* CircularProgressView */ = {
+			isa = PBXGroup;
+			children = (
+				35633EBA1ADCD5FD002042B5 /* CircleProgressView.swift */,
+				35633EBC1ADCD609002042B5 /* CircleShapeLayer.swift */,
+			);
+			name = CircularProgressView;
+			sourceTree = "<group>";
+		};
 		3584BCC31ABDCA810097DCA9 /* Controllers */ = {
 			isa = PBXGroup;
 			children = (
@@ -102,6 +119,7 @@
 				3584BCD61AC081EC0097DCA9 /* UserPostTableViewCell.swift */,
 				3584BCD71AC081EC0097DCA9 /* UserPostTableViewCell.xib */,
 				3586FBD91AC84D8F000022E6 /* AVAssetStitcher.swift */,
+				35633EAF1ADC497C002042B5 /* FileUtils.swift */,
 			);
 			name = Utils;
 			sourceTree = "<group>";
@@ -134,6 +152,7 @@
 		359092691A99374300723DBD /* Wander */ = {
 			isa = PBXGroup;
 			children = (
+				35633EB91ADCD5D4002042B5 /* CircularProgressView */,
 				3584BCCC1ABE9CD60097DCA9 /* Protocols */,
 				3584BCCB1ABE91E40097DCA9 /* Utils */,
 				3584BCC41ABDCA9E0097DCA9 /* Models */,
@@ -150,6 +169,7 @@
 				359092901A9A404A00723DBD /* Bridging-Header.h */,
 				3584BCC91ABE159D0097DCA9 /* Errors.swift */,
 				3586FBD51AC0A702000022E6 /* HomeViewController.swift */,
+				35633EB11ADC555F002042B5 /* Constants.swift */,
 			);
 			path = Wander;
 			sourceTree = "<group>";
@@ -282,7 +302,9 @@
 			buildActionMask = 2147483647;
 			files = (
 				3584BCC61ABDCAE10097DCA9 /* UserController.swift in Sources */,
+				35633EBD1ADCD609002042B5 /* CircleShapeLayer.swift in Sources */,
 				3590928D1A99A8F200723DBD /* LoginViewController.swift in Sources */,
+				35633EBB1ADCD5FD002042B5 /* CircleProgressView.swift in Sources */,
 				359092921A9A40BD00723DBD /* RecordMessageController.swift in Sources */,
 				3590926F1A99374400723DBD /* ViewController.swift in Sources */,
 				3584BCCA1ABE159D0097DCA9 /* Errors.swift in Sources */,
@@ -290,7 +312,9 @@
 				3586FBD61AC0A702000022E6 /* HomeViewController.swift in Sources */,
 				3590926D1A99374400723DBD /* AppDelegate.swift in Sources */,
 				3584BCD81AC081EC0097DCA9 /* UserPostTableViewCell.swift in Sources */,
+				35633EB01ADC497C002042B5 /* FileUtils.swift in Sources */,
 				3586FBDA1AC84D8F000022E6 /* AVAssetStitcher.swift in Sources */,
+				35633EB21ADC555F002042B5 /* Constants.swift in Sources */,
 				3590928F1A99AB6B00723DBD /* RegisterViewController.swift in Sources */,
 				3584BCC81ABDCB000097DCA9 /* User.swift in Sources */,
 			);
@@ -420,7 +444,7 @@
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				INFOPLIST_FILE = Wander/Info.plist;
-				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 8.3;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE = "";
@@ -436,7 +460,7 @@
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				INFOPLIST_FILE = Wander/Info.plist;
-				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 8.3;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE = "";

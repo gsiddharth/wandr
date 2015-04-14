@@ -11,6 +11,6 @@
 
 #import <MediaPlayer/MediaPlayer.h>
 #import <MobileCoreServices/MobileCoreServices.h>
-
+#import <AssetsLibrary/AssetsLibrary.h>
 
 #endif

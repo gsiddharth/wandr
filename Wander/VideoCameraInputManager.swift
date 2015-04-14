@@ -163,7 +163,7 @@ class VideoCameraInputManager : NSObject, AVCaptureFileOutputRecordingDelegate {
         var stitcherError : NSError!
         
         for url in temporaryFileURLs.reverse() {
-            stitcher.addAsset(AVURLAsset.assetWithURL(url) as! AVURLAsset, withTransform: { (videoTrack: AVAssetTrack) -> CGAffineTransform in
+            stitcher.addAsset(AVURLAsset(URL:url, options: nil), withTransform: { (videoTrack: AVAssetTrack) -> CGAffineTransform in
                 var ratioW : CGFloat = videoSize.width / videoTrack.naturalSize.width
                 var ratioH : CGFloat = videoSize.height / videoTrack.naturalSize.height
                 
@@ -366,7 +366,7 @@ class VideoCameraInputManager : NSObject, AVCaptureFileOutputRecordingDelegate {
     }
     
     private func constructCurrentTemporaryFilename() -> String {
-        return NSTemporaryDirectory() + self.uniqueTimeStamp!.description + self.currentRecordingSegment!.description
+        return NSTemporaryDirectory() + self.uniqueTimeStamp!.description + self.currentRecordingSegment!.description + ".mov"
     }
     
     private func cleanTemporaryFiles() {
@@ -375,5 +375,4 @@ class VideoCameraInputManager : NSObject, AVCaptureFileOutputRecordingDelegate {
             NSFileManager.defaultManager().removeItemAtURL(temporaryFiles, error: nil)
         }
     }
-    
 }

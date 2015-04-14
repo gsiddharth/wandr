@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<VariablesViewState
+   version = "1.0">
+   <ContextStates>
+      <ContextState
+         contextName = "Wander.AVAssetStitcher.addAsset (Wander.AVAssetStitcher)(ObjectiveC.AVURLAsset, withTransform : Swift.ImplicitlyUnwrappedOptional&lt;(ObjectiveC.AVAssetTrack) -&gt; C.CGAffineTransform&gt;, withErrorHandler : Swift.ImplicitlyUnwrappedOptional&lt;(ObjectiveC.NSError) -&gt; ()&gt;) -&gt; ():AVAssetStitcher.swift">
+      </ContextState>
+      <ContextState
+         contextName = "Wander.AVAssetStitcher.exportTo (Wander.AVAssetStitcher)(ObjectiveC.NSURL, withPreset : Swift.String, withCompletionHandler : Swift.ImplicitlyUnwrappedOptional&lt;(Swift.ImplicitlyUnwrappedOptional&lt;ObjectiveC.NSError&gt;) -&gt; ()&gt;) -&gt; ():AVAssetStitcher.swift">
+      </ContextState>
+      <ContextState
+         contextName = "Wander.AVAssetStitcher.(exportTo (Wander.AVAssetStitcher) -&gt; (ObjectiveC.NSURL, withPreset : Swift.String, withCompletionHandler : Swift.ImplicitlyUnwrappedOptional&lt;(Swift.ImplicitlyUnwrappedOptional&lt;ObjectiveC.NSError&gt;) -&gt; ()&gt;) -&gt; ()).(closure #1):AVAssetStitcher.swift">
+         <PersistentStrings>
+            <PersistentString
+               value = "">
+            </PersistentString>
+            <PersistentString
+               value = "exporter.error">
+            </PersistentString>
+         </PersistentStrings>
+      </ContextState>
+   </ContextStates>
+</VariablesViewState>
