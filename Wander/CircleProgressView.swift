@@ -14,55 +14,43 @@ class CircleProgressView : UIButton {
     
     var progressLayer : CircleShapeLayer!
     
+    var isPressed = false
+    
     override init(frame : CGRect) {
         super.init(frame : frame)
+        self.setupViews()
     }
 
     required init(coder aDecoder: NSCoder) {
         super.init(coder : aDecoder)
-    }
-    
-    override func awakeFromNib() {
         self.setupViews()
     }
     
-    override func layoutSubviews() {
-        
-        super.layoutSubviews()
-        
-        self.progressLayer.frame = self.bounds
-        
-        self.progressLabel.sizeToFit()
-        
-        self.progressLabel.center = CGPointMake(self.center.x - self.frame.origin.x, self.center.y - self.frame.origin.y)
-    }
+    var onPressCenterColor : CGColor = Convertors.convertUIColorToCGColor(UIColor.redColor())
     
-    override func updateConstraints() {
-        super.updateConstraints()
-    }
+    var onUnpressCenterColor : CGColor = Convertors.convertUIColorToCGColor(UIColor.grayColor())
     
-    var _progressLabel : UILabel!
-    var progressLabel : UILabel! {
+    var strokeBackgroundColor : CGColor! {
         get {
-            if self._progressLabel == nil {
-                self._progressLabel = UILabel(frame: self.bounds)
-                self._progressLabel.numberOfLines = 2;
-                self._progressLabel.textAlignment = NSTextAlignment.Center
-                self._progressLabel.backgroundColor = UIColor.clearColor()
-                self._progressLabel.textColor = UIColor.whiteColor()
-            
-                self.addSubview(self._progressLabel)
-            }
-            
-            return self._progressLabel
+            return self.progressLayer.strokeBackgroundColor
+        }
+        
+        set {
+            self.progressLayer.strokeBackgroundColor = newValue
         }
     }
     
-    var percent : Double! {
+    var strokeForegroundColor : CGColor! {
         get {
-            return self.progressLayer.percent
+            return self.progressLayer.strokeForegroundColor
         }
+        
+        set {
+            self.progressLayer.strokeForegroundColor = newValue
+        }
+
     }
+
     
     var timeLimit :  NSTimeInterval {
         get {
@@ -73,80 +61,49 @@ class CircleProgressView : UIButton {
             self.progressLayer.timeLimit = newValue
         }
     }
-    
-    var _elapsedTime : NSTimeInterval!
+
     var elapsedTime : NSTimeInterval! {
         get {
-            return _elapsedTime
+            return self.progressLayer.elapsedTime
         }
         set {
-            _elapsedTime = newValue;
-            self.progressLayer.elapsedTime = newValue;
-            //self.progressLabel.attributedText = //self.formatProgressStringFromTimeInterval(newValue)
+            self.progressLayer.elapsedTime = newValue
         }
+    }
+    
+    var percent : Double! {
+        get {
+            return self.progressLayer.percent
+        }
+    }
+
+    override func awakeFromNib() {
+    }
+    
+    override func layoutSubviews() {
+        super.layoutSubviews()
+    }
+    
+    override func updateConstraints() {
+        super.updateConstraints()
+    }
+    
+    func onButtonPress(sender : AnyObject) {
+        if self.isPressed {
+            self.progressLayer.centerColor = self.onUnpressCenterColor
+        } else {
+            self.progressLayer.centerColor = self.onPressCenterColor
+        }
+        
+        isPressed = !isPressed
     }
 
     func setupViews() {
-        self.backgroundColor = UIColor.clearColor()
         self.clipsToBounds = false;
-        
-        //add Progress layer
-        self.progressLayer = CircleShapeLayer()
-        self.progressLayer.frame = self.bounds;
-        self.progressLayer.backgroundColor = UIColor.clearColor().CGColor
+        self.progressLayer = CircleShapeLayer(frame :self.bounds)
+        self.progressLayer.centerColor = self.onUnpressCenterColor
         self.layer.addSublayer(self.progressLayer)
-    }
-    
-    override var tintColor : UIColor! {
-        get {
-            return self.tintColor
-        }
-        
-        set {
-            super.tintColor = newValue
-            self.progressLayer.progressColor = newValue!.CGColor;
-            self.progressLabel.textColor = newValue!;
-        }
-    }
-    
-    func stringFromTimeInterval(interval : NSTimeInterval, shortDate: Bool) -> String {
-        var ti : Int = Int(interval as Double)
-        var seconds : Int = ti % 60;
-        var minutes : Int = (ti / 60) % 60;
-        var hours : Int = (ti / 3600);
-        
-        if (shortDate) {
-            return String(format : "%02d:%02d", hours, minutes)
-        }
-        else {
-            return String(format : "%02d:%02d:02d", hours, minutes, seconds)
-        }
-    }
-    
-    func formatProgressStringFromTimeInterval(interval : NSTimeInterval) -> NSAttributedString {
-        var progressString : String = self.stringFromTimeInterval(interval, shortDate:false)
-        
-        var attributedString : NSMutableAttributedString!;
-        
-        if (count(self.status) > 0) {
-            
-            attributedString = NSMutableAttributedString(string : String(format:"%@\n%@", progressString, self.status))
-            
-            attributedString.addAttribute(NSFontAttributeName, value: UIFont(name : "HelveticaNeue-Bold", size:40)!, range:NSMakeRange(0, count(progressString)))
-            
-            attributedString.addAttribute(NSFontAttributeName, value: UIFont(name : "HelveticaNeue-thin", size:18)!, range:NSMakeRange(count(progressString)+1, count(self.status)))
-            
-        }
-        else
-        {
-            attributedString = NSMutableAttributedString(string : String(format:"%@",progressString))
-            
-            attributedString.addAttribute(NSFontAttributeName, value: UIFont(name : "HelveticaNeue-Bold", size:18)!, range:NSMakeRange(0, count(progressString)))
-        }
-        
-        return attributedString;
+        self.addTarget(self, action: "onButtonPress:", forControlEvents: UIControlEvents.TouchUpInside)
 
     }
-    
-    
 }

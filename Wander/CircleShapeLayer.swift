@@ -11,9 +11,8 @@ import UIKit
 
 class CircleShapeLayer : CAShapeLayer {
     
-    var elapsedTime : NSTimeInterval!
+    var _elapsedTime : NSTimeInterval! = 0
     var timeLimit : NSTimeInterval!
-    var _percent : Double!
     var initialProgress : Double!
     var progressLayer : CAShapeLayer!
     
@@ -21,31 +20,73 @@ class CircleShapeLayer : CAShapeLayer {
         super.init()
         self.setupLayer()
     }
+    
+    init(frame : CGRect) {
+        super.init()
+        super.frame = frame
+        self.setupLayer()
+    }
+    
+    override init(layer: AnyObject!){
+        super.init()
+        self.setupLayer()
+    }
 
     required init(coder aDecoder: NSCoder) {
         super.init(coder : aDecoder)
+        self.setupLayer()
     }
     
+    var centerColor : CGColor! {
+        get {
+            return self.fillColor
+        }
+        set {
+            self.fillColor = newValue
+        }
+    }
+    
+    var strokeBackgroundColor : CGColor! {
+        get {
+            return self.strokeColor
+        }
+        set {
+            self.strokeColor = newValue
+        }
+    }
+    
+    var strokeForegroundColor : CGColor! {
+        get {
+            return self.progressLayer.strokeColor
+        }
+        set {
+            self.progressLayer.strokeColor = newValue
+        }
+    }
+    
+    
     override func layoutSublayers() {
-        self.path = self.drawPathWithArcCenter()
-        self.progressLayer.path = self.drawPathWithArcCenter()
+       
+        //self.path = self.drawPathWithArcCenter()
+        //self.progressLayer.path = self.drawPathWithArcCenter()
         super.layoutSublayers()
 
     }
     
     func setupLayer() {
         self.path = self.drawPathWithArcCenter()
-        self.fillColor = UIColor.clearColor().CGColor
-        self.strokeColor = UIColor(red :0.86, green:0.86, blue:0.86, alpha:0.4).CGColor
-        self.lineWidth = 20;
+        self.lineWidth = 4
         
         self.progressLayer = CAShapeLayer()
         self.progressLayer.path = self.drawPathWithArcCenter()
-        self.progressLayer.fillColor = UIColor.clearColor().CGColor
-        self.progressLayer.strokeColor = UIColor.whiteColor().CGColor
-        self.progressLayer.lineWidth = 20;
-        self.progressLayer.lineCap = kCALineCapRound;
-        self.progressLayer.lineJoin = kCALineJoinRound;
+        self.progressLayer.lineWidth = 4
+        self.progressLayer.lineCap = kCALineCapRound
+        self.progressLayer.lineJoin = kCALineJoinRound
+        
+        self.progressLayer.fillColor = Convertors.convertUIColorToCGColor(UIColor.clearColor())
+        self.strokeBackgroundColor = Convertors.convertUIColorToCGColor(UIColor.whiteColor())
+        self.strokeForegroundColor = Convertors.convertUIColorToCGColor(UIColor.greenColor())
+        
         self.addSublayer(self.progressLayer)
     }
     
@@ -53,35 +94,27 @@ class CircleShapeLayer : CAShapeLayer {
 
         var position_y : CGFloat = self.frame.size.height/2;
         var position_x : CGFloat = self.frame.size.width/2; // Assuming that width == height
-        var retVal : UIBezierPath = UIBezierPath(arcCenter:CGPointMake(position_x, position_y), radius : position_y, startAngle : CGFloat((-M_PI/2)), endAngle : CGFloat((3*M_PI/2)),  clockwise : true)
+        var retVal : UIBezierPath = UIBezierPath(arcCenter:CGPointMake(position_x, position_y), radius : (position_y * 1.8), startAngle : CGFloat((-M_PI/2)), endAngle : CGFloat((3*M_PI/2)),  clockwise : true)
         return retVal.CGPath
         
     }
     
-    func setElapsedTime(elapsedTime : NSTimeInterval) {
-        self.initialProgress = self.calculatePercent(self.elapsedTime, toTime : self.timeLimit)
-        self.elapsedTime = elapsedTime;
-        
-        self.progressLayer.strokeEnd = CGFloat(self.percent)
-        self.startAnimation();
-
+    var elapsedTime : NSTimeInterval {
+        get {
+            return self._elapsedTime
+        }
+        set {
+            self.initialProgress = self.calculatePercent(self._elapsedTime, toTime : self.timeLimit)
+            self._elapsedTime = newValue;
+            self.progressLayer.strokeEnd = CGFloat(self.percent)
+            self.startAnimation();
+        }
     }
     
     var percent : Double {
         get {
-            self._percent = self.calculatePercent(self.elapsedTime, toTime : self.timeLimit)
-            return self._percent;
+            return self.calculatePercent(self.elapsedTime, toTime : self.timeLimit)
         }
-    }
-    
-    var progressColor : CGColor {
-        get {
-            return self.progressLayer.strokeColor
-        }
-        set {
-            self.progressLayer.strokeColor = newValue
-        }
-
     }
     
     func calculatePercent(fromTime : NSTimeInterval, toTime : NSTimeInterval ) -> Double {
@@ -90,11 +123,7 @@ class CircleShapeLayer : CAShapeLayer {
             
             var progress : CGFloat = 0;
             
-            progress = CGFloat(fromTime / toTime)
-            
-            if ((progress * 100) > 100) {
-                progress = 1.0;
-            }
+            progress = min(1.0, CGFloat(fromTime / toTime))
             
             return Double(progress);
         }
@@ -106,11 +135,10 @@ class CircleShapeLayer : CAShapeLayer {
     
     func startAnimation() {
         var pathAnimation : CABasicAnimation = CABasicAnimation(keyPath:"strokeEnd")
-        pathAnimation.duration = 1.0;
+        pathAnimation.duration = 0.2;
         pathAnimation.fromValue = self.initialProgress;
         pathAnimation.toValue = self.percent
         pathAnimation.removedOnCompletion = true
-        
         self.progressLayer.addAnimation(pathAnimation, forKey:nil)
         
     }

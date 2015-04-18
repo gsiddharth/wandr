@@ -15,10 +15,9 @@ class RecordMessageController: UIViewController {
     @IBOutlet weak var videoPreviewView: UIView!
     @IBOutlet weak var recordMessageButton: CircleProgressView! {
         didSet {
-            self.recordMessageButton.setupViews()
-            self.recordMessageButton.timeLimit = 3600
+            self.recordMessageButton.timeLimit = 60
             self.recordMessageButton.status = "circle-progress-view.status-not-started"
-            self.recordMessageButton.tintColor = UIColor.whiteColor()
+            self.recordMessageButton.tintColor = UIColor.redColor()
             self.recordMessageButton.elapsedTime = 0
             
         }
@@ -70,18 +69,37 @@ class RecordMessageController: UIViewController {
     @IBAction func onRecordMessageButtonPress(sender: AnyObject) {
         if self.videoCameraView.isStarted {
             if self.videoCameraView.isPaused {
-                self.recordMessageButton.backgroundColor = UIColor.greenColor()
                 self.videoCameraView.resumeRecording()
             } else {
-                self.recordMessageButton.backgroundColor = UIColor.redColor()
                 self.videoCameraView.pauseRecording()
             }
         } else {
-            self.recordMessageButton.backgroundColor = UIColor.greenColor()
             self.videoCameraView.startRecording()
+            self.updateRecordingTime()
         }
     }
     
+    
+    func updateRecordingTime() {
+        
+        dispatch_async(dispatch_get_global_queue(Int(QOS_CLASS_USER_INITIATED.value), 0)) {
+            
+            var lastTime = self.recordMessageButton.elapsedTime
+            
+            while self.videoCameraView.isStarted {
+                
+                var newTime = CMTimeGetSeconds(self.videoCameraView.totalRecordingDuration()) as NSTimeInterval
+           
+                if newTime - lastTime >= 1 {
+                    
+                    dispatch_async(dispatch_get_main_queue()) {
+                        self.recordMessageButton.elapsedTime = newTime
+                        lastTime = newTime
+                    }
+                }
+            }
+        }
+    }
     
     @IBAction func onDoneRecording(sender: AnyObject) {
         

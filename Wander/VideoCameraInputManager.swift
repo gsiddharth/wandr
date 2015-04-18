@@ -116,15 +116,14 @@ class VideoCameraInputManager : NSObject, AVCaptureFileOutputRecordingDelegate {
         
     }
     
+    
     func pauseRecording() {
         self.isPaused = true
-        self.movieFileOutput.stopRecording()
-        self.currentFinalDuration = CMTimeAdd(self.currentFinalDuration!, movieFileOutput.recordedDuration)
+        //self.currentFinalDuration = movieFileOutput.recordedDuration
     }
     
     func resumeRecording() {
         self.currentRecordingSegment!++
-        self.isPaused = false
         var outputFileURL : NSURL! = NSURL.fileURLWithPath(self.constructCurrentTemporaryFilename())
         
         temporaryFileURLs.append(outputFileURL)
@@ -135,11 +134,13 @@ class VideoCameraInputManager : NSObject, AVCaptureFileOutputRecordingDelegate {
         }
         
         movieFileOutput.startRecordingToOutputFileURL(outputFileURL, recordingDelegate: self)
+        self.isPaused = false
     }
     
     func reset() {
         if self.movieFileOutput.recording {
             self.pauseRecording()
+            self.movieFileOutput.stopRecording()
         }
         
         self.isPaused = false
@@ -210,15 +211,23 @@ class VideoCameraInputManager : NSObject, AVCaptureFileOutputRecordingDelegate {
     
     func totalRecordingDuration() -> CMTime {
         if CMTimeCompare(kCMTimeZero, self.currentFinalDuration!) == 0 {
-            
+            print("First file and returning time " + String(stringInterpolationSegment: movieFileOutput.recordedDuration.value
+)+"\n")
             return movieFileOutput.recordedDuration
         } else {
-            
-            var returnTime : CMTime = CMTimeAdd(self.currentFinalDuration!, movieFileOutput.recordedDuration)
-            if returnTime.isValid {
+
+            if !self.isPaused && movieFileOutput.recording{
+                var returnTime : CMTime = CMTimeAdd(self.currentFinalDuration!, movieFileOutput.recordedDuration)
+                if !returnTime.isValid {
+                    return self.currentFinalDuration!
+                } else {
+                    print("Not paused and returning time " + String(stringInterpolationSegment: returnTime.value) + "\n")
+                    return returnTime
+                }
+            }
+            else {
+                    print(" paused and returning time " + String(stringInterpolationSegment: self.currentFinalDuration?.value) + "\n")
                 return self.currentFinalDuration!
-            } else {
-                return returnTime
             }
         }
     }
