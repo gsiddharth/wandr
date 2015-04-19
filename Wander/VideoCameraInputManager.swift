@@ -52,7 +52,7 @@ class VideoCameraInputManager : NSObject, AVCaptureFileOutputRecordingDelegate {
         if captureDevice.hasTorch {
             if captureDevice.lockForConfiguration(nil) {
                 if captureDevice.isTorchModeSupported(tm) {
-                    captureDevice.setTorchModeOnWithLevel(0.1, error: nil)
+                   captureDevice.torchMode = tm
                 }
                 captureDevice.unlockForConfiguration()
             }
@@ -116,10 +116,10 @@ class VideoCameraInputManager : NSObject, AVCaptureFileOutputRecordingDelegate {
         
     }
     
-    
     func pauseRecording() {
         self.isPaused = true
-        //self.currentFinalDuration = movieFileOutput.recordedDuration
+        self.movieFileOutput.stopRecording()
+        self.currentFinalDuration = CMTimeAdd(self.currentFinalDuration!, movieFileOutput.recordedDuration)
     }
     
     func resumeRecording() {
@@ -139,81 +139,87 @@ class VideoCameraInputManager : NSObject, AVCaptureFileOutputRecordingDelegate {
     
     func reset() {
         if self.movieFileOutput.recording {
-            self.pauseRecording()
             self.movieFileOutput.stopRecording()
         }
         
+        self.inFlightWrites = 0
+        self.currentFinalDuration = kCMTimeZero
+        self.cleanTemporaryFiles()
         self.isPaused = false
         self.isStarted = false
     }
     
     func finalizeRecordingToFile(finalVideoLocationURL : NSURL, withVideoSize videoSize : CGSize, withPreset preset : String,
         withCompletionHandler completionHandler : ((NSError!) -> Void)!) {
-        self.reset()
-        var error = NSErrorPointer()
-        
-        if finalVideoLocationURL.checkResourceIsReachableAndReturnError(error) {
-            return
-        }
-        
-        if inFlightWrites != 0 {
-            return
-        }
-        
-        var stitcher : AVAssetStitcher = AVAssetStitcher(outSize : videoSize)
-        var stitcherError : NSError!
-        
-        for url in temporaryFileURLs.reverse() {
-            stitcher.addAsset(AVURLAsset(URL:url, options: nil), withTransform: { (videoTrack: AVAssetTrack) -> CGAffineTransform in
-                var ratioW : CGFloat = videoSize.width / videoTrack.naturalSize.width
-                var ratioH : CGFloat = videoSize.height / videoTrack.naturalSize.height
-                
-                if ratioW < ratioH {
-                    var neg : CGFloat = -1.0
-                    if ratioH > 1.0 {
-                        neg = 1.0
-                    }
-                    
-                    var diffH : CGFloat = videoTrack.naturalSize.height - (videoTrack.naturalSize.height * ratioH)
-                    return CGAffineTransformConcat(CGAffineTransformMakeTranslation(0.0, neg*diffH/2.0), CGAffineTransformMakeScale(ratioH, ratioH))
-                } else {
-                    var neg : CGFloat = -1.0
-                    if ratioW > 1.0 {
-                        neg = 1.0
-                    }
-                    
-                    var diffW : CGFloat =  videoTrack.naturalSize.width - (videoTrack.naturalSize.width * ratioW)
-                    return CGAffineTransformConcat(CGAffineTransformMakeTranslation(neg * diffW / 2.0, 0.0), CGAffineTransformMakeScale(ratioW, ratioW))
-                    
-                }
-                
-                }, withErrorHandler: { (err : NSError) -> Void in
-                    stitcherError = err
-                    return
-            })
-        }
-        
-        if stitcherError != nil {
-            completionHandler(stitcherError)
-            return
-        }
-        
-        stitcher.exportTo(finalVideoLocationURL, withPreset: preset) { (error : NSError!) -> Void in
-            if error != nil {
-                completionHandler(error)
-            } else {
-                self.cleanTemporaryFiles()
-                self.temporaryFileURLs.removeAll(keepCapacity : false)
-                completionHandler(nil)
+
+            var error = NSErrorPointer()
+            
+            if finalVideoLocationURL.checkResourceIsReachableAndReturnError(error) {
+                return
             }
-        }
+            
+            if inFlightWrites != 0 {
+                return
+            }
+            
+            var stitcher : AVAssetStitcher = AVAssetStitcher(outSize : videoSize)
+            var stitcherError : NSError!
+            
+            for url in temporaryFileURLs.reverse() {
+                stitcher.addAsset(AVURLAsset(URL:url, options: nil), withTransform: { (videoTrack: AVAssetTrack) -> CGAffineTransform in
+                    var ratioW : CGFloat = videoSize.width / videoTrack.naturalSize.width
+                    var ratioH : CGFloat = videoSize.height / videoTrack.naturalSize.height
+                    
+                    if ratioW < ratioH {
+                        var neg : CGFloat = -1.0
+                        if ratioH > 1.0 {
+                            neg = 1.0
+                        }
+                        
+                        var diffH : CGFloat = videoTrack.naturalSize.height - (videoTrack.naturalSize.height * ratioH)
+                        return CGAffineTransformConcat(CGAffineTransformMakeTranslation(0.0, neg*diffH/2.0), CGAffineTransformMakeScale(ratioH, ratioH))
+                    } else {
+                        var neg : CGFloat = -1.0
+                        if ratioW > 1.0 {
+                            neg = 1.0
+                        }
+                        
+                        var diffW : CGFloat =  videoTrack.naturalSize.width - (videoTrack.naturalSize.width * ratioW)
+                        return CGAffineTransformConcat(CGAffineTransformMakeTranslation(neg * diffW / 2.0, 0.0), CGAffineTransformMakeScale(ratioW, ratioW))
+                        
+                    }
+                    
+                    }, withErrorHandler: { (err : NSError) -> Void in
+                        stitcherError = err
+                        return
+                })
+            }
+            
+            if stitcherError != nil {
+                completionHandler(stitcherError)
+                return
+            }
+            
+            stitcher.exportTo(finalVideoLocationURL, withPreset: preset) { (error : NSError!) -> Void in
+                if error != nil {
+                    completionHandler(error)
+                } else {
+                    self.cleanTemporaryFiles()
+                    self.temporaryFileURLs.removeAll(keepCapacity : false)
+                    completionHandler(nil)
+                }
+            }
+            
+//            self.reset()
     }
     
     func totalRecordingDuration() -> CMTime {
         if CMTimeCompare(kCMTimeZero, self.currentFinalDuration!) == 0 {
-            print("First file and returning time " + String(stringInterpolationSegment: movieFileOutput.recordedDuration.value
-)+"\n")
-            return movieFileOutput.recordedDuration
+            if movieFileOutput.recording {
+                return movieFileOutput.recordedDuration
+            } else {
+                return self.currentFinalDuration!
+            }
         } else {
 
             if !self.isPaused && movieFileOutput.recording{
@@ -221,12 +227,10 @@ class VideoCameraInputManager : NSObject, AVCaptureFileOutputRecordingDelegate {
                 if !returnTime.isValid {
                     return self.currentFinalDuration!
                 } else {
-                    print("Not paused and returning time " + String(stringInterpolationSegment: returnTime.value) + "\n")
                     return returnTime
                 }
             }
             else {
-                    print(" paused and returning time " + String(stringInterpolationSegment: self.currentFinalDuration?.value) + "\n")
                 return self.currentFinalDuration!
             }
         }

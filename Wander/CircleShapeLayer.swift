@@ -135,7 +135,7 @@ class CircleShapeLayer : CAShapeLayer {
     
     func startAnimation() {
         var pathAnimation : CABasicAnimation = CABasicAnimation(keyPath:"strokeEnd")
-        pathAnimation.duration = 0.2;
+        pathAnimation.duration = 1;
         pathAnimation.fromValue = self.initialProgress;
         pathAnimation.toValue = self.percent
         pathAnimation.removedOnCompletion = true

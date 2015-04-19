@@ -8,7 +8,7 @@
 
 import Foundation
 
-class CircleProgressView : UIButton {
+class CircleProgressButton : UIButton {
 
     var status : String!
     
@@ -88,7 +88,7 @@ class CircleProgressView : UIButton {
         super.updateConstraints()
     }
     
-    func onButtonPress(sender : AnyObject) {
+    func onButtonPress(sender : AnyObject!) {
         if self.isPressed {
             self.progressLayer.centerColor = self.onUnpressCenterColor
         } else {
@@ -96,6 +96,19 @@ class CircleProgressView : UIButton {
         }
         
         isPressed = !isPressed
+    }
+    
+    func finish() {
+        self.progressLayer.centerColor = self.onUnpressCenterColor
+        isPressed = false
+        self.enabled = false
+        
+    }
+    
+    func reload() {
+        self.progressLayer.centerColor = self.onUnpressCenterColor
+        isPressed = false
+        self.elapsedTime = 0
     }
 
     func setupViews() {
