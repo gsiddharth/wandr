@@ -298,8 +298,7 @@
                                         <exclude reference="Nxn-ix-LaZ"/>
                                     </mask>
                                 </variation>
-                                <variation key="widthClass=compact" misplaced="YES">
-                                    <rect key="frame" x="16" y="552" width="37" height="35"/>
+                                <variation key="widthClass=compact">
                                     <mask key="constraints">
                                         <include reference="Cd7-So-lUP"/>
                                         <include reference="Nxn-ix-LaZ"/>
@@ -329,11 +328,11 @@
                                 <exclude reference="LOA-ta-jNx"/>
                             </mask>
                             <mask key="constraints">
+                                <exclude reference="0kv-MS-rP9"/>
+                                <exclude reference="tkY-Z3-hHy"/>
                                 <exclude reference="KNw-sV-gfm"/>
                                 <exclude reference="fDb-mb-m4Z"/>
                                 <exclude reference="GQR-WH-QLk"/>
-                                <exclude reference="0kv-MS-rP9"/>
-                                <exclude reference="tkY-Z3-hHy"/>
                             </mask>
                         </variation>
                         <variation key="widthClass=compact">
@@ -343,24 +342,23 @@
                                 <include reference="LOA-ta-jNx"/>
                             </mask>
                             <mask key="constraints">
+                                <include reference="0kv-MS-rP9"/>
+                                <include reference="tkY-Z3-hHy"/>
                                 <exclude reference="KNw-sV-gfm"/>
                                 <include reference="fDb-mb-m4Z"/>
                                 <include reference="GQR-WH-QLk"/>
-                                <include reference="0kv-MS-rP9"/>
-                                <include reference="tkY-Z3-hHy"/>
                             </mask>
                         </variation>
                     </view>
                     <navigationItem key="navigationItem" id="nA3-sD-RQ8">
                         <barButtonItem key="rightBarButtonItem" title="Next" id="4nf-7F-aUm">
                             <connections>
-                                <action selector="onDoneRecording:" destination="erI-eJ-aK2" id="Vke-3f-0St"/>
-                                <segue destination="hUp-Yu-tlr" kind="custom" identifier="recordToPostSegue" id="2Zu-zo-Vaf"/>
+                                <segue destination="hUp-Yu-tlr" kind="presentation" identifier="recordToPostSegue" id="BZS-dc-jSL"/>
                             </connections>
                         </barButtonItem>
                     </navigationItem>
                     <connections>
-                        <outlet property="doneVideoRecordingButton" destination="4nf-7F-aUm" id="4N3-lq-Yy9"/>
+                        <outlet property="doneVideoRecordingButton" destination="4nf-7F-aUm" id="nPd-kr-1UQ"/>
                         <outlet property="recordMessageButton" destination="p9G-kh-1W9" id="Le8-kV-ETU"/>
                         <outlet property="stopButton" destination="LOA-ta-jNx" id="3bg-oU-3dn"/>
                         <outlet property="videoPreviewView" destination="fAK-oz-qSW" id="clV-pd-zqS"/>
@@ -373,12 +371,13 @@
         <!--Post Video Controller-->
         <scene sceneID="EZh-Ta-5aw">
             <objects>
-                <viewController id="Z2k-yo-t35" customClass="PostVideoController" customModule="Wander" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="postVideoController" useStoryboardIdentifierAsRestorationIdentifier="YES" id="Z2k-yo-t35" customClass="PostVideoController" customModule="Wander" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="A1S-Ua-Rdx"/>
                         <viewControllerLayoutGuide type="bottom" id="LfA-xQ-R95"/>
                     </layoutGuides>
                     <view key="view" contentMode="scaleToFill" id="ArB-zX-rf4">
+                        <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="r7z-8x-l7B">
@@ -392,15 +391,15 @@
                                 </constraints>
                                 <variation key="default">
                                     <mask key="constraints">
-                                        <exclude reference="O7z-yT-Yl2"/>
                                         <exclude reference="ATn-dy-nSm"/>
+                                        <exclude reference="O7z-yT-Yl2"/>
                                     </mask>
                                 </variation>
                                 <variation key="widthClass=compact" ambiguous="YES" misplaced="YES">
                                     <rect key="frame" x="45" y="64" width="300" height="300"/>
                                     <mask key="constraints">
-                                        <include reference="O7z-yT-Yl2"/>
                                         <include reference="ATn-dy-nSm"/>
+                                        <include reference="O7z-yT-Yl2"/>
                                     </mask>
                                 </variation>
                             </view>
@@ -417,13 +416,16 @@
                                         <exclude reference="C0x-XO-EIy"/>
                                     </mask>
                                 </variation>
-                                <variation key="widthClass=compact" misplaced="YES">
-                                    <rect key="frame" x="177" y="550" width="46" height="30"/>
+                                <variation key="widthClass=compact">
                                     <mask key="constraints">
                                         <include reference="4Yf-tB-nQL"/>
                                         <include reference="C0x-XO-EIy"/>
                                     </mask>
                                 </variation>
+                                <connections>
+                                    <action selector="onPlayPauseButtonClick:" destination="Z2k-yo-t35" eventType="touchUpInside" id="JTo-6S-5ag"/>
+                                    <action selector="onPress:" destination="Z2k-yo-t35" eventType="touchUpInside" id="qd7-Bd-Jma"/>
+                                </connections>
                             </button>
                         </subviews>
                         <color key="backgroundColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
@@ -437,8 +439,8 @@
                                 <exclude reference="yu1-0z-VVE"/>
                             </mask>
                             <mask key="constraints">
-                                <exclude reference="cq3-cp-qOr"/>
                                 <exclude reference="KZT-Tp-igm"/>
+                                <exclude reference="cq3-cp-qOr"/>
                             </mask>
                         </variation>
                         <variation key="widthClass=compact">
@@ -447,8 +449,8 @@
                                 <include reference="yu1-0z-VVE"/>
                             </mask>
                             <mask key="constraints">
-                                <include reference="cq3-cp-qOr"/>
                                 <include reference="KZT-Tp-igm"/>
+                                <include reference="cq3-cp-qOr"/>
                             </mask>
                         </variation>
                     </view>
@@ -456,6 +458,7 @@
                         <barButtonItem key="rightBarButtonItem" title="Post" id="vYK-Xh-h1W"/>
                     </navigationItem>
                     <connections>
+                        <outlet property="playPauseButton" destination="yu1-0z-VVE" id="YIi-ZP-zX3"/>
                         <outlet property="videoPlayerView" destination="r7z-8x-l7B" id="h5G-ON-AG3"/>
                     </connections>
                 </viewController>
@@ -767,7 +770,7 @@
         <!--Navigation Controller-->
         <scene sceneID="r7u-To-EEZ">
             <objects>
-                <navigationController automaticallyAdjustsScrollViewInsets="NO" id="hUp-Yu-tlr" sceneMemberID="viewController">
+                <navigationController storyboardIdentifier="postVideoNavigationController" automaticallyAdjustsScrollViewInsets="NO" useStoryboardIdentifierAsRestorationIdentifier="YES" id="hUp-Yu-tlr" sceneMemberID="viewController">
                     <toolbarItems/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" id="HcI-r2-DD2">
                         <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>

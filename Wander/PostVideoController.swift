@@ -17,17 +17,26 @@ class PostVideoController: UIViewController {
 
     @IBOutlet weak var videoPlayerView: UIView!
     
+    @IBOutlet weak var playPauseButton: PlayPauseButton!
+    var moviePlayer : MPMoviePlayerController!
     override func viewDidLoad() {
         super.viewDidLoad()
         // Do view setup here.
         if Messages.lastVideoFile != nil {
-            var moviePlayer = MPMoviePlayerController(contentURL: Messages.lastVideoFile)
+            moviePlayer = MPMoviePlayerController(contentURL: Messages.lastVideoFile)
             moviePlayer.view.frame = self.videoPlayerView.bounds
             self.videoPlayerView.addSubview(moviePlayer.view)
             moviePlayer.fullscreen = false
-            moviePlayer.controlStyle = MPMovieControlStyle.Embedded
+            moviePlayer.controlStyle = MPMovieControlStyle.None
+            moviePlayer.prepareToPlay()
         }
-
     }
     
+    @IBAction func onPlayPauseButtonClick(sender: PlayPauseButton) {
+        if playPauseButton.playing {
+            self.moviePlayer.play()
+        } else {
+            self.moviePlayer.pause()
+        }
+    }
 }

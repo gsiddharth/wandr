@@ -9,8 +9,14 @@
 /* Begin PBXBuildFile section */
 		35633EB01ADC497C002042B5 /* FileUtils.swift in Sources */ = {isa = PBXBuildFile; fileRef = 35633EAF1ADC497C002042B5 /* FileUtils.swift */; };
 		35633EB21ADC555F002042B5 /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 35633EB11ADC555F002042B5 /* Constants.swift */; };
-		35633EBB1ADCD5FD002042B5 /* CircleProgressView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 35633EBA1ADCD5FD002042B5 /* CircleProgressView.swift */; };
+		35633EBB1ADCD5FD002042B5 /* CircleProgressButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 35633EBA1ADCD5FD002042B5 /* CircleProgressButton.swift */; };
 		35633EBD1ADCD609002042B5 /* CircleShapeLayer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 35633EBC1ADCD609002042B5 /* CircleShapeLayer.swift */; };
+		35633EBF1AE035FC002042B5 /* Convertors.swift in Sources */ = {isa = PBXBuildFile; fileRef = 35633EBE1AE035FC002042B5 /* Convertors.swift */; };
+		35633EC51AE3C113002042B5 /* PostVideoController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 35633EC41AE3C113002042B5 /* PostVideoController.swift */; };
+		35633EC71AE3C62D002042B5 /* PlayPauseButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 35633EC61AE3C62D002042B5 /* PlayPauseButton.swift */; };
+		35633ECB1AE40F3E002042B5 /* play.png in Resources */ = {isa = PBXBuildFile; fileRef = 35633ECA1AE40F3E002042B5 /* play.png */; };
+		35633ECD1AE41BE1002042B5 /* Messages.swift in Sources */ = {isa = PBXBuildFile; fileRef = 35633ECC1AE41BE1002042B5 /* Messages.swift */; };
+		35633ED01AE433F0002042B5 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 35633ECE1AE433F0002042B5 /* Main.storyboard */; };
 		3584BCC61ABDCAE10097DCA9 /* UserController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3584BCC51ABDCAE10097DCA9 /* UserController.swift */; };
 		3584BCC81ABDCB000097DCA9 /* User.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3584BCC71ABDCB000097DCA9 /* User.swift */; };
 		3584BCCA1ABE159D0097DCA9 /* Errors.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3584BCC91ABE159D0097DCA9 /* Errors.swift */; };
@@ -21,7 +27,6 @@
 		3586FBDA1AC84D8F000022E6 /* AVAssetStitcher.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3586FBD91AC84D8F000022E6 /* AVAssetStitcher.swift */; };
 		3590926D1A99374400723DBD /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3590926C1A99374400723DBD /* AppDelegate.swift */; };
 		3590926F1A99374400723DBD /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3590926E1A99374400723DBD /* ViewController.swift */; };
-		359092721A99374400723DBD /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 359092701A99374400723DBD /* Main.storyboard */; };
 		359092741A99374400723DBD /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 359092731A99374400723DBD /* Images.xcassets */; };
 		359092771A99374400723DBD /* LaunchScreen.xib in Resources */ = {isa = PBXBuildFile; fileRef = 359092751A99374400723DBD /* LaunchScreen.xib */; };
 		359092831A99374500723DBD /* WanderTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 359092821A99374500723DBD /* WanderTests.swift */; };
@@ -43,8 +48,14 @@
 /* Begin PBXFileReference section */
 		35633EAF1ADC497C002042B5 /* FileUtils.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FileUtils.swift; sourceTree = "<group>"; };
 		35633EB11ADC555F002042B5 /* Constants.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Constants.swift; sourceTree = "<group>"; };
-		35633EBA1ADCD5FD002042B5 /* CircleProgressView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CircleProgressView.swift; sourceTree = "<group>"; };
+		35633EBA1ADCD5FD002042B5 /* CircleProgressButton.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CircleProgressButton.swift; sourceTree = "<group>"; };
 		35633EBC1ADCD609002042B5 /* CircleShapeLayer.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CircleShapeLayer.swift; sourceTree = "<group>"; };
+		35633EBE1AE035FC002042B5 /* Convertors.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Convertors.swift; sourceTree = "<group>"; };
+		35633EC41AE3C113002042B5 /* PostVideoController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PostVideoController.swift; sourceTree = "<group>"; };
+		35633EC61AE3C62D002042B5 /* PlayPauseButton.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PlayPauseButton.swift; sourceTree = "<group>"; };
+		35633ECA1AE40F3E002042B5 /* play.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = play.png; path = ../../../Downloads/play.png; sourceTree = "<group>"; };
+		35633ECC1AE41BE1002042B5 /* Messages.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Messages.swift; sourceTree = "<group>"; };
+		35633ECF1AE433F0002042B5 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		3584BCC51ABDCAE10097DCA9 /* UserController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UserController.swift; sourceTree = "<group>"; };
 		3584BCC71ABDCB000097DCA9 /* User.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = User.swift; sourceTree = "<group>"; };
 		3584BCC91ABE159D0097DCA9 /* Errors.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Errors.swift; sourceTree = "<group>"; };
@@ -57,7 +68,6 @@
 		3590926B1A99374400723DBD /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		3590926C1A99374400723DBD /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		3590926E1A99374400723DBD /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
-		359092711A99374400723DBD /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		359092731A99374400723DBD /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Images.xcassets; sourceTree = "<group>"; };
 		359092761A99374400723DBD /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = Base; path = Base.lproj/LaunchScreen.xib; sourceTree = "<group>"; };
 		3590927C1A99374500723DBD /* WanderTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = WanderTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -87,13 +97,31 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
-		35633EB91ADCD5D4002042B5 /* CircularProgressView */ = {
+		35633EB91ADCD5D4002042B5 /* Buttons */ = {
 			isa = PBXGroup;
 			children = (
-				35633EBA1ADCD5FD002042B5 /* CircleProgressView.swift */,
+				35633EBA1ADCD5FD002042B5 /* CircleProgressButton.swift */,
 				35633EBC1ADCD609002042B5 /* CircleShapeLayer.swift */,
+				35633EC61AE3C62D002042B5 /* PlayPauseButton.swift */,
 			);
-			name = CircularProgressView;
+			name = Buttons;
+			sourceTree = "<group>";
+		};
+		35633EC01AE23D70002042B5 /* Views */ = {
+			isa = PBXGroup;
+			children = (
+				35633EB91ADCD5D4002042B5 /* Buttons */,
+			);
+			name = Views;
+			sourceTree = "<group>";
+		};
+		35633EC11AE23D89002042B5 /* Video */ = {
+			isa = PBXGroup;
+			children = (
+				3586FBD71AC8163D000022E6 /* VideoCameraInputManager.swift */,
+				3586FBD91AC84D8F000022E6 /* AVAssetStitcher.swift */,
+			);
+			name = Video;
 			sourceTree = "<group>";
 		};
 		3584BCC31ABDCA810097DCA9 /* Controllers */ = {
@@ -115,11 +143,12 @@
 		3584BCCB1ABE91E40097DCA9 /* Utils */ = {
 			isa = PBXGroup;
 			children = (
-				3586FBD71AC8163D000022E6 /* VideoCameraInputManager.swift */,
+				35633EC11AE23D89002042B5 /* Video */,
 				3584BCD61AC081EC0097DCA9 /* UserPostTableViewCell.swift */,
 				3584BCD71AC081EC0097DCA9 /* UserPostTableViewCell.xib */,
-				3586FBD91AC84D8F000022E6 /* AVAssetStitcher.swift */,
 				35633EAF1ADC497C002042B5 /* FileUtils.swift */,
+				35633EBE1AE035FC002042B5 /* Convertors.swift */,
+				35633ECC1AE41BE1002042B5 /* Messages.swift */,
 			);
 			name = Utils;
 			sourceTree = "<group>";
@@ -152,7 +181,7 @@
 		359092691A99374300723DBD /* Wander */ = {
 			isa = PBXGroup;
 			children = (
-				35633EB91ADCD5D4002042B5 /* CircularProgressView */,
+				35633EC01AE23D70002042B5 /* Views */,
 				3584BCCC1ABE9CD60097DCA9 /* Protocols */,
 				3584BCCB1ABE91E40097DCA9 /* Utils */,
 				3584BCC41ABDCA9E0097DCA9 /* Models */,
@@ -162,8 +191,10 @@
 				3590928C1A99A8F200723DBD /* LoginViewController.swift */,
 				3590928E1A99AB6B00723DBD /* RegisterViewController.swift */,
 				359092911A9A40BD00723DBD /* RecordMessageController.swift */,
-				359092701A99374400723DBD /* Main.storyboard */,
+				35633EC41AE3C113002042B5 /* PostVideoController.swift */,
+				35633ECE1AE433F0002042B5 /* Main.storyboard */,
 				359092731A99374400723DBD /* Images.xcassets */,
+				35633ECA1AE40F3E002042B5 /* play.png */,
 				359092751A99374400723DBD /* LaunchScreen.xib */,
 				3590926A1A99374400723DBD /* Supporting Files */,
 				359092901A9A404A00723DBD /* Bridging-Header.h */,
@@ -280,7 +311,8 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				359092721A99374400723DBD /* Main.storyboard in Resources */,
+				35633ECB1AE40F3E002042B5 /* play.png in Resources */,
+				35633ED01AE433F0002042B5 /* Main.storyboard in Resources */,
 				359092771A99374400723DBD /* LaunchScreen.xib in Resources */,
 				3584BCD91AC081EC0097DCA9 /* UserPostTableViewCell.xib in Resources */,
 				359092741A99374400723DBD /* Images.xcassets in Resources */,
@@ -301,10 +333,12 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				35633EC71AE3C62D002042B5 /* PlayPauseButton.swift in Sources */,
 				3584BCC61ABDCAE10097DCA9 /* UserController.swift in Sources */,
+				35633EC51AE3C113002042B5 /* PostVideoController.swift in Sources */,
 				35633EBD1ADCD609002042B5 /* CircleShapeLayer.swift in Sources */,
 				3590928D1A99A8F200723DBD /* LoginViewController.swift in Sources */,
-				35633EBB1ADCD5FD002042B5 /* CircleProgressView.swift in Sources */,
+				35633EBB1ADCD5FD002042B5 /* CircleProgressButton.swift in Sources */,
 				359092921A9A40BD00723DBD /* RecordMessageController.swift in Sources */,
 				3590926F1A99374400723DBD /* ViewController.swift in Sources */,
 				3584BCCA1ABE159D0097DCA9 /* Errors.swift in Sources */,
@@ -315,6 +349,8 @@
 				35633EB01ADC497C002042B5 /* FileUtils.swift in Sources */,
 				3586FBDA1AC84D8F000022E6 /* AVAssetStitcher.swift in Sources */,
 				35633EB21ADC555F002042B5 /* Constants.swift in Sources */,
+				35633EBF1AE035FC002042B5 /* Convertors.swift in Sources */,
+				35633ECD1AE41BE1002042B5 /* Messages.swift in Sources */,
 				3590928F1A99AB6B00723DBD /* RegisterViewController.swift in Sources */,
 				3584BCC81ABDCB000097DCA9 /* User.swift in Sources */,
 			);
@@ -339,10 +375,10 @@
 /* End PBXTargetDependency section */
 
 /* Begin PBXVariantGroup section */
-		359092701A99374400723DBD /* Main.storyboard */ = {
+		35633ECE1AE433F0002042B5 /* Main.storyboard */ = {
 			isa = PBXVariantGroup;
 			children = (
-				359092711A99374400723DBD /* Base */,
+				35633ECF1AE433F0002042B5 /* Base */,
 			);
 			name = Main.storyboard;
 			sourceTree = "<group>";

@@ -139,7 +139,7 @@ class RecordMessageController: UIViewController {
         if identifier == "recordToPostSegue" {
             self.onDoneRecording(self)
             
-            return false
+            return true
             
         }
         
@@ -149,7 +149,7 @@ class RecordMessageController: UIViewController {
     var added : Bool = false
     var addError : Bool = false
     
-    @IBAction func onDoneRecording(sender: AnyObject) {
+    func onDoneRecording(sender: AnyObject) {
         
         var file = FileUtils.videoFilePath()
         self.videoCameraView.pauseRecording()
@@ -159,9 +159,6 @@ class RecordMessageController: UIViewController {
             if error == nil {
                 println("adding to the album")
                 FileUtils.addVideoToAlbum(self.library, videourl : file, album: Constants.albumName)
-                var postVideoController : PostVideoController = PostVideoController()
-                var navController = UINavigationController(rootViewController: postVideoController)
-                self.presentViewController(postVideoController, animated: true, completion: nil)
 
             } else {
                 println("error exporting file")
