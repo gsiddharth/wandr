@@ -151,6 +151,8 @@ class VideoCameraInputManager : NSObject, AVCaptureFileOutputRecordingDelegate {
     
     func finalizeRecordingToFile(finalVideoLocationURL : NSURL, withVideoSize videoSize : CGSize, withPreset preset : String,
         withCompletionHandler completionHandler : ((NSError!) -> Void)!) {
+            
+            self.isStarted = false
 
             var error = NSErrorPointer()
             
@@ -204,13 +206,14 @@ class VideoCameraInputManager : NSObject, AVCaptureFileOutputRecordingDelegate {
                 if error != nil {
                     completionHandler(error)
                 } else {
+                    NSLog("completed export")
                     self.cleanTemporaryFiles()
                     self.temporaryFileURLs.removeAll(keepCapacity : false)
                     completionHandler(nil)
                 }
             }
             
-//            self.reset()
+            self.reset()
     }
     
     func totalRecordingDuration() -> CMTime {

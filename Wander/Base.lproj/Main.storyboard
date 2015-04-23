@@ -424,7 +424,6 @@
                                 </variation>
                                 <connections>
                                     <action selector="onPlayPauseButtonClick:" destination="Z2k-yo-t35" eventType="touchUpInside" id="JTo-6S-5ag"/>
-                                    <action selector="onPress:" destination="Z2k-yo-t35" eventType="touchUpInside" id="qd7-Bd-Jma"/>
                                 </connections>
                             </button>
                         </subviews>

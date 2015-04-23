@@ -154,18 +154,19 @@ class RecordMessageController: UIViewController {
         var file = FileUtils.videoFilePath()
         self.videoCameraView.pauseRecording()
         Messages.lastVideoFile = file
+
         self.videoCameraView.finalizeRecordingToFile(file, withVideoSize: CGSize(width : self.videoPreviewView.frame.width, height : self.videoPreviewView.frame.height), withPreset: AVAssetExportPreset640x480, withCompletionHandler: {(error : NSError!) -> Void in
             
             if error == nil {
-                println("adding to the album")
+                NSLog("adding to the album")
                 FileUtils.addVideoToAlbum(self.library, videourl : file, album: Constants.albumName)
+                NSLog("added to the album")
 
             } else {
-                println("error exporting file")
+                NSLog("error exporting file")
                 self.addError = true
             }
         })
-        
     }
 
 }

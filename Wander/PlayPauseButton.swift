@@ -10,7 +10,15 @@ import Foundation
 
 class PlayPauseButton : UIButton {
     
-    var playing : Bool = false
+    var playing : Bool = false {
+        didSet {
+            if playing {
+                self.setImage(UIImage(named : "pause.png"), forState: UIControlState.Normal)
+            } else {
+                self.setImage(UIImage(named : "play.png"), forState: UIControlState.Normal)
+            }
+        }
+    }
     
     override init(frame : CGRect) {
         super.init(frame : frame)
@@ -23,18 +31,13 @@ class PlayPauseButton : UIButton {
     }
 
     func setupViews() {
+        playing=false
         self.clipsToBounds = true
         self.addTarget(self, action: "onButtonPress:", forControlEvents: UIControlEvents.TouchUpInside)
         self.setImage(UIImage(named : "play.png"), forState: UIControlState.Normal)
     }
-
+    
     func onButtonPress(sender : UIButton!) {
-        if playing {
-            self.setImage(UIImage(named : "pause.png"), forState: UIControlState.Normal)
-        } else {
-            self.setImage(UIImage(named : "play.png"), forState: UIControlState.Normal)
-        }
-        
         playing = !playing
 
     }

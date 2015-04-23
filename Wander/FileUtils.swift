@@ -69,7 +69,7 @@ class FileUtils {
         library.writeVideoAtPathToSavedPhotosAlbum(videourl, completionBlock: { (url : NSURL!, error: NSError!) -> Void in
             
             if error == nil || error.code == 0 {
-                
+                NSLog("Adding ot the group")
                 library.assetForURL(url, resultBlock: { (asset : ALAsset!) -> Void in
                     groupToAddTo.addAsset(asset)
                     }, failureBlock: { (error : NSError!) -> Void in

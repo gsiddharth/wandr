@@ -87,8 +87,13 @@ class AVAssetStitcher : NSObject{
         exporter.exportAsynchronouslyWithCompletionHandler({ () -> Void in
             
             if exporter.status == AVAssetExportSessionStatus.Failed {
+                NSLog("failed")
                 completionHandler(exporter.error)
-            } else if exporter.status == AVAssetExportSessionStatus.Cancelled || exporter.status == AVAssetExportSessionStatus.Completed{
+            } else if exporter.status == AVAssetExportSessionStatus.Cancelled {
+                NSLog("Canceled")
+                completionHandler(nil)
+            } else if exporter.status == AVAssetExportSessionStatus.Completed{
+                NSLog("Completed")
                 completionHandler(nil)
             } else {
                 completionHandler(NSError(domain: "Unknown export error", code: 100, userInfo: nil))

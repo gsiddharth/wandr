@@ -17,7 +17,11 @@ class PostVideoController: UIViewController {
 
     @IBOutlet weak var videoPlayerView: UIView!
     
-    @IBOutlet weak var playPauseButton: PlayPauseButton!
+    @IBOutlet weak var playPauseButton: PlayPauseButton! {
+        didSet{
+            playPauseButton.playing = true
+        }
+    }
     var moviePlayer : MPMoviePlayerController!
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -29,7 +33,13 @@ class PostVideoController: UIViewController {
             moviePlayer.fullscreen = false
             moviePlayer.controlStyle = MPMovieControlStyle.None
             moviePlayer.prepareToPlay()
+            
+            NSNotificationCenter.defaultCenter().addObserver(self, selector: "onFinishedPlayingMovie:", name: MPMoviePlayerPlaybackDidFinishNotification, object: moviePlayer)
         }
+    }
+    
+    func onFinishedPlayingMovie(aNotification:NSNotification) {
+        playPauseButton.playing = false
     }
     
     @IBAction func onPlayPauseButtonClick(sender: PlayPauseButton) {
