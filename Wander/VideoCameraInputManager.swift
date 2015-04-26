@@ -76,16 +76,19 @@ class VideoCameraInputManager : NSObject, AVCaptureFileOutputRecordingDelegate {
         }
     }
     
-    func startPreview(previewView : UIView!) {
+    func startPreview(previewView : UIView!) ->CGSize {
         
         var err : NSError? = nil
         
         var avPreviewLayer = AVCaptureVideoPreviewLayer(session: self.captureSession)
         avPreviewLayer.frame = previewView.bounds
         avPreviewLayer.position = CGPointMake(CGRectGetMidX(previewView.bounds), CGRectGetMidY(previewView.bounds))
-        avPreviewLayer.videoGravity = AVLayerVideoGravityResizeAspect
+        avPreviewLayer.videoGravity = AVLayerVideoGravityResizeAspectFill
+        previewView.clipsToBounds = true
         previewView.layer.addSublayer(avPreviewLayer)
         captureSession.startRunning()
+        
+        return previewView.frame.size
         
     }
     
@@ -169,6 +172,9 @@ class VideoCameraInputManager : NSObject, AVCaptureFileOutputRecordingDelegate {
             
             for url in temporaryFileURLs.reverse() {
                 stitcher.addAsset(AVURLAsset(URL:url, options: nil), withTransform: { (videoTrack: AVAssetTrack) -> CGAffineTransform in
+                    
+                    println(videoSize.width.description + " " + videoTrack.naturalSize.width.description + " " + videoSize.height.description + " " + videoTrack.naturalSize.height.description)
+                    
                     var ratioW : CGFloat = videoSize.width / videoTrack.naturalSize.width
                     var ratioH : CGFloat = videoSize.height / videoTrack.naturalSize.height
                     
@@ -188,9 +194,7 @@ class VideoCameraInputManager : NSObject, AVCaptureFileOutputRecordingDelegate {
                         
                         var diffW : CGFloat =  videoTrack.naturalSize.width - (videoTrack.naturalSize.width * ratioW)
                         return CGAffineTransformConcat(CGAffineTransformMakeTranslation(neg * diffW / 2.0, 0.0), CGAffineTransformMakeScale(ratioW, ratioW))
-                        
                     }
-                    
                     }, withErrorHandler: { (err : NSError) -> Void in
                         stitcherError = err
                         return

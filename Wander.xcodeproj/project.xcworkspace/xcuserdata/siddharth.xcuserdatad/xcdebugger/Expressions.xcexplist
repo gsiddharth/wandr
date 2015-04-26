@@ -3,32 +3,13 @@
    version = "1.0">
    <ContextStates>
       <ContextState
-         contextName = "Wander.CircleShapeLayer.centerColor.setter : Swift.ImplicitlyUnwrappedOptional&lt;ObjectiveC.CGColor&gt;:CircleShapeLayer.swift">
-         <PersistentStrings>
-            <PersistentString
-               value = "self.fillColor">
-            </PersistentString>
-         </PersistentStrings>
-      </ContextState>
-      <ContextState
-         contextName = "Wander.AVAssetStitcher.addAsset (Wander.AVAssetStitcher)(ObjectiveC.AVURLAsset, withTransform : Swift.ImplicitlyUnwrappedOptional&lt;(ObjectiveC.AVAssetTrack) -&gt; C.CGAffineTransform&gt;, withErrorHandler : Swift.ImplicitlyUnwrappedOptional&lt;(ObjectiveC.NSError) -&gt; ()&gt;) -&gt; ():AVAssetStitcher.swift">
+         contextName = "Wander.VideoCameraInputManager.totalRecordingDuration (Wander.VideoCameraInputManager)() -&gt; C.CMTime:VideoCameraInputManager.swift">
       </ContextState>
       <ContextState
          contextName = "Wander.CircleShapeLayer.elapsedTime.setter : Swift.Double:CircleShapeLayer.swift">
       </ContextState>
       <ContextState
-         contextName = "Wander.AVAssetStitcher.exportTo (Wander.AVAssetStitcher)(ObjectiveC.NSURL, withPreset : Swift.String, withCompletionHandler : Swift.ImplicitlyUnwrappedOptional&lt;(Swift.ImplicitlyUnwrappedOptional&lt;ObjectiveC.NSError&gt;) -&gt; ()&gt;) -&gt; ():AVAssetStitcher.swift">
-      </ContextState>
-      <ContextState
-         contextName = "Wander.AVAssetStitcher.(exportTo (Wander.AVAssetStitcher) -&gt; (ObjectiveC.NSURL, withPreset : Swift.String, withCompletionHandler : Swift.ImplicitlyUnwrappedOptional&lt;(Swift.ImplicitlyUnwrappedOptional&lt;ObjectiveC.NSError&gt;) -&gt; ()&gt;) -&gt; ()).(closure #1):AVAssetStitcher.swift">
-         <PersistentStrings>
-            <PersistentString
-               value = "">
-            </PersistentString>
-            <PersistentString
-               value = "exporter.error">
-            </PersistentString>
-         </PersistentStrings>
+         contextName = "Wander.AVAssetStitcher.addAsset (Wander.AVAssetStitcher)(ObjectiveC.AVURLAsset, withTransform : Swift.ImplicitlyUnwrappedOptional&lt;(ObjectiveC.AVAssetTrack) -&gt; C.CGAffineTransform&gt;, withErrorHandler : Swift.ImplicitlyUnwrappedOptional&lt;(ObjectiveC.NSError) -&gt; ()&gt;) -&gt; ():AVAssetStitcher.swift">
       </ContextState>
       <ContextState
          contextName = "Wander.CircleShapeLayer.startAnimation (Wander.CircleShapeLayer)() -&gt; ():CircleShapeLayer.swift">
@@ -50,6 +31,17 @@
          </PersistentStrings>
       </ContextState>
       <ContextState
+         contextName = "Wander.CircleShapeLayer.centerColor.setter : Swift.ImplicitlyUnwrappedOptional&lt;ObjectiveC.CGColor&gt;:CircleShapeLayer.swift">
+         <PersistentStrings>
+            <PersistentString
+               value = "self.fillColor">
+            </PersistentString>
+         </PersistentStrings>
+      </ContextState>
+      <ContextState
+         contextName = "Wander.CircleProgressView.onButtonPress (Wander.CircleProgressView)(Swift.AnyObject) -&gt; ():CircleProgressView.swift">
+      </ContextState>
+      <ContextState
          contextName = "Wander.RecordMessageController.(updateRecordingTime (Wander.RecordMessageController) -&gt; () -&gt; ()).(closure #1):RecordMessageController.swift">
          <PersistentStrings>
             <PersistentString
@@ -61,7 +53,46 @@
          </PersistentStrings>
       </ContextState>
       <ContextState
-         contextName = "Wander.CircleProgressView.onButtonPress (Wander.CircleProgressView)(Swift.AnyObject) -&gt; ():CircleProgressView.swift">
+         contextName = "function signature specialization &lt;Arg[2] = Dead, Arg[3] = Value Promoted from InOut&gt; of Wander.RecordMessageController.(onDoneRecording (Wander.RecordMessageController) -&gt; (Swift.AnyObject) -&gt; ()).(closure #1):RecordMessageController.swift">
+      </ContextState>
+      <ContextState
+         contextName = "Wander.AVAssetStitcher.exportTo (Wander.AVAssetStitcher)(ObjectiveC.NSURL, withPreset : Swift.String, withCompletionHandler : Swift.ImplicitlyUnwrappedOptional&lt;(Swift.ImplicitlyUnwrappedOptional&lt;ObjectiveC.NSError&gt;) -&gt; ()&gt;) -&gt; ():AVAssetStitcher.swift">
+      </ContextState>
+      <ContextState
+         contextName = "Wander.AVAssetStitcher.(exportTo (Wander.AVAssetStitcher) -&gt; (ObjectiveC.NSURL, withPreset : Swift.String, withCompletionHandler : Swift.ImplicitlyUnwrappedOptional&lt;(Swift.ImplicitlyUnwrappedOptional&lt;ObjectiveC.NSError&gt;) -&gt; ()&gt;) -&gt; ()).(closure #1):AVAssetStitcher.swift">
+         <PersistentStrings>
+            <PersistentString
+               value = "">
+            </PersistentString>
+            <PersistentString
+               value = "exporter.error">
+            </PersistentString>
+         </PersistentStrings>
+      </ContextState>
+      <ContextState
+         contextName = "static Wander.FileUtils.(getAllVideo (Wander.FileUtils.Type) -&gt; (Swift.ImplicitlyUnwrappedOptional&lt;ObjectiveC.ALAssetsLibrary&gt;, album : Swift.String, videoURLs : inout Swift.Array&lt;ObjectiveC.NSURL&gt;) -&gt; ()).(closure #1).(closure #1):FileUtils.swift">
+         <PersistentStrings>
+            <PersistentString
+               value = "videoURLs.count">
+            </PersistentString>
+         </PersistentStrings>
+      </ContextState>
+      <ContextState
+         contextName = "Wander.PostVideoController.viewDidLoad (Wander.PostVideoController)() -&gt; ():PostVideoController.swift">
+      </ContextState>
+      <ContextState
+         contextName = "Wander.VideoCameraInputManager.finalizeRecordingToFile (Wander.VideoCameraInputManager)(ObjectiveC.NSURL, withVideoSize : C.CGSize, withPreset : Swift.String, withCompletionHandler : Swift.ImplicitlyUnwrappedOptional&lt;(Swift.ImplicitlyUnwrappedOptional&lt;ObjectiveC.NSError&gt;) -&gt; ()&gt;) -&gt; ():VideoCameraInputManager.swift">
+      </ContextState>
+      <ContextState
+         contextName = "Wander.HomeViewController.tableView (Wander.HomeViewController)(ObjectiveC.UITableView, numberOfRowsInSection : Swift.Int) -&gt; Swift.Int:HomeViewController.swift">
+         <PersistentStrings>
+            <PersistentString
+               value = "HomeViewController.videoURLs.count">
+            </PersistentString>
+            <PersistentString
+               value = "VideoDataManager.INSTANCE.videoURLs.count">
+            </PersistentString>
+         </PersistentStrings>
       </ContextState>
    </ContextStates>
 </VariablesViewState>

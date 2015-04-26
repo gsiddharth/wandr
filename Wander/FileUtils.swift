@@ -7,6 +7,7 @@
 //
 
 import Foundation
+import AVFoundation
 
 class FileUtils {
     
@@ -69,7 +70,6 @@ class FileUtils {
         library.writeVideoAtPathToSavedPhotosAlbum(videourl, completionBlock: { (url : NSURL!, error: NSError!) -> Void in
             
             if error == nil || error.code == 0 {
-                NSLog("Adding ot the group")
                 library.assetForURL(url, resultBlock: { (asset : ALAsset!) -> Void in
                     groupToAddTo.addAsset(asset)
                     }, failureBlock: { (error : NSError!) -> Void in
@@ -79,4 +79,49 @@ class FileUtils {
         })
     }
 
+    static func getAllVideo(library : ALAssetsLibrary!, album : String, withOnGetVideo onGetVideo : ((NSURL) ->Void)!){
+
+        var groupToSearchIn : ALAssetsGroup!
+        
+        library.enumerateGroupsWithTypes(ALAssetsGroupType(ALAssetsGroupAlbum), usingBlock: { (group : ALAssetsGroup!, stop : UnsafeMutablePointer<ObjCBool>) -> Void in
+            if group != nil {
+                if group!.valueForProperty(ALAssetsGroupPropertyName) as! String == album {
+                    group.enumerateAssetsUsingBlock({ (result : ALAsset!, index : Int, stop : UnsafeMutablePointer<ObjCBool>) -> Void in
+                    
+                        if result != nil {
+                            if result.valueForProperty(ALAssetPropertyType) as! String == ALAssetTypeVideo {
+                                var url : NSURL = result.defaultRepresentation().url()
+                                onGetVideo(url)
+                            }
+                        }
+                        
+                    })
+                }
+            }
+            }, failureBlock : { (error : NSError!) -> Void in
+                
+                NSLog("Failed to capture group")
+        })
+    }
+    
+    static func generateThumbnail(url : NSURL!, size : CGSize) -> UIImage {
+        var asset : AVAsset = AVAsset.assetWithURL(url) as! AVAsset
+        var assetImgGenerate : AVAssetImageGenerator = AVAssetImageGenerator(asset: asset)
+        assetImgGenerate.appliesPreferredTrackTransform = true
+        var error : NSError? = nil
+        var time : CMTime = CMTimeMake(1, 30)
+        var img : CGImageRef = assetImgGenerate.copyCGImageAtTime(time, actualTime: nil, error: &error)
+        var frameImg : UIImage = UIImage(CGImage: img)!
+        var scaledImage = FileUtils.imageWithImage(frameImg, scaledToSize : size)
+        return scaledImage
+    }
+    
+    static func imageWithImage (image : UIImage, scaledToSize newSize : CGSize) -> UIImage{
+        UIGraphicsBeginImageContextWithOptions(newSize, false, 0.0)
+        image.drawInRect(CGRectMake(0,0, newSize.width, newSize.height))
+        var newImage = UIGraphicsGetImageFromCurrentImageContext()
+        UIGraphicsEndImageContext()
+        return newImage
+    }
+    
 }

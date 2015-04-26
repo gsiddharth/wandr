@@ -17,6 +17,7 @@
 		35633ECB1AE40F3E002042B5 /* play.png in Resources */ = {isa = PBXBuildFile; fileRef = 35633ECA1AE40F3E002042B5 /* play.png */; };
 		35633ECD1AE41BE1002042B5 /* Messages.swift in Sources */ = {isa = PBXBuildFile; fileRef = 35633ECC1AE41BE1002042B5 /* Messages.swift */; };
 		35633ED01AE433F0002042B5 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 35633ECE1AE433F0002042B5 /* Main.storyboard */; };
+		35633ED41AEB6794002042B5 /* VideoDataManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 35633ED31AEB6794002042B5 /* VideoDataManager.swift */; };
 		3584BCC61ABDCAE10097DCA9 /* UserController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3584BCC51ABDCAE10097DCA9 /* UserController.swift */; };
 		3584BCC81ABDCB000097DCA9 /* User.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3584BCC71ABDCB000097DCA9 /* User.swift */; };
 		3584BCCA1ABE159D0097DCA9 /* Errors.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3584BCC91ABE159D0097DCA9 /* Errors.swift */; };
@@ -56,6 +57,7 @@
 		35633ECA1AE40F3E002042B5 /* play.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = play.png; path = ../../../Downloads/play.png; sourceTree = "<group>"; };
 		35633ECC1AE41BE1002042B5 /* Messages.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Messages.swift; sourceTree = "<group>"; };
 		35633ECF1AE433F0002042B5 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
+		35633ED31AEB6794002042B5 /* VideoDataManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = VideoDataManager.swift; sourceTree = "<group>"; };
 		3584BCC51ABDCAE10097DCA9 /* UserController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UserController.swift; sourceTree = "<group>"; };
 		3584BCC71ABDCB000097DCA9 /* User.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = User.swift; sourceTree = "<group>"; };
 		3584BCC91ABE159D0097DCA9 /* Errors.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Errors.swift; sourceTree = "<group>"; };
@@ -110,6 +112,7 @@
 		35633EC01AE23D70002042B5 /* Views */ = {
 			isa = PBXGroup;
 			children = (
+				35633ED11AEAA41A002042B5 /* Cells */,
 				35633EB91ADCD5D4002042B5 /* Buttons */,
 			);
 			name = Views;
@@ -122,6 +125,23 @@
 				3586FBD91AC84D8F000022E6 /* AVAssetStitcher.swift */,
 			);
 			name = Video;
+			sourceTree = "<group>";
+		};
+		35633ED11AEAA41A002042B5 /* Cells */ = {
+			isa = PBXGroup;
+			children = (
+				3584BCD71AC081EC0097DCA9 /* UserPostTableViewCell.xib */,
+				3584BCD61AC081EC0097DCA9 /* UserPostTableViewCell.swift */,
+			);
+			name = Cells;
+			sourceTree = "<group>";
+		};
+		35633ED21AEB6780002042B5 /* Data */ = {
+			isa = PBXGroup;
+			children = (
+				35633ED31AEB6794002042B5 /* VideoDataManager.swift */,
+			);
+			name = Data;
 			sourceTree = "<group>";
 		};
 		3584BCC31ABDCA810097DCA9 /* Controllers */ = {
@@ -144,8 +164,6 @@
 			isa = PBXGroup;
 			children = (
 				35633EC11AE23D89002042B5 /* Video */,
-				3584BCD61AC081EC0097DCA9 /* UserPostTableViewCell.swift */,
-				3584BCD71AC081EC0097DCA9 /* UserPostTableViewCell.xib */,
 				35633EAF1ADC497C002042B5 /* FileUtils.swift */,
 				35633EBE1AE035FC002042B5 /* Convertors.swift */,
 				35633ECC1AE41BE1002042B5 /* Messages.swift */,
@@ -181,6 +199,7 @@
 		359092691A99374300723DBD /* Wander */ = {
 			isa = PBXGroup;
 			children = (
+				35633ED21AEB6780002042B5 /* Data */,
 				35633EC01AE23D70002042B5 /* Views */,
 				3584BCCC1ABE9CD60097DCA9 /* Protocols */,
 				3584BCCB1ABE91E40097DCA9 /* Utils */,
@@ -191,6 +210,7 @@
 				3590928C1A99A8F200723DBD /* LoginViewController.swift */,
 				3590928E1A99AB6B00723DBD /* RegisterViewController.swift */,
 				359092911A9A40BD00723DBD /* RecordMessageController.swift */,
+				3586FBD51AC0A702000022E6 /* HomeViewController.swift */,
 				35633EC41AE3C113002042B5 /* PostVideoController.swift */,
 				35633ECE1AE433F0002042B5 /* Main.storyboard */,
 				359092731A99374400723DBD /* Images.xcassets */,
@@ -199,7 +219,6 @@
 				3590926A1A99374400723DBD /* Supporting Files */,
 				359092901A9A404A00723DBD /* Bridging-Header.h */,
 				3584BCC91ABE159D0097DCA9 /* Errors.swift */,
-				3586FBD51AC0A702000022E6 /* HomeViewController.swift */,
 				35633EB11ADC555F002042B5 /* Constants.swift */,
 			);
 			path = Wander;
@@ -336,6 +355,7 @@
 				35633EC71AE3C62D002042B5 /* PlayPauseButton.swift in Sources */,
 				3584BCC61ABDCAE10097DCA9 /* UserController.swift in Sources */,
 				35633EC51AE3C113002042B5 /* PostVideoController.swift in Sources */,
+				35633ED41AEB6794002042B5 /* VideoDataManager.swift in Sources */,
 				35633EBD1ADCD609002042B5 /* CircleShapeLayer.swift in Sources */,
 				3590928D1A99A8F200723DBD /* LoginViewController.swift in Sources */,
 				35633EBB1ADCD5FD002042B5 /* CircleProgressButton.swift in Sources */,

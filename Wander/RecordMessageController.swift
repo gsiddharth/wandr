@@ -15,10 +15,20 @@ class RecordMessageController: UIViewController {
     
     @IBOutlet weak var videoPreviewView: UIView!
     
-    @IBOutlet weak var doneVideoRecordingButton: UIBarButtonItem!
+    var size : CGSize!
+    
+    @IBOutlet weak var doneVideoRecordingButton: UIBarButtonItem! {
+        didSet {
+            self.doneVideoRecordingButton.enabled = false
+        }
+    }
     
     let captureSession = AVCaptureSession()
-    var previewLayer : AVCaptureVideoPreviewLayer?
+    var previewLayer : AVCaptureVideoPreviewLayer? {
+        didSet {
+            
+        }
+    }
     var library : ALAssetsLibrary!
     
     // If we find a device we'll store it here for later use
@@ -52,31 +62,12 @@ class RecordMessageController: UIViewController {
         
         var err : NSError! = nil
         self.videoCameraView = VideoCameraInputManager()    
-        self.videoCameraView.setupSessionWithPreset(AVCaptureSessionPreset640x480, withCaptureDevice: AVCaptureDevicePosition.Back, withTorchMode: AVCaptureTorchMode.Off, withError: &err)
-        self.videoCameraView.startPreview(self.videoPreviewView)
+        self.videoCameraView.setupSessionWithPreset(AVCaptureSessionPresetHigh, withCaptureDevice: AVCaptureDevicePosition.Back, withTorchMode: AVCaptureTorchMode.Off, withError: &err)
+        self.size = self.videoCameraView.startPreview(self.videoPreviewView)
+        println(self.size.height.description + " " + self.size.width.description)
+        println(self.view.frame.size.height.description + " " + self.view.frame.size.width.description)
+        self.size = CGSizeMake(self.size.height, self.size.width)
 
-    }
-    
-    func beginSession() {
-        var err : NSError? = nil
-        captureSession.addInput(AVCaptureDeviceInput(device: captureDevice, error: &err))
-        
-        if err != nil {
-            println("error: \(err?.localizedDescription)")
-        }
-        
-        previewLayer = AVCaptureVideoPreviewLayer(session: captureSession)
-        self.videoPreviewView.layer.addSublayer(previewLayer)
-        previewLayer?.frame = self.videoPreviewView.layer.frame
-        captureSession.startRunning()
-    }
-        
-    func configureDevice() {
-        if let device = captureDevice {
-            device.lockForConfiguration(nil)
-            device.focusMode = .Locked
-            device.unlockForConfiguration()
-        }
     }
 
     @IBAction func onRecordMessageButtonPress(sender: AnyObject) {
@@ -138,9 +129,7 @@ class RecordMessageController: UIViewController {
     override func shouldPerformSegueWithIdentifier(identifier: String?, sender: AnyObject?) -> Bool {
         if identifier == "recordToPostSegue" {
             self.onDoneRecording(self)
-            
-            return true
-            
+            return false
         }
         
         return true
@@ -154,13 +143,16 @@ class RecordMessageController: UIViewController {
         var file = FileUtils.videoFilePath()
         self.videoCameraView.pauseRecording()
         Messages.lastVideoFile = file
-
-        self.videoCameraView.finalizeRecordingToFile(file, withVideoSize: CGSize(width : self.videoPreviewView.frame.width, height : self.videoPreviewView.frame.height), withPreset: AVAssetExportPreset640x480, withCompletionHandler: {(error : NSError!) -> Void in
+        
+        self.videoCameraView.finalizeRecordingToFile(file, withVideoSize: self.size, withPreset: AVAssetExportPresetHighestQuality, withCompletionHandler: {(error : NSError!) -> Void in
             
             if error == nil {
-                NSLog("adding to the album")
+                
                 FileUtils.addVideoToAlbum(self.library, videourl : file, album: Constants.albumName)
-                NSLog("added to the album")
+                
+                var postVideoController : PostVideoController = self.storyboard?.instantiateViewControllerWithIdentifier("postVideoController") as! PostVideoController
+                var navigationController : UINavigationController = UINavigationController(rootViewController: postVideoController)
+                self.presentViewController(navigationController, animated: true, completion: nil)
 
             } else {
                 NSLog("error exporting file")

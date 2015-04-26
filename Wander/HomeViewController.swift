@@ -12,20 +12,33 @@ class HomeViewController: UIViewController, UITableViewDataSource, UITableViewDe
     
     @IBOutlet weak var tableView: UITableView!
     
-    var cellCount : Int = 0
+    let cellTableIdentifier = "UserPostTableCellIdentifier"
+
+    var library : ALAssetsLibrary!
     
-    let tableIdentifier = "UserPostsTableIdentifier"
+    var videoURLs : [NSURL] = [NSURL]()
     
     override func viewDidLoad() {
         super.viewDidLoad()
 
-        tableView.registerClass(UserPostTableViewCell.self,
-            forCellReuseIdentifier: "UserPostTableCellIdentifier")
+        self.library = ALAssetsLibrary()
         
-        let nib = UINib(nibName: "UserPostTableCellIdentifier", bundle: nil)
+
+        tableView.registerClass(UserPostTableViewCell.self,
+            forCellReuseIdentifier: cellTableIdentifier)
+        
+        let nib = UINib(nibName: "UserPostTableViewCell", bundle: nil)
         
         tableView.registerNib(nib,
-            forCellReuseIdentifier: "UserPostTableCellIdentifier")
+            forCellReuseIdentifier: cellTableIdentifier)
+        
+        FileUtils.getAllVideo(self.library, album: Constants.albumName) { (url : NSURL) -> Void in
+            self.videoURLs.append(url)
+            dispatch_async(dispatch_get_main_queue(), { () -> Void in
+                self.tableView.reloadData()
+            })
+        }
+        
         // Do any additional setup after loading the view.
     }
 
@@ -35,22 +48,21 @@ class HomeViewController: UIViewController, UITableViewDataSource, UITableViewDe
     }
     
     func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return self.cellCount
+        return videoURLs.count
     }
     
-    func tableView(tableView: UITableView,
-        cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
-        
-        var cell = tableView.dequeueReusableCellWithIdentifier(self.tableIdentifier) as? UserPostTableViewCell
+    func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
+        var cell = tableView.dequeueReusableCellWithIdentifier(self.cellTableIdentifier) as? UserPostTableViewCell
         
         if (cell == nil) {
-            
             cell = UserPostTableViewCell()
         }
-        
+    
+        cell?.videoURL = videoURLs[indexPath.row]
+            
         return cell!
     }
-    
+        
     /*
     // MARK: - Navigation
 

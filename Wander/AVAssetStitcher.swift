@@ -75,7 +75,7 @@ class AVAssetStitcher : NSObject{
         
         var videoComposition : AVMutableVideoComposition = AVMutableVideoComposition()
         videoComposition.instructions = self.instructions
-        videoComposition.renderSize = self.outputSize
+        videoComposition.renderSize = CGSizeMake(self.outputSize.height, self.outputSize.width)
         videoComposition.frameDuration = CMTimeMake(1, 30)
         
         var exporter : AVAssetExportSession = AVAssetExportSession(asset : self.composition, presetName : preset)

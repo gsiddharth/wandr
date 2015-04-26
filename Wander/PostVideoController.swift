@@ -25,17 +25,22 @@ class PostVideoController: UIViewController {
     var moviePlayer : MPMoviePlayerController!
     override func viewDidLoad() {
         super.viewDidLoad()
-        // Do view setup here.
         if Messages.lastVideoFile != nil {
             moviePlayer = MPMoviePlayerController(contentURL: Messages.lastVideoFile)
-            moviePlayer.view.frame = self.videoPlayerView.bounds
-            self.videoPlayerView.addSubview(moviePlayer.view)
-            moviePlayer.fullscreen = false
             moviePlayer.controlStyle = MPMovieControlStyle.None
+            moviePlayer.scalingMode = MPMovieScalingMode.AspectFit
+            moviePlayer.view.frame = self.videoPlayerView.bounds
+            moviePlayer.view.center = CGPointMake(CGRectGetMidX(self.videoPlayerView.bounds), CGRectGetMidY(self.videoPlayerView.bounds) + self.navigationController!.navigationBar.frame.height)
+            
+            self.videoPlayerView.addSubview(moviePlayer.view)
             moviePlayer.prepareToPlay()
             
             NSNotificationCenter.defaultCenter().addObserver(self, selector: "onFinishedPlayingMovie:", name: MPMoviePlayerPlaybackDidFinishNotification, object: moviePlayer)
         }
+    }
+    
+    override func viewDidAppear(animated: Bool) {
+    
     }
     
     func onFinishedPlayingMovie(aNotification:NSNotification) {
@@ -44,6 +49,7 @@ class PostVideoController: UIViewController {
     
     @IBAction func onPlayPauseButtonClick(sender: PlayPauseButton) {
         if playPauseButton.playing {
+            
             self.moviePlayer.play()
         } else {
             self.moviePlayer.pause()
