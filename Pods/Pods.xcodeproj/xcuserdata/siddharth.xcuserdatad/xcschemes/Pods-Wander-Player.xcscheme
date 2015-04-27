@@ -14,7 +14,7 @@
             buildForAnalyzing = "YES">
             <BuildableReference
                BuildableIdentifier = "primary"
-               BlueprintIdentifier = "7EDFE98A84435B26FBF8C022"
+               BlueprintIdentifier = "C52B8D4CB0E8C3EC4666CEA4"
                BuildableName = "Player.framework"
                BlueprintName = "Pods-Wander-Player"
                ReferencedContainer = "container:Pods.xcodeproj">

@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		1DF3FC5CD1AB0FB03924F464 /* Pods_Wander.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1A62B36D0F7E10AD857B27EA /* Pods_Wander.framework */; settings = {ATTRIBUTES = (Weak, ); }; };
 		35633EB01ADC497C002042B5 /* FileUtils.swift in Sources */ = {isa = PBXBuildFile; fileRef = 35633EAF1ADC497C002042B5 /* FileUtils.swift */; };
 		35633EB21ADC555F002042B5 /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 35633EB11ADC555F002042B5 /* Constants.swift */; };
 		35633EBB1ADCD5FD002042B5 /* CircleProgressButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 35633EBA1ADCD5FD002042B5 /* CircleProgressButton.swift */; };
@@ -89,6 +90,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				1DF3FC5CD1AB0FB03924F464 /* Pods_Wander.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

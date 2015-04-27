@@ -14,9 +14,9 @@
             buildForAnalyzing = "YES">
             <BuildableReference
                BuildableIdentifier = "primary"
-               BlueprintIdentifier = "95DF6F93378583C0E225ADFF"
-               BuildableName = "Pods_Wander.framework"
-               BlueprintName = "Pods-Wander"
+               BlueprintIdentifier = "2B59BC1AC0609E4925F341B2"
+               BuildableName = "PBJVision.framework"
+               BlueprintName = "Pods-Wander-PBJVision"
                ReferencedContainer = "container:Pods.xcodeproj">
             </BuildableReference>
          </BuildActionEntry>

@@ -1,10 +1,13 @@
 PODS:
+  - PBJVision (0.4.1)
   - Player (0.0.5)
 
 DEPENDENCIES:
+  - PBJVision
   - Player
 
 SPEC CHECKSUMS:
+  PBJVision: 1d7fb2d44d41eff64cd641ba2b63024da9ab2deb
   Player: b5611abde6be7b3eeeaf57537b3979cd7531daad
 
 COCOAPODS: 0.36.4

@@ -6,6 +6,12 @@
 // project.
 
 
+// PBJVision
+#define COCOAPODS_POD_AVAILABLE_PBJVision
+#define COCOAPODS_VERSION_MAJOR_PBJVision 0
+#define COCOAPODS_VERSION_MINOR_PBJVision 4
+#define COCOAPODS_VERSION_PATCH_PBJVision 1
+
 // Player
 #define COCOAPODS_POD_AVAILABLE_Player
 #define COCOAPODS_VERSION_MAJOR_Player 0

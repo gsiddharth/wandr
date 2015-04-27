@@ -33,7 +33,7 @@ class RecordMessageController: UIViewController {
     
     // If we find a device we'll store it here for later use
     var captureDevice : AVCaptureDevice?
-    var videoCameraView : VideoCameraInputManager!
+    var videoCameraManager : VideoCameraInputManager!
     
     @IBOutlet weak var recordMessageButton: CircleProgressButton! {
         didSet {
@@ -61,9 +61,9 @@ class RecordMessageController: UIViewController {
         self.library = ALAssetsLibrary()
         
         var err : NSError! = nil
-        self.videoCameraView = VideoCameraInputManager()    
-        self.videoCameraView.setupSessionWithPreset(AVCaptureSessionPresetHigh, withCaptureDevice: AVCaptureDevicePosition.Back, withTorchMode: AVCaptureTorchMode.Off, withError: &err)
-        self.size = self.videoCameraView.startPreview(self.videoPreviewView)
+        self.videoCameraManager = VideoCameraInputManager()    
+        self.videoCameraManager.setupSessionWithPreset(AVCaptureSessionPresetHigh, withCaptureDevice: AVCaptureDevicePosition.Back, withTorchMode: AVCaptureTorchMode.Off, withError: &err)
+        self.size = self.videoCameraManager.startPreview(self.videoPreviewView)
         println(self.size.height.description + " " + self.size.width.description)
         println(self.view.frame.size.height.description + " " + self.view.frame.size.width.description)
         self.size = CGSizeMake(self.size.height, self.size.width)
@@ -72,15 +72,15 @@ class RecordMessageController: UIViewController {
 
     @IBAction func onRecordMessageButtonPress(sender: AnyObject) {
 
-        if self.videoCameraView.isStarted {
-            if self.videoCameraView.isPaused {
-                self.videoCameraView.resumeRecording()
+        if self.videoCameraManager.isStarted {
+            if self.videoCameraManager.isPaused {
+                self.videoCameraManager.resumeRecording()
                 self.doneVideoRecordingButton.enabled = false
             } else {
                 self.pauseRecording()
             }
         } else {
-            self.videoCameraView.startRecording()
+            self.videoCameraManager.startRecording()
             self.doneVideoRecordingButton.enabled = false
             self.updateRecordingTime()
         }
@@ -88,12 +88,12 @@ class RecordMessageController: UIViewController {
     
     
     @IBAction func onStopButtonPress(sender: AnyObject) {
-        self.videoCameraView.reset()
+        self.videoCameraManager.reset()
         self.recordMessageButton.reload()
     }
     
     func pauseRecording() {
-        self.videoCameraView.pauseRecording()
+        self.videoCameraManager.pauseRecording()
         self.doneVideoRecordingButton.enabled = true
     }
     
@@ -103,9 +103,9 @@ class RecordMessageController: UIViewController {
             
             var lastTime = self.recordMessageButton.elapsedTime
 
-            while self.videoCameraView.isStarted {
+            while self.videoCameraManager.isStarted {
                 
-                var newTime = CMTimeGetSeconds(self.videoCameraView.totalRecordingDuration()) as NSTimeInterval
+                var newTime = CMTimeGetSeconds(self.videoCameraManager.totalRecordingDuration()) as NSTimeInterval
            
                 if newTime - lastTime >= 1 {
                     
@@ -141,10 +141,10 @@ class RecordMessageController: UIViewController {
     func onDoneRecording(sender: AnyObject) {
         
         var file = FileUtils.videoFilePath()
-        self.videoCameraView.pauseRecording()
+        self.videoCameraManager.pauseRecording()
         Messages.lastVideoFile = file
         
-        self.videoCameraView.finalizeRecordingToFile(file, withVideoSize: self.size, withPreset: AVAssetExportPresetHighestQuality, withCompletionHandler: {(error : NSError!) -> Void in
+        self.videoCameraManager.finalizeRecordingToFile(file, withVideoSize: self.size, withPreset: AVAssetExportPresetHighestQuality, withCompletionHandler: {(error : NSError!) -> Void in
             
             if error == nil {
                 

@@ -5,6 +5,7 @@ use_frameworks!
 
 target 'Wander' do
 pod 'Player'
+pod 'PBJVision'
 
 end
 
