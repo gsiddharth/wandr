@@ -1,0 +1,10 @@
+PODS:
+  - Player (0.0.5)
+
+DEPENDENCIES:
+  - Player
+
+SPEC CHECKSUMS:
+  Player: b5611abde6be7b3eeeaf57537b3979cd7531daad
+
+COCOAPODS: 0.36.4

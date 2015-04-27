@@ -11,9 +11,10 @@ import AVFoundation
 import Foundation
 import QuartzCore
 import MediaPlayer
+import Player
 
 
-class PostVideoController: UIViewController {
+class PostVideoController: UIViewController, PlayerDelegate {
 
     @IBOutlet weak var videoPlayerView: UIView!
     
@@ -22,37 +23,64 @@ class PostVideoController: UIViewController {
             playPauseButton.playing = true
         }
     }
-    var moviePlayer : MPMoviePlayerController!
+    var player : Player!
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         if Messages.lastVideoFile != nil {
-            moviePlayer = MPMoviePlayerController(contentURL: Messages.lastVideoFile)
-            moviePlayer.controlStyle = MPMovieControlStyle.None
-            moviePlayer.scalingMode = MPMovieScalingMode.AspectFit
-            moviePlayer.view.frame = self.videoPlayerView.bounds
-            moviePlayer.view.center = CGPointMake(CGRectGetMidX(self.videoPlayerView.bounds), CGRectGetMidY(self.videoPlayerView.bounds) + self.navigationController!.navigationBar.frame.height)
+            self.player = Player()
+            self.player.view.frame = self.videoPlayerView.bounds
+           
+            player.view.center = CGPointMake(CGRectGetMidX(self.videoPlayerView.bounds), CGRectGetMidY(self.videoPlayerView.bounds) + self.navigationController!.navigationBar.frame.height + UIApplication.sharedApplication().statusBarFrame.size.height)
             
-            self.videoPlayerView.addSubview(moviePlayer.view)
-            moviePlayer.prepareToPlay()
-            
-            NSNotificationCenter.defaultCenter().addObserver(self, selector: "onFinishedPlayingMovie:", name: MPMoviePlayerPlaybackDidFinishNotification, object: moviePlayer)
+            self.addChildViewController(self.player)
+            self.videoPlayerView.clipsToBounds = true
+            self.videoPlayerView.addSubview(self.player.view)
+            self.player.didMoveToParentViewController(self)
+            self.player.fillMode = AVLayerVideoGravityResizeAspectFill
+            self.player.delegate = self
+            self.player.path = Messages.lastVideoFile.description
+            self.player.playFromBeginning()
         }
-    }
-    
-    override func viewDidAppear(animated: Bool) {
-    
-    }
-    
-    func onFinishedPlayingMovie(aNotification:NSNotification) {
-        playPauseButton.playing = false
     }
     
     @IBAction func onPlayPauseButtonClick(sender: PlayPauseButton) {
         if playPauseButton.playing {
-            
-            self.moviePlayer.play()
+            if player.playbackState == PlaybackState.Paused {
+                self.player.playFromCurrentTime()
+            } else if player.playbackState == PlaybackState.Stopped {
+                self.player.playFromBeginning()
+            }
         } else {
-            self.moviePlayer.pause()
+            self.player.pause()
+        }
+    }
+    
+    func playerReady(player: Player){
+        
+    }
+    
+    func playerPlaybackStateDidChange(player: Player) {
+        
+    }
+    
+    func playerBufferingStateDidChange(player: Player) {
+        if player.playbackState == PlaybackState.Paused || player.playbackState == PlaybackState.Stopped  {
+            playPauseButton.playing = false
+        } else if player.playbackState == PlaybackState.Playing {
+            playPauseButton.playing = true
+        }
+    }
+    
+    func playerPlaybackWillStartFromBeginning(player: Player) {
+        
+    }
+    
+    func playerPlaybackDidEnd(player: Player) {
+        if player.playbackState == PlaybackState.Paused || player.playbackState == PlaybackState.Stopped  {
+            playPauseButton.playing = false
+        } else if player.playbackState == PlaybackState.Playing {
+            playPauseButton.playing = true
         }
     }
 }

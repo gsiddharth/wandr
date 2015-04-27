@@ -1,0 +1,503 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 46;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		0CB5762FF5E9B332260BEA11 /* Player.swift in Sources */ = {isa = PBXBuildFile; fileRef = DC1D6D3E67183F455457182B /* Player.swift */; };
+		16B338736096C0C05B358D39 /* Pods-Wander-Player-umbrella.h in Headers */ = {isa = PBXBuildFile; fileRef = ADD174F20CE06B98C0D690EB /* Pods-Wander-Player-umbrella.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		2C635A46A9C0AB680CBCC357 /* Pods-Wander-dummy.m in Sources */ = {isa = PBXBuildFile; fileRef = 0A2843EF86842F71641FB9C4 /* Pods-Wander-dummy.m */; };
+		76BA40A02DC117A6823E0D0F /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = EA545EEB12686D21AC2AB976 /* Foundation.framework */; };
+		8FF206441D4D1EE4D396A20C /* Pods-Wander-Player-dummy.m in Sources */ = {isa = PBXBuildFile; fileRef = E8BE54D178E4B6236B6C9B8E /* Pods-Wander-Player-dummy.m */; };
+		BEF6E505733855213F6A1D59 /* Pods-Wander-umbrella.h in Headers */ = {isa = PBXBuildFile; fileRef = 86D67971C28DDD2D9AB6DBD5 /* Pods-Wander-umbrella.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		CD133035E36531E8E83E706D /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = EA545EEB12686D21AC2AB976 /* Foundation.framework */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXContainerItemProxy section */
+		763B51A7FCCA675421DBEBDF /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = E683C427AE4AA57917D2CEEF /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 7EDFE98A84435B26FBF8C022;
+			remoteInfo = "Pods-Wander-Player";
+		};
+/* End PBXContainerItemProxy section */
+
+/* Begin PBXFileReference section */
+		0A2843EF86842F71641FB9C4 /* Pods-Wander-dummy.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = "Pods-Wander-dummy.m"; sourceTree = "<group>"; };
+		0CC06E4F940560B52AB9D1BE /* Pods-Wander-resources.sh */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.script.sh; path = "Pods-Wander-resources.sh"; sourceTree = "<group>"; };
+		16037BA23E7038A1FC4223ED /* Podfile */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text; name = Podfile; path = ../Podfile; sourceTree = SOURCE_ROOT; xcLanguageSpecificationIdentifier = xcode.lang.ruby; };
+		42DD4B10BB072324908D4C13 /* Pods-Wander.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = "Pods-Wander.release.xcconfig"; sourceTree = "<group>"; };
+		53C7B3D5F43B8320601A07E8 /* Pods-Wander-Player-prefix.pch */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "Pods-Wander-Player-prefix.pch"; sourceTree = "<group>"; };
+		677A084963688BD6F088C343 /* Info.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		6D464355F04016FD9FD4B16C /* Pods-Wander-frameworks.sh */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.script.sh; path = "Pods-Wander-frameworks.sh"; sourceTree = "<group>"; };
+		6F045B9769BAADD94405F62F /* Pods_Wander.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Wander.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		755E0EE81DB25D182CFAC12A /* Pods-Wander-environment.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "Pods-Wander-environment.h"; sourceTree = "<group>"; };
+		86D67971C28DDD2D9AB6DBD5 /* Pods-Wander-umbrella.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "Pods-Wander-umbrella.h"; sourceTree = "<group>"; };
+		86E38DD8F4E80D3D4519C6DE /* Pods-Wander-Player.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = "Pods-Wander-Player.xcconfig"; sourceTree = "<group>"; };
+		8EF9F114B12BBAC5C593C8E4 /* Player.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Player.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		99C838CD4BA850558687516F /* Pods-Wander.modulemap */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = "sourcecode.module-map"; path = "Pods-Wander.modulemap"; sourceTree = "<group>"; };
+		ADD174F20CE06B98C0D690EB /* Pods-Wander-Player-umbrella.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "Pods-Wander-Player-umbrella.h"; sourceTree = "<group>"; };
+		B87E9AEA8713081CBE7B25E1 /* Pods-Wander-acknowledgements.markdown */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text; path = "Pods-Wander-acknowledgements.markdown"; sourceTree = "<group>"; };
+		C7AF0BBC4EEEEE641E544F40 /* Pods-Wander-Player-Private.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = "Pods-Wander-Player-Private.xcconfig"; sourceTree = "<group>"; };
+		D30E7090DB4255AD1BF8D885 /* Info.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		D829579604EEC18271B9EA98 /* Pods-Wander-Player.modulemap */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = "sourcecode.module-map"; path = "Pods-Wander-Player.modulemap"; sourceTree = "<group>"; };
+		DC1D6D3E67183F455457182B /* Player.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = Player.swift; path = Source/Player.swift; sourceTree = "<group>"; };
+		DFF0E2775EE05F887FD54DCF /* Pods-Wander-acknowledgements.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; path = "Pods-Wander-acknowledgements.plist"; sourceTree = "<group>"; };
+		E6AA060B957140A58E9D5C82 /* Pods-Wander.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = "Pods-Wander.debug.xcconfig"; sourceTree = "<group>"; };
+		E8BE54D178E4B6236B6C9B8E /* Pods-Wander-Player-dummy.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = "Pods-Wander-Player-dummy.m"; sourceTree = "<group>"; };
+		EA545EEB12686D21AC2AB976 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS7.1.sdk/System/Library/Frameworks/Foundation.framework; sourceTree = DEVELOPER_DIR; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		10C56F5A42DDB25D1142AAD6 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				CD133035E36531E8E83E706D /* Foundation.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		D8EBC14EBB436023A3CB8ADD /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				76BA40A02DC117A6823E0D0F /* Foundation.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		0C86A795D0DA3024FA57568E /* Targets Support Files */ = {
+			isa = PBXGroup;
+			children = (
+				322C2C4C66E908B0D466BDE0 /* Pods-Wander */,
+			);
+			name = "Targets Support Files";
+			sourceTree = "<group>";
+		};
+		322C2C4C66E908B0D466BDE0 /* Pods-Wander */ = {
+			isa = PBXGroup;
+			children = (
+				D30E7090DB4255AD1BF8D885 /* Info.plist */,
+				99C838CD4BA850558687516F /* Pods-Wander.modulemap */,
+				B87E9AEA8713081CBE7B25E1 /* Pods-Wander-acknowledgements.markdown */,
+				DFF0E2775EE05F887FD54DCF /* Pods-Wander-acknowledgements.plist */,
+				0A2843EF86842F71641FB9C4 /* Pods-Wander-dummy.m */,
+				755E0EE81DB25D182CFAC12A /* Pods-Wander-environment.h */,
+				6D464355F04016FD9FD4B16C /* Pods-Wander-frameworks.sh */,
+				0CC06E4F940560B52AB9D1BE /* Pods-Wander-resources.sh */,
+				86D67971C28DDD2D9AB6DBD5 /* Pods-Wander-umbrella.h */,
+				E6AA060B957140A58E9D5C82 /* Pods-Wander.debug.xcconfig */,
+				42DD4B10BB072324908D4C13 /* Pods-Wander.release.xcconfig */,
+			);
+			name = "Pods-Wander";
+			path = "Target Support Files/Pods-Wander";
+			sourceTree = "<group>";
+		};
+		4DF9476C49AC68623EA0AB64 /* iOS */ = {
+			isa = PBXGroup;
+			children = (
+				EA545EEB12686D21AC2AB976 /* Foundation.framework */,
+			);
+			name = iOS;
+			sourceTree = "<group>";
+		};
+		5249BA43EEE77939D8AFB09D = {
+			isa = PBXGroup;
+			children = (
+				16037BA23E7038A1FC4223ED /* Podfile */,
+				A67D14FE9FC0793F9DA201B1 /* Frameworks */,
+				6A7A8D2B0604DA4655A4354B /* Pods */,
+				E4D26284FBF151BD62F5CD8C /* Products */,
+				0C86A795D0DA3024FA57568E /* Targets Support Files */,
+			);
+			sourceTree = "<group>";
+		};
+		6A7A8D2B0604DA4655A4354B /* Pods */ = {
+			isa = PBXGroup;
+			children = (
+				8F9C1AC5BC68822DA912F678 /* Player */,
+			);
+			name = Pods;
+			sourceTree = "<group>";
+		};
+		8F9C1AC5BC68822DA912F678 /* Player */ = {
+			isa = PBXGroup;
+			children = (
+				DC1D6D3E67183F455457182B /* Player.swift */,
+				FEA999C2F18EAE494C6B38BB /* Support Files */,
+			);
+			path = Player;
+			sourceTree = "<group>";
+		};
+		A67D14FE9FC0793F9DA201B1 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				4DF9476C49AC68623EA0AB64 /* iOS */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		E4D26284FBF151BD62F5CD8C /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				8EF9F114B12BBAC5C593C8E4 /* Player.framework */,
+				6F045B9769BAADD94405F62F /* Pods_Wander.framework */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		FEA999C2F18EAE494C6B38BB /* Support Files */ = {
+			isa = PBXGroup;
+			children = (
+				677A084963688BD6F088C343 /* Info.plist */,
+				D829579604EEC18271B9EA98 /* Pods-Wander-Player.modulemap */,
+				86E38DD8F4E80D3D4519C6DE /* Pods-Wander-Player.xcconfig */,
+				C7AF0BBC4EEEEE641E544F40 /* Pods-Wander-Player-Private.xcconfig */,
+				E8BE54D178E4B6236B6C9B8E /* Pods-Wander-Player-dummy.m */,
+				53C7B3D5F43B8320601A07E8 /* Pods-Wander-Player-prefix.pch */,
+				ADD174F20CE06B98C0D690EB /* Pods-Wander-Player-umbrella.h */,
+			);
+			name = "Support Files";
+			path = "../Target Support Files/Pods-Wander-Player";
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXHeadersBuildPhase section */
+		9931BBC913E647F5B2C4D205 /* Headers */ = {
+			isa = PBXHeadersBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				16B338736096C0C05B358D39 /* Pods-Wander-Player-umbrella.h in Headers */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		A6075FB8294E0FAE638A8BAD /* Headers */ = {
+			isa = PBXHeadersBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				BEF6E505733855213F6A1D59 /* Pods-Wander-umbrella.h in Headers */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXHeadersBuildPhase section */
+
+/* Begin PBXNativeTarget section */
+		7EDFE98A84435B26FBF8C022 /* Pods-Wander-Player */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 120B78D902E8256C5AE479CA /* Build configuration list for PBXNativeTarget "Pods-Wander-Player" */;
+			buildPhases = (
+				BD9CDC67D05551D0435ED3AF /* Sources */,
+				D8EBC14EBB436023A3CB8ADD /* Frameworks */,
+				9931BBC913E647F5B2C4D205 /* Headers */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = "Pods-Wander-Player";
+			productName = "Pods-Wander-Player";
+			productReference = 8EF9F114B12BBAC5C593C8E4 /* Player.framework */;
+			productType = "com.apple.product-type.framework";
+		};
+		AFCD0CF31D86E0696F45ADCF /* Pods-Wander */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 8BE267FE73491C48FE1FA9B7 /* Build configuration list for PBXNativeTarget "Pods-Wander" */;
+			buildPhases = (
+				D5007C46FD2FC4C56BDE78E4 /* Sources */,
+				10C56F5A42DDB25D1142AAD6 /* Frameworks */,
+				A6075FB8294E0FAE638A8BAD /* Headers */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				3033F46C373138FFEF3C58BD /* PBXTargetDependency */,
+			);
+			name = "Pods-Wander";
+			productName = "Pods-Wander";
+			productReference = 6F045B9769BAADD94405F62F /* Pods_Wander.framework */;
+			productType = "com.apple.product-type.framework";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		E683C427AE4AA57917D2CEEF /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				LastUpgradeCheck = 0510;
+			};
+			buildConfigurationList = ECD4762507664C3F3C7F3F42 /* Build configuration list for PBXProject "Pods" */;
+			compatibilityVersion = "Xcode 3.2";
+			developmentRegion = English;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				en,
+			);
+			mainGroup = 5249BA43EEE77939D8AFB09D;
+			productRefGroup = E4D26284FBF151BD62F5CD8C /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				AFCD0CF31D86E0696F45ADCF /* Pods-Wander */,
+				7EDFE98A84435B26FBF8C022 /* Pods-Wander-Player */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXSourcesBuildPhase section */
+		BD9CDC67D05551D0435ED3AF /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				0CB5762FF5E9B332260BEA11 /* Player.swift in Sources */,
+				8FF206441D4D1EE4D396A20C /* Pods-Wander-Player-dummy.m in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		D5007C46FD2FC4C56BDE78E4 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				2C635A46A9C0AB680CBCC357 /* Pods-Wander-dummy.m in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin PBXTargetDependency section */
+		3033F46C373138FFEF3C58BD /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			name = "Pods-Wander-Player";
+			target = 7EDFE98A84435B26FBF8C022 /* Pods-Wander-Player */;
+			targetProxy = 763B51A7FCCA675421DBEBDF /* PBXContainerItemProxy */;
+		};
+/* End PBXTargetDependency section */
+
+/* Begin XCBuildConfiguration section */
+		20064A1568931E32A944133E /* Debug */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = C7AF0BBC4EEEEE641E544F40 /* Pods-Wander-Player-Private.xcconfig */;
+			buildSettings = {
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				CURRENT_PROJECT_VERSION = 1;
+				DEFINES_MODULE = YES;
+				DYLIB_COMPATIBILITY_VERSION = 1;
+				DYLIB_CURRENT_VERSION = 1;
+				DYLIB_INSTALL_NAME_BASE = "@rpath";
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_PREFIX_HEADER = "Target Support Files/Pods-Wander-Player/Pods-Wander-Player-prefix.pch";
+				INFOPLIST_FILE = "Target Support Files/Pods-Wander-Player/Info.plist";
+				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
+				IPHONEOS_DEPLOYMENT_TARGET = 8.3;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				MODULEMAP_FILE = "Target Support Files/Pods-Wander-Player/Pods-Wander-Player.modulemap";
+				MTL_ENABLE_DEBUG_INFO = YES;
+				PRODUCT_NAME = Player;
+				SDKROOT = iphoneos;
+				SKIP_INSTALL = YES;
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+				TARGETED_DEVICE_FAMILY = "1,2";
+				VERSIONING_SYSTEM = "apple-generic";
+				VERSION_INFO_PREFIX = "";
+			};
+			name = Debug;
+		};
+		2ACD1048D5D9840442DFFFC3 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				COPY_PHASE_STRIP = YES;
+				ENABLE_NS_ASSERTIONS = NO;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_PREPROCESSOR_DEFINITIONS = "RELEASE=1";
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 8.3;
+				STRIP_INSTALLED_PRODUCT = NO;
+				SYMROOT = "${SRCROOT}/../build";
+				VALIDATE_PRODUCT = YES;
+			};
+			name = Release;
+		};
+		3935F37569685ACAC7322D80 /* Release */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = 42DD4B10BB072324908D4C13 /* Pods-Wander.release.xcconfig */;
+			buildSettings = {
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				CURRENT_PROJECT_VERSION = 1;
+				DEFINES_MODULE = YES;
+				DYLIB_COMPATIBILITY_VERSION = 1;
+				DYLIB_CURRENT_VERSION = 1;
+				DYLIB_INSTALL_NAME_BASE = "@rpath";
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				INFOPLIST_FILE = "Target Support Files/Pods-Wander/Info.plist";
+				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
+				IPHONEOS_DEPLOYMENT_TARGET = 8.3;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				MODULEMAP_FILE = "Target Support Files/Pods-Wander/Pods-Wander.modulemap";
+				MTL_ENABLE_DEBUG_INFO = NO;
+				OTHER_LDFLAGS = "";
+				OTHER_LIBTOOLFLAGS = "";
+				PODS_ROOT = "$(SRCROOT)";
+				PRODUCT_NAME = Pods_Wander;
+				SDKROOT = iphoneos;
+				SKIP_INSTALL = YES;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				VERSIONING_SYSTEM = "apple-generic";
+				VERSION_INFO_PREFIX = "";
+			};
+			name = Release;
+		};
+		68431F90967942FD95AAD7B8 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = E6AA060B957140A58E9D5C82 /* Pods-Wander.debug.xcconfig */;
+			buildSettings = {
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				CURRENT_PROJECT_VERSION = 1;
+				DEFINES_MODULE = YES;
+				DYLIB_COMPATIBILITY_VERSION = 1;
+				DYLIB_CURRENT_VERSION = 1;
+				DYLIB_INSTALL_NAME_BASE = "@rpath";
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				INFOPLIST_FILE = "Target Support Files/Pods-Wander/Info.plist";
+				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
+				IPHONEOS_DEPLOYMENT_TARGET = 8.3;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				MODULEMAP_FILE = "Target Support Files/Pods-Wander/Pods-Wander.modulemap";
+				MTL_ENABLE_DEBUG_INFO = YES;
+				OTHER_LDFLAGS = "";
+				OTHER_LIBTOOLFLAGS = "";
+				PODS_ROOT = "$(SRCROOT)";
+				PRODUCT_NAME = Pods_Wander;
+				SDKROOT = iphoneos;
+				SKIP_INSTALL = YES;
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+				TARGETED_DEVICE_FAMILY = "1,2";
+				VERSIONING_SYSTEM = "apple-generic";
+				VERSION_INFO_PREFIX = "";
+			};
+			name = Debug;
+		};
+		9F417A07A2581EB24506BA0B /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				COPY_PHASE_STRIP = NO;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_SYMBOLS_PRIVATE_EXTERN = NO;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 8.3;
+				ONLY_ACTIVE_ARCH = YES;
+				STRIP_INSTALLED_PRODUCT = NO;
+				SYMROOT = "${SRCROOT}/../build";
+			};
+			name = Debug;
+		};
+		A9AE317E3F69D9CCCF8AE1BC /* Release */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = C7AF0BBC4EEEEE641E544F40 /* Pods-Wander-Player-Private.xcconfig */;
+			buildSettings = {
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				CURRENT_PROJECT_VERSION = 1;
+				DEFINES_MODULE = YES;
+				DYLIB_COMPATIBILITY_VERSION = 1;
+				DYLIB_CURRENT_VERSION = 1;
+				DYLIB_INSTALL_NAME_BASE = "@rpath";
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_PREFIX_HEADER = "Target Support Files/Pods-Wander-Player/Pods-Wander-Player-prefix.pch";
+				INFOPLIST_FILE = "Target Support Files/Pods-Wander-Player/Info.plist";
+				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
+				IPHONEOS_DEPLOYMENT_TARGET = 8.3;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				MODULEMAP_FILE = "Target Support Files/Pods-Wander-Player/Pods-Wander-Player.modulemap";
+				MTL_ENABLE_DEBUG_INFO = NO;
+				PRODUCT_NAME = Player;
+				SDKROOT = iphoneos;
+				SKIP_INSTALL = YES;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				VERSIONING_SYSTEM = "apple-generic";
+				VERSION_INFO_PREFIX = "";
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		120B78D902E8256C5AE479CA /* Build configuration list for PBXNativeTarget "Pods-Wander-Player" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				20064A1568931E32A944133E /* Debug */,
+				A9AE317E3F69D9CCCF8AE1BC /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		8BE267FE73491C48FE1FA9B7 /* Build configuration list for PBXNativeTarget "Pods-Wander" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				68431F90967942FD95AAD7B8 /* Debug */,
+				3935F37569685ACAC7322D80 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		ECD4762507664C3F3C7F3F42 /* Build configuration list for PBXProject "Pods" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				9F417A07A2581EB24506BA0B /* Debug */,
+				2ACD1048D5D9840442DFFFC3 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+/* End XCConfigurationList section */
+	};
+	rootObject = E683C427AE4AA57917D2CEEF /* Project object */;
+}
