@@ -14,8 +14,10 @@ import MediaPlayer
 import Player
 
 
-class PostVideoController: UIViewController, PlayerDelegate {
+class ReviewVideoController: UIViewController, PlayerDelegate {
 
+     var player : Player!
+    
     @IBOutlet weak var videoPlayerView: UIView!
     
     @IBOutlet weak var playPauseButton: PlayPauseButton! {
@@ -23,16 +25,14 @@ class PostVideoController: UIViewController, PlayerDelegate {
             playPauseButton.playing = true
         }
     }
-    var player : Player!
     
     override func viewDidLoad() {
         super.viewDidLoad()
         if Messages.lastVideoFile != nil {
+            self.navigationController!.navigationBar.translucent = false;
             self.player = Player()
             self.player.view.frame = self.videoPlayerView.bounds
-           
-            player.view.center = CGPointMake(CGRectGetMidX(self.videoPlayerView.bounds), CGRectGetMidY(self.videoPlayerView.bounds) + self.navigationController!.navigationBar.frame.height + UIApplication.sharedApplication().statusBarFrame.size.height)
-            
+        
             self.addChildViewController(self.player)
             self.videoPlayerView.clipsToBounds = true
             self.videoPlayerView.addSubview(self.player.view)
@@ -56,12 +56,8 @@ class PostVideoController: UIViewController, PlayerDelegate {
         }
     }
     
-    func playerReady(player: Player){
-        
-    }
-    
-    func playerPlaybackStateDidChange(player: Player) {
-        
+    @IBAction func onPostButtonClick(sender: AnyObject) {
+
     }
     
     func playerBufferingStateDidChange(player: Player) {
@@ -72,10 +68,6 @@ class PostVideoController: UIViewController, PlayerDelegate {
         }
     }
     
-    func playerPlaybackWillStartFromBeginning(player: Player) {
-        
-    }
-    
     func playerPlaybackDidEnd(player: Player) {
         if player.playbackState == PlaybackState.Paused || player.playbackState == PlaybackState.Stopped  {
             playPauseButton.playing = false
@@ -83,4 +75,12 @@ class PostVideoController: UIViewController, PlayerDelegate {
             playPauseButton.playing = true
         }
     }
+    
+    
+    func playerReady(player: Player){}
+    
+    func playerPlaybackStateDidChange(player: Player) {}
+    
+    func playerPlaybackWillStartFromBeginning(player: Player) {}
+    
 }

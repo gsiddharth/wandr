@@ -9,9 +9,11 @@
 #ifndef Wander_Bridging_Header_h
 #define Wander_Bridging_Header_h
 
+#import <Foundation/Foundation.h>
+#import <UIKit/UIKit.h>
+#import <PBJVision/PBJVision.h>
 #import <MediaPlayer/MediaPlayer.h>
 #import <MobileCoreServices/MobileCoreServices.h>
 #import <AssetsLibrary/AssetsLibrary.h>
-#import "PBJVision.h"
 
 #endif

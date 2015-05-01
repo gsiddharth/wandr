@@ -10,12 +10,15 @@ import UIKit
 import AVFoundation
 import Foundation
 import QuartzCore
+import PBJVision
 
-class RecordMessageController: UIViewController {
+class RecordMessageController: UIViewController, PBJVisionDelegate {
     
     @IBOutlet weak var videoPreviewView: UIView!
+
+    var library : ALAssetsLibrary!
     
-    var size : CGSize!
+    var previewLayer : AVCaptureVideoPreviewLayer?
     
     @IBOutlet weak var doneVideoRecordingButton: UIBarButtonItem! {
         didSet {
@@ -23,21 +26,10 @@ class RecordMessageController: UIViewController {
         }
     }
     
-    let captureSession = AVCaptureSession()
-    var previewLayer : AVCaptureVideoPreviewLayer? {
-        didSet {
-            
-        }
-    }
-    var library : ALAssetsLibrary!
-    
-    // If we find a device we'll store it here for later use
-    var captureDevice : AVCaptureDevice?
-    var videoCameraManager : VideoCameraInputManager!
     
     @IBOutlet weak var recordMessageButton: CircleProgressButton! {
         didSet {
-            self.recordMessageButton.timeLimit = 60
+            self.recordMessageButton.timeLimit = Constants.maxVideoDurationInSec as NSTimeInterval
             self.recordMessageButton.status = "circle-progress-view.status-not-started"
             self.recordMessageButton.tintColor = UIColor.redColor()
             self.recordMessageButton.elapsedTime = 0
@@ -60,105 +52,131 @@ class RecordMessageController: UIViewController {
         
         self.library = ALAssetsLibrary()
         
-        var err : NSError! = nil
-        self.videoCameraManager = VideoCameraInputManager()    
-        self.videoCameraManager.setupSessionWithPreset(AVCaptureSessionPresetHigh, withCaptureDevice: AVCaptureDevicePosition.Back, withTorchMode: AVCaptureTorchMode.Off, withError: &err)
-        self.size = self.videoCameraManager.startPreview(self.videoPreviewView)
-        println(self.size.height.description + " " + self.size.width.description)
-        println(self.view.frame.size.height.description + " " + self.view.frame.size.width.description)
-        self.size = CGSizeMake(self.size.height, self.size.width)
+        self.setupPreview()
+        
+        self.setupCamera()
 
+    }
+    
+    func setupPreview() {
+        self.navigationController!.navigationBar.translucent = false;
+        self.videoPreviewView.backgroundColor = UIColor.blackColor()
+        var previewLayer = PBJVision.sharedInstance().previewLayer
+        previewLayer.frame = self.videoPreviewView.bounds
+        previewLayer.videoGravity = AVLayerVideoGravityResizeAspectFill
+        
+        self.videoPreviewView.layer.addSublayer(previewLayer)
+    }
+    
+    func setupCamera() {
+        var vision = PBJVision.sharedInstance()
+        vision.delegate = self
+        vision.cameraMode = PBJCameraMode.Video
+        vision.cameraOrientation = PBJCameraOrientation.Portrait
+        vision.focusMode = PBJFocusMode.ContinuousAutoFocus
+        vision.outputFormat = PBJOutputFormat.Preset
+        vision.maximumCaptureDuration = CMTimeMakeWithSeconds(Float64(Constants.maxVideoDurationInSec), Constants.videoFramesPerSec)
+        vision.startPreview()
     }
 
     @IBAction func onRecordMessageButtonPress(sender: AnyObject) {
 
-        if self.videoCameraManager.isStarted {
-            if self.videoCameraManager.isPaused {
-                self.videoCameraManager.resumeRecording()
-                self.doneVideoRecordingButton.enabled = false
+        var vision = PBJVision.sharedInstance()
+
+        if vision.capturedVideoSeconds > 0 {
+            if vision.paused {
+                vision.resumeVideoCapture()
             } else {
-                self.pauseRecording()
+                vision.pauseVideoCapture()
             }
         } else {
-            self.videoCameraManager.startRecording()
-            self.doneVideoRecordingButton.enabled = false
-            self.updateRecordingTime()
+            vision.startVideoCapture()
         }
     }
     
     
     @IBAction func onStopButtonPress(sender: AnyObject) {
-        self.videoCameraManager.reset()
+        var vision = PBJVision.sharedInstance()
+        vision.cancelVideoCapture()
         self.recordMessageButton.reload()
     }
     
     func pauseRecording() {
-        self.videoCameraManager.pauseRecording()
-        self.doneVideoRecordingButton.enabled = true
+        var vision = PBJVision.sharedInstance()
+        vision.pauseVideoCapture()
     }
     
-    func updateRecordingTime() {
+    
+    func visionDidStartVideoCapture(vision: PBJVision) {
+        self.doneVideoRecordingButton.enabled = false
+        self.recordMessageButton.pressed = true
+        self.update()
+    }
+    
+    func visionDidPauseVideoCapture(vision: PBJVision) {
+        self.doneVideoRecordingButton.enabled = true
+        self.recordMessageButton.pressed = false
+    }
+
+    func visionDidResumeVideoCapture(vision: PBJVision) {
+        self.doneVideoRecordingButton.enabled = false
+        self.recordMessageButton.pressed = true
+    }
+
+    func visionDidEndVideoCapture(vision: PBJVision) {
+        self.doneVideoRecordingButton.enabled = true
+        self.recordMessageButton.pressed = false
+        self.recordMessageButton.enabled = false
+    }
+    
+
+    func vision(vision: PBJVision, capturedVideo videoDict: [NSObject : AnyObject]?, error: NSError?) {
+
+        
+        if error != nil  && error!.domain == PBJVisionErrorDomain && error!.code == PBJVisionErrorType.Cancelled.rawValue {
+            NSLog("recording session cancelled")
+            return
+        } else if error != nil {
+            NSLog("encounted an error in video capture (%@)", error!)
+            return
+        }
+        
+        var videoPath : String = videoDict?[PBJVisionVideoPathKey] as! String
+        
+        Messages.lastVideoFile =  NSURL(fileURLWithPath: videoPath)
+        
+        FileUtils.addVideoToAlbum(self.library, videourl : Messages.lastVideoFile, album: Constants.albumName)
+        
+        var postVideoController : PostVideoController = self.storyboard?.instantiateViewControllerWithIdentifier("postVideoController") as! PostVideoController
+        var navigationController : UINavigationController = UINavigationController(rootViewController: postVideoController)
+        self.presentViewController(navigationController, animated: true, completion: nil)
+
+    }
+    
+    func update() {
         
         dispatch_async(dispatch_get_global_queue(Int(QOS_CLASS_USER_INITIATED.value), 0)) {
             
-            var lastTime = self.recordMessageButton.elapsedTime
-
-            while self.videoCameraManager.isStarted {
-                
-                var newTime = CMTimeGetSeconds(self.videoCameraManager.totalRecordingDuration()) as NSTimeInterval
-           
-                if newTime - lastTime >= 1 {
-                    
-                    dispatch_async(dispatch_get_main_queue()) {
-                        self.recordMessageButton.elapsedTime = newTime
-                        lastTime = newTime
-                    }
+            var vision = PBJVision.sharedInstance()
+            
+            while vision.recording || vision.paused {
+                var newTime = vision.capturedVideoSeconds as NSTimeInterval
+                dispatch_async(dispatch_get_main_queue()) {
+                    self.recordMessageButton.elapsedTime = newTime
                 }
-                
-                if newTime >= 60 {
-                    dispatch_async(dispatch_get_main_queue()) {
-                        self.pauseRecording()
-                        self.recordMessageButton.finish()
-                    }
-                    break
-                }
+                sleep(1)
             }
         }
     }
     
     override func shouldPerformSegueWithIdentifier(identifier: String?, sender: AnyObject?) -> Bool {
         if identifier == "recordToPostSegue" {
-            self.onDoneRecording(self)
+            var vision = PBJVision.sharedInstance()
+            vision.endVideoCapture()
             return false
         }
         
         return true
-    }
-    
-    var added : Bool = false
-    var addError : Bool = false
-    
-    func onDoneRecording(sender: AnyObject) {
-        
-        var file = FileUtils.videoFilePath()
-        self.videoCameraManager.pauseRecording()
-        Messages.lastVideoFile = file
-        
-        self.videoCameraManager.finalizeRecordingToFile(file, withVideoSize: self.size, withPreset: AVAssetExportPresetHighestQuality, withCompletionHandler: {(error : NSError!) -> Void in
-            
-            if error == nil {
-                
-                FileUtils.addVideoToAlbum(self.library, videourl : file, album: Constants.albumName)
-                
-                var postVideoController : PostVideoController = self.storyboard?.instantiateViewControllerWithIdentifier("postVideoController") as! PostVideoController
-                var navigationController : UINavigationController = UINavigationController(rootViewController: postVideoController)
-                self.presentViewController(navigationController, animated: true, completion: nil)
-
-            } else {
-                NSLog("error exporting file")
-                self.addError = true
-            }
-        })
     }
 
 }

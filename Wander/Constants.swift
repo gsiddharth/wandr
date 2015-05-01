@@ -10,4 +10,6 @@ import Foundation
 
 class Constants {
     static var albumName : String = "Wandr"
+    static var maxVideoDurationInSec : Double = 5
+    static var videoFramesPerSec : Int32 = 600
 }

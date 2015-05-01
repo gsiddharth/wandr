@@ -13,7 +13,7 @@
 		35633EBB1ADCD5FD002042B5 /* CircleProgressButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 35633EBA1ADCD5FD002042B5 /* CircleProgressButton.swift */; };
 		35633EBD1ADCD609002042B5 /* CircleShapeLayer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 35633EBC1ADCD609002042B5 /* CircleShapeLayer.swift */; };
 		35633EBF1AE035FC002042B5 /* Convertors.swift in Sources */ = {isa = PBXBuildFile; fileRef = 35633EBE1AE035FC002042B5 /* Convertors.swift */; };
-		35633EC51AE3C113002042B5 /* PostVideoController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 35633EC41AE3C113002042B5 /* PostVideoController.swift */; };
+		35633EC51AE3C113002042B5 /* ReviewVideoController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 35633EC41AE3C113002042B5 /* ReviewVideoController.swift */; };
 		35633EC71AE3C62D002042B5 /* PlayPauseButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 35633EC61AE3C62D002042B5 /* PlayPauseButton.swift */; };
 		35633ECB1AE40F3E002042B5 /* play.png in Resources */ = {isa = PBXBuildFile; fileRef = 35633ECA1AE40F3E002042B5 /* play.png */; };
 		35633ECD1AE41BE1002042B5 /* Messages.swift in Sources */ = {isa = PBXBuildFile; fileRef = 35633ECC1AE41BE1002042B5 /* Messages.swift */; };
@@ -55,7 +55,7 @@
 		35633EBA1ADCD5FD002042B5 /* CircleProgressButton.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CircleProgressButton.swift; sourceTree = "<group>"; };
 		35633EBC1ADCD609002042B5 /* CircleShapeLayer.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CircleShapeLayer.swift; sourceTree = "<group>"; };
 		35633EBE1AE035FC002042B5 /* Convertors.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Convertors.swift; sourceTree = "<group>"; };
-		35633EC41AE3C113002042B5 /* PostVideoController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PostVideoController.swift; sourceTree = "<group>"; };
+		35633EC41AE3C113002042B5 /* ReviewVideoController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ReviewVideoController.swift; sourceTree = "<group>"; };
 		35633EC61AE3C62D002042B5 /* PlayPauseButton.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PlayPauseButton.swift; sourceTree = "<group>"; };
 		35633ECA1AE40F3E002042B5 /* play.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = play.png; path = ../../../Downloads/play.png; sourceTree = "<group>"; };
 		35633ECC1AE41BE1002042B5 /* Messages.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Messages.swift; sourceTree = "<group>"; };
@@ -218,15 +218,15 @@
 				3590928E1A99AB6B00723DBD /* RegisterViewController.swift */,
 				359092911A9A40BD00723DBD /* RecordMessageController.swift */,
 				3586FBD51AC0A702000022E6 /* HomeViewController.swift */,
-				35633EC41AE3C113002042B5 /* PostVideoController.swift */,
+				35633EC41AE3C113002042B5 /* ReviewVideoController.swift */,
 				35633ECE1AE433F0002042B5 /* Main.storyboard */,
 				359092731A99374400723DBD /* Images.xcassets */,
 				35633ECA1AE40F3E002042B5 /* play.png */,
 				359092751A99374400723DBD /* LaunchScreen.xib */,
 				3590926A1A99374400723DBD /* Supporting Files */,
-				359092901A9A404A00723DBD /* Bridging-Header.h */,
 				3584BCC91ABE159D0097DCA9 /* Errors.swift */,
 				35633EB11ADC555F002042B5 /* Constants.swift */,
+				359092901A9A404A00723DBD /* Bridging-Header.h */,
 			);
 			path = Wander;
 			sourceTree = "<group>";
@@ -429,7 +429,7 @@
 			files = (
 				35633EC71AE3C62D002042B5 /* PlayPauseButton.swift in Sources */,
 				3584BCC61ABDCAE10097DCA9 /* UserController.swift in Sources */,
-				35633EC51AE3C113002042B5 /* PostVideoController.swift in Sources */,
+				35633EC51AE3C113002042B5 /* ReviewVideoController.swift in Sources */,
 				35633ED41AEB6794002042B5 /* VideoDataManager.swift in Sources */,
 				35633EBD1ADCD609002042B5 /* CircleShapeLayer.swift in Sources */,
 				3590928D1A99A8F200723DBD /* LoginViewController.swift in Sources */,

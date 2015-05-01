@@ -10,11 +10,11 @@ import Foundation
 
 class CircleProgressButton : UIButton {
 
+    private var _pressed = false
+    
     var status : String!
     
     var progressLayer : CircleShapeLayer!
-    
-    var isPressed = false
     
     override init(frame : CGRect) {
         super.init(frame : frame)
@@ -88,35 +88,36 @@ class CircleProgressButton : UIButton {
         super.updateConstraints()
     }
     
-    func onButtonPress(sender : AnyObject!) {
-        if self.isPressed {
-            self.progressLayer.centerColor = self.onUnpressCenterColor
-        } else {
-            self.progressLayer.centerColor = self.onPressCenterColor
+    var pressed : Bool {
+        get {
+            return _pressed
         }
-        
-        isPressed = !isPressed
+        set {
+            _pressed = newValue
+            
+            if newValue {
+                self.progressLayer.centerColor = self.onPressCenterColor
+            } else {
+                self.progressLayer.centerColor = self.onUnpressCenterColor
+            }
+        }
     }
     
     func finish() {
-        self.progressLayer.centerColor = self.onUnpressCenterColor
-        isPressed = false
+        self.pressed = false
         self.enabled = false
         
     }
     
     func reload() {
-        self.progressLayer.centerColor = self.onUnpressCenterColor
-        isPressed = false
+        self.pressed = false
         self.elapsedTime = 0
     }
 
     func setupViews() {
-        self.clipsToBounds = false;
         self.progressLayer = CircleShapeLayer(frame :self.bounds)
-        self.progressLayer.centerColor = self.onUnpressCenterColor
+        self.pressed = false
+        self.clipsToBounds = false
         self.layer.addSublayer(self.progressLayer)
-        self.addTarget(self, action: "onButtonPress:", forControlEvents: UIControlEvents.TouchUpInside)
-
     }
 }

@@ -236,7 +236,9 @@
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <constraints>
                                     <constraint firstAttribute="width" constant="320" id="7vT-Ar-Yif"/>
-                                    <constraint firstAttribute="height" constant="480" id="SIe-L8-Rbe"/>
+                                    <constraint firstAttribute="height" constant="480" id="SIe-L8-Rbe">
+                                        <variation key="widthClass=compact" constant="426"/>
+                                    </constraint>
                                 </constraints>
                                 <variation key="default">
                                     <mask key="constraints">
@@ -370,10 +372,11 @@
             </objects>
             <point key="canvasLocation" x="4966.5" y="-337"/>
         </scene>
-        <!--Post Video Controller-->
+        <!--Review Video Controller-->
         <scene sceneID="EZh-Ta-5aw">
             <objects>
-                <viewController storyboardIdentifier="postVideoController" useStoryboardIdentifierAsRestorationIdentifier="YES" id="Z2k-yo-t35" customClass="PostVideoController" customModule="Wander" customModuleProvider="target" sceneMemberID="viewController">
+                <placeholder placeholderIdentifier="IBFirstResponder" id="VHR-NB-LBT" userLabel="First Responder" sceneMemberID="firstResponder"/>
+                <viewController storyboardIdentifier="postVideoController" useStoryboardIdentifierAsRestorationIdentifier="YES" id="Z2k-yo-t35" customClass="ReviewVideoController" customModule="Wander" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="A1S-Ua-Rdx"/>
                         <viewControllerLayoutGuide type="bottom" id="LfA-xQ-R95"/>
@@ -386,7 +389,9 @@
                                 <rect key="frame" x="0.0" y="0.0" width="320" height="480"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <constraints>
-                                    <constraint firstAttribute="height" constant="480" id="k1d-iF-heH"/>
+                                    <constraint firstAttribute="height" constant="480" id="k1d-iF-heH">
+                                        <variation key="widthClass=compact" constant="426"/>
+                                    </constraint>
                                     <constraint firstAttribute="width" constant="320" id="laY-RZ-Ukt"/>
                                 </constraints>
                                 <variation key="default">
@@ -467,8 +472,11 @@
                                 <segue destination="ECW-Nw-ZPC" kind="showDetail" id="lYC-7M-L8Q"/>
                             </connections>
                         </barButtonItem>
-                        <barButtonItem key="rightBarButtonItem" title="Post" id="vYK-Xh-h1W">
+                        <barButtonItem key="rightBarButtonItem" title="Next" id="vYK-Xh-h1W">
                             <color key="tintColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                            <connections>
+                                <action selector="onPostButtonClick:" destination="Z2k-yo-t35" id="PZE-eo-B4s"/>
+                            </connections>
                         </barButtonItem>
                     </navigationItem>
                     <connections>
@@ -476,9 +484,8 @@
                         <outlet property="videoPlayerView" destination="r7z-8x-l7B" id="h5G-ON-AG3"/>
                     </connections>
                 </viewController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="VHR-NB-LBT" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="6661" y="-295"/>
+            <point key="canvasLocation" x="7287" y="-441"/>
         </scene>
         <!--Register View Controller-->
         <scene sceneID="gCc-mG-uMy">
