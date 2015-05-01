@@ -18,7 +18,7 @@ class UserPostTableViewCell: UITableViewCell {
     @IBOutlet weak var videoImageView: UIImageView! {
         didSet {
             if self._videoURL != nil {
-                var thumbnail : UIImage = FileUtils.generateThumbnail(self._videoURL, size: videoImageView.frame.size)
+                var thumbnail : UIImage = FileUtils.generateThumbnail(self._videoURL, size: videoImageView.frame.size, isPortrait : false)
                 videoImageView.clipsToBounds = true
                 videoImageView.image = thumbnail
             }
@@ -33,7 +33,8 @@ class UserPostTableViewCell: UITableViewCell {
             self._videoURL = newValue
             
             if videoImageView != nil {
-                var thumbnail : UIImage = FileUtils.generateThumbnail(newValue, size: videoImageView.frame.size)
+                println(videoImageView.frame.size.height.description + " " + videoImageView.frame.size.width.description)
+                var thumbnail : UIImage = FileUtils.generateThumbnail(newValue, size: videoImageView.frame.size, isPortrait : false)
                 videoImageView.clipsToBounds = true
                 videoImageView.image = thumbnail
             }

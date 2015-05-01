@@ -74,7 +74,7 @@ class RecordMessageController: UIViewController, PBJVisionDelegate {
         vision.cameraMode = PBJCameraMode.Video
         vision.cameraOrientation = PBJCameraOrientation.Portrait
         vision.focusMode = PBJFocusMode.ContinuousAutoFocus
-        vision.outputFormat = PBJOutputFormat.Preset
+        vision.outputFormat = PBJOutputFormat.Square
         vision.maximumCaptureDuration = CMTimeMakeWithSeconds(Float64(Constants.maxVideoDurationInSec), Constants.videoFramesPerSec)
         vision.startPreview()
     }

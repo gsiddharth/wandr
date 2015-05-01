@@ -179,9 +179,11 @@
                         <rect key="frame" x="0.0" y="0.0" width="600" height="536"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <tableView autoresizesSubviews="NO" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="none" rowHeight="500" sectionHeaderHeight="1" sectionFooterHeight="5" translatesAutoresizingMaskIntoConstraints="NO" id="hV1-Jy-B15">
+                            <tableView autoresizesSubviews="NO" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" allowsSelection="NO" showsSelectionImmediatelyOnTouchBegin="NO" rowHeight="500" sectionHeaderHeight="1" sectionFooterHeight="5" translatesAutoresizingMaskIntoConstraints="NO" id="hV1-Jy-B15">
                                 <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <color key="tintColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                                <inset key="separatorInset" minX="15" minY="0.0" maxX="0.0" maxY="0.0"/>
                                 <variation key="widthClass=compact" fixedFrame="YES">
                                     <rect key="frame" x="0.0" y="0.0" width="400" height="536"/>
                                 </variation>
@@ -237,7 +239,7 @@
                                 <constraints>
                                     <constraint firstAttribute="width" constant="320" id="7vT-Ar-Yif"/>
                                     <constraint firstAttribute="height" constant="480" id="SIe-L8-Rbe">
-                                        <variation key="widthClass=compact" constant="426"/>
+                                        <variation key="widthClass=compact" constant="320"/>
                                     </constraint>
                                 </constraints>
                                 <variation key="default">
@@ -246,7 +248,8 @@
                                         <exclude reference="SIe-L8-Rbe"/>
                                     </mask>
                                 </variation>
-                                <variation key="widthClass=compact">
+                                <variation key="widthClass=compact" misplaced="YES">
+                                    <rect key="frame" x="140" y="0.0" width="320" height="426"/>
                                     <mask key="constraints">
                                         <include reference="7vT-Ar-Yif"/>
                                         <include reference="SIe-L8-Rbe"/>
@@ -269,7 +272,8 @@
                                         <exclude reference="nXB-kd-Tc9"/>
                                     </mask>
                                 </variation>
-                                <variation key="widthClass=compact">
+                                <variation key="widthClass=compact" misplaced="YES">
+                                    <rect key="frame" x="280" y="540" width="40" height="40"/>
                                     <mask key="constraints">
                                         <include reference="d7w-Hb-H6s"/>
                                         <include reference="nXB-kd-Tc9"/>
@@ -389,7 +393,7 @@
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="480" id="k1d-iF-heH">
-                                        <variation key="widthClass=compact" constant="426"/>
+                                        <variation key="widthClass=compact" constant="320"/>
                                     </constraint>
                                     <constraint firstAttribute="width" constant="320" id="laY-RZ-Ukt"/>
                                 </constraints>
@@ -399,7 +403,8 @@
                                         <exclude reference="laY-RZ-Ukt"/>
                                     </mask>
                                 </variation>
-                                <variation key="widthClass=compact">
+                                <variation key="widthClass=compact" misplaced="YES">
+                                    <rect key="frame" x="140" y="0.0" width="320" height="426"/>
                                     <mask key="constraints">
                                         <include reference="k1d-iF-heH"/>
                                         <include reference="laY-RZ-Ukt"/>
@@ -419,7 +424,8 @@
                                         <exclude reference="WET-eM-580"/>
                                     </mask>
                                 </variation>
-                                <variation key="widthClass=compact">
+                                <variation key="widthClass=compact" misplaced="YES">
+                                    <rect key="frame" x="280" y="550" width="40" height="40"/>
                                     <mask key="constraints">
                                         <include reference="5ew-OT-N5e"/>
                                         <include reference="WET-eM-580"/>
@@ -497,6 +503,7 @@
                         <viewControllerLayoutGuide type="bottom" id="dMr-Jl-0Eg"/>
                     </layoutGuides>
                     <view key="view" contentMode="scaleToFill" id="loq-Th-7Ur">
+                        <rect key="frame" x="0.0" y="0.0" width="600" height="536"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" keyboardDismissMode="onDrag" text="Message" textAlignment="center" translatesAutoresizingMaskIntoConstraints="NO" id="0RW-Yo-dpx" customClass="PostMessageTextView" customModule="Wander" customModuleProvider="target">
@@ -505,9 +512,8 @@
                                 <color key="textColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="18"/>
                                 <textInputTraits key="textInputTraits"/>
-                                <variation key="widthClass=compact" misplaced="YES">
+                                <variation key="widthClass=compact">
                                     <fontDescription key="fontDescription" name="HelveticaNeue" family="Helvetica Neue" pointSize="18"/>
-                                    <rect key="frame" x="-11" y="-13" width="411" height="549"/>
                                 </variation>
                             </textView>
                         </subviews>
@@ -523,10 +529,10 @@
                                 <exclude reference="0RW-Yo-dpx"/>
                             </mask>
                             <mask key="constraints">
+                                <exclude reference="Pom-Ac-WmY"/>
                                 <exclude reference="1oI-sA-uMp"/>
                                 <exclude reference="b86-LA-tcL"/>
                                 <exclude reference="kfA-Iq-vIo"/>
-                                <exclude reference="Pom-Ac-WmY"/>
                             </mask>
                         </variation>
                         <variation key="widthClass=compact">
@@ -534,10 +540,10 @@
                                 <include reference="0RW-Yo-dpx"/>
                             </mask>
                             <mask key="constraints">
+                                <include reference="Pom-Ac-WmY"/>
                                 <include reference="1oI-sA-uMp"/>
                                 <include reference="b86-LA-tcL"/>
                                 <include reference="kfA-Iq-vIo"/>
-                                <include reference="Pom-Ac-WmY"/>
                             </mask>
                         </variation>
                     </view>
@@ -894,7 +900,7 @@
         </scene>
     </scenes>
     <inferredMetricsTieBreakers>
-        <segue reference="1Qj-JZ-Z4l"/>
+        <segue reference="lYC-7M-L8Q"/>
         <segue reference="Tql-ko-zoF"/>
     </inferredMetricsTieBreakers>
     <color key="tintColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>

@@ -104,7 +104,12 @@ class FileUtils {
         })
     }
     
-    static func generateThumbnail(url : NSURL!, size : CGSize) -> UIImage {
+    static func generateThumbnail(url : NSURL!, size : CGSize, isPortrait : Bool) -> UIImage {
+        var newsize = size
+        if isPortrait {
+            newsize = CGSizeMake(size.height, size.width)
+        }
+        
         var asset : AVAsset = AVAsset.assetWithURL(url) as! AVAsset
         var assetImgGenerate : AVAssetImageGenerator = AVAssetImageGenerator(asset: asset)
         assetImgGenerate.appliesPreferredTrackTransform = true
@@ -112,7 +117,7 @@ class FileUtils {
         var time : CMTime = CMTimeMake(1, 30)
         var img : CGImageRef = assetImgGenerate.copyCGImageAtTime(time, actualTime: nil, error: &error)
         var frameImg : UIImage = UIImage(CGImage: img)!
-        var scaledImage = FileUtils.imageWithImage(frameImg, scaledToSize : size)
+        var scaledImage = FileUtils.imageWithImage(frameImg, scaledToSize : newsize)
         return scaledImage
     }
     
