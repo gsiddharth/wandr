@@ -14,44 +14,108 @@
                 <rect key="frame" x="0.0" y="0.0" width="320" height="43"/>
                 <autoresizingMask key="autoresizingMask"/>
                 <subviews>
-                    <button opaque="NO" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Ggq-FA-GEY">
-                        <rect key="frame" x="326" y="406" width="76" height="30"/>
-                        <fontDescription key="fontDescription" type="system" pointSize="12"/>
-                        <state key="normal" title="Comment">
-                            <color key="titleColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
-                            <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
-                        </state>
-                    </button>
-                    <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="BBw-Gi-4YG">
+                    <imageView userInteractionEnabled="NO" contentMode="center" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="BBw-Gi-4YG">
                         <rect key="frame" x="0.0" y="0.0" width="421" height="398"/>
                         <constraints>
-                            <constraint firstAttribute="width" constant="400" id="6rw-tY-UJ8"/>
-                            <constraint firstAttribute="width" constant="300" id="LXK-Fl-LOY"/>
-                            <constraint firstAttribute="height" constant="400" id="leO-Jp-20c"/>
+                            <constraint firstAttribute="width" constant="320" id="AlW-Jd-gSB"/>
+                            <constraint firstAttribute="height" constant="426" id="pbP-bT-595"/>
                         </constraints>
                         <variation key="default">
                             <mask key="constraints">
-                                <exclude reference="LXK-Fl-LOY"/>
+                                <exclude reference="AlW-Jd-gSB"/>
+                                <exclude reference="pbP-bT-595"/>
+                            </mask>
+                        </variation>
+                        <variation key="widthClass=compact">
+                            <mask key="constraints">
+                                <include reference="AlW-Jd-gSB"/>
+                                <include reference="pbP-bT-595"/>
                             </mask>
                         </variation>
                     </imageView>
+                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="JQq-xm-SpS">
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstAttribute="height" constant="37" id="Vnv-tA-VSe"/>
+                            <constraint firstAttribute="width" constant="320" id="ztn-m3-2Zg"/>
+                        </constraints>
+                        <variation key="default">
+                            <mask key="constraints">
+                                <exclude reference="Vnv-tA-VSe"/>
+                                <exclude reference="ztn-m3-2Zg"/>
+                            </mask>
+                        </variation>
+                        <variation key="widthClass=compact" misplaced="YES">
+                            <rect key="frame" x="0.0" y="0.0" width="320" height="37"/>
+                            <mask key="constraints">
+                                <include reference="Vnv-tA-VSe"/>
+                                <include reference="ztn-m3-2Zg"/>
+                            </mask>
+                        </variation>
+                    </view>
+                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="epH-XK-uve">
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstAttribute="width" constant="320" id="Jza-OP-FxO"/>
+                            <constraint firstAttribute="height" constant="37" id="S7F-jR-g0z"/>
+                        </constraints>
+                        <variation key="default">
+                            <mask key="constraints">
+                                <exclude reference="Jza-OP-FxO"/>
+                                <exclude reference="S7F-jR-g0z"/>
+                            </mask>
+                        </variation>
+                        <variation key="widthClass=compact" misplaced="YES">
+                            <rect key="frame" x="0.0" y="462" width="320" height="37"/>
+                            <mask key="constraints">
+                                <include reference="Jza-OP-FxO"/>
+                                <include reference="S7F-jR-g0z"/>
+                            </mask>
+                        </variation>
+                    </view>
                 </subviews>
                 <constraints>
-                    <constraint firstItem="Ggq-FA-GEY" firstAttribute="top" secondItem="BBw-Gi-4YG" secondAttribute="bottom" constant="20" id="1kC-Mq-tCe"/>
+                    <constraint firstAttribute="centerX" secondItem="JQq-xm-SpS" secondAttribute="centerX" id="K0B-kJ-Q0P"/>
                     <constraint firstAttribute="centerX" secondItem="BBw-Gi-4YG" secondAttribute="centerX" constant="400" id="LHI-lo-8Kg"/>
-                    <constraint firstAttribute="trailingMargin" secondItem="Ggq-FA-GEY" secondAttribute="trailing" constant="100" id="e6g-XN-Mnc"/>
-                    <constraint firstItem="Ggq-FA-GEY" firstAttribute="bottom" secondItem="H2p-sc-9uM" secondAttribute="bottomMargin" constant="20" id="knM-7w-b4h"/>
-                    <constraint firstAttribute="trailingMargin" secondItem="Ggq-FA-GEY" secondAttribute="trailing" constant="20" id="uzQ-GI-fjX"/>
+                    <constraint firstAttribute="centerX" secondItem="BBw-Gi-4YG" secondAttribute="centerX" id="Mck-lg-Bp4"/>
+                    <constraint firstItem="JQq-xm-SpS" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="topMargin" id="YE7-0c-PXy"/>
+                    <constraint firstAttribute="centerY" secondItem="BBw-Gi-4YG" secondAttribute="centerY" id="a3g-Wy-lcS"/>
+                    <constraint firstAttribute="centerX" secondItem="epH-XK-uve" secondAttribute="centerX" id="dFT-ZO-fuR"/>
+                    <constraint firstAttribute="bottomMargin" secondItem="epH-XK-uve" secondAttribute="bottom" id="wS3-yh-ECX"/>
                 </constraints>
                 <variation key="default">
+                    <mask key="subviews">
+                        <exclude reference="JQq-xm-SpS"/>
+                        <exclude reference="epH-XK-uve"/>
+                    </mask>
                     <mask key="constraints">
+                        <exclude reference="K0B-kJ-Q0P"/>
+                        <exclude reference="YE7-0c-PXy"/>
                         <exclude reference="LHI-lo-8Kg"/>
-                        <exclude reference="uzQ-GI-fjX"/>
+                        <exclude reference="Mck-lg-Bp4"/>
+                        <exclude reference="a3g-Wy-lcS"/>
+                        <exclude reference="dFT-ZO-fuR"/>
+                        <exclude reference="wS3-yh-ECX"/>
+                    </mask>
+                </variation>
+                <variation key="widthClass=compact">
+                    <mask key="subviews">
+                        <include reference="JQq-xm-SpS"/>
+                        <include reference="epH-XK-uve"/>
+                    </mask>
+                    <mask key="constraints">
+                        <include reference="K0B-kJ-Q0P"/>
+                        <include reference="YE7-0c-PXy"/>
+                        <include reference="Mck-lg-Bp4"/>
+                        <include reference="a3g-Wy-lcS"/>
+                        <include reference="dFT-ZO-fuR"/>
+                        <include reference="wS3-yh-ECX"/>
                     </mask>
                 </variation>
             </tableViewCellContentView>
             <connections>
-                <outlet property="showCommentsButton" destination="Ggq-FA-GEY" id="yz8-ZA-9bt"/>
                 <outlet property="videoImageView" destination="BBw-Gi-4YG" id="95O-sN-t3e"/>
             </connections>
             <point key="canvasLocation" x="55.5" y="163.5"/>

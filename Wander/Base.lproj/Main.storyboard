@@ -179,7 +179,7 @@
                         <rect key="frame" x="0.0" y="0.0" width="600" height="536"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <tableView autoresizesSubviews="NO" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="none" rowHeight="510" sectionHeaderHeight="20" sectionFooterHeight="20" translatesAutoresizingMaskIntoConstraints="NO" id="hV1-Jy-B15">
+                            <tableView autoresizesSubviews="NO" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="none" rowHeight="500" sectionHeaderHeight="1" sectionFooterHeight="5" translatesAutoresizingMaskIntoConstraints="NO" id="hV1-Jy-B15">
                                 <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <variation key="widthClass=compact" fixedFrame="YES">
@@ -370,12 +370,11 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="jYc-oE-3fW" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="4966.5" y="-337"/>
+            <point key="canvasLocation" x="5134.5" y="-409"/>
         </scene>
         <!--Review Video Controller-->
         <scene sceneID="EZh-Ta-5aw">
             <objects>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="VHR-NB-LBT" userLabel="First Responder" sceneMemberID="firstResponder"/>
                 <viewController storyboardIdentifier="postVideoController" useStoryboardIdentifierAsRestorationIdentifier="YES" id="Z2k-yo-t35" customClass="ReviewVideoController" customModule="Wander" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="A1S-Ua-Rdx"/>
@@ -476,6 +475,7 @@
                             <color key="tintColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                             <connections>
                                 <action selector="onPostButtonClick:" destination="Z2k-yo-t35" id="PZE-eo-B4s"/>
+                                <segue destination="KgB-7G-o33" kind="show" id="aZZ-W9-E8a"/>
                             </connections>
                         </barButtonItem>
                     </navigationItem>
@@ -484,8 +484,76 @@
                         <outlet property="videoPlayerView" destination="r7z-8x-l7B" id="h5G-ON-AG3"/>
                     </connections>
                 </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="VHR-NB-LBT" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="7287" y="-441"/>
+            <point key="canvasLocation" x="6705" y="-1163"/>
+        </scene>
+        <!--Post Video Controller-->
+        <scene sceneID="erO-Ye-rTz">
+            <objects>
+                <viewController id="9IX-6w-o4x" customClass="PostVideoController" customModule="Wander" customModuleProvider="target" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="nfs-GA-Tfv"/>
+                        <viewControllerLayoutGuide type="bottom" id="dMr-Jl-0Eg"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="loq-Th-7Ur">
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" keyboardDismissMode="onDrag" text="Message" textAlignment="center" translatesAutoresizingMaskIntoConstraints="NO" id="0RW-Yo-dpx" customClass="PostMessageTextView" customModule="Wander" customModuleProvider="target">
+                                <rect key="frame" x="0.0" y="0.0" width="240" height="128"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <color key="textColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="18"/>
+                                <textInputTraits key="textInputTraits"/>
+                                <variation key="widthClass=compact" misplaced="YES">
+                                    <fontDescription key="fontDescription" name="HelveticaNeue" family="Helvetica Neue" pointSize="18"/>
+                                    <rect key="frame" x="-11" y="-13" width="411" height="549"/>
+                                </variation>
+                            </textView>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstItem="0RW-Yo-dpx" firstAttribute="top" secondItem="loq-Th-7Ur" secondAttribute="topMargin" id="1oI-sA-uMp"/>
+                            <constraint firstItem="dMr-Jl-0Eg" firstAttribute="top" secondItem="0RW-Yo-dpx" secondAttribute="bottom" id="Pom-Ac-WmY"/>
+                            <constraint firstAttribute="trailingMargin" secondItem="0RW-Yo-dpx" secondAttribute="trailing" id="b86-LA-tcL"/>
+                            <constraint firstItem="0RW-Yo-dpx" firstAttribute="leading" secondItem="loq-Th-7Ur" secondAttribute="leadingMargin" id="kfA-Iq-vIo"/>
+                        </constraints>
+                        <variation key="default">
+                            <mask key="subviews">
+                                <exclude reference="0RW-Yo-dpx"/>
+                            </mask>
+                            <mask key="constraints">
+                                <exclude reference="1oI-sA-uMp"/>
+                                <exclude reference="b86-LA-tcL"/>
+                                <exclude reference="kfA-Iq-vIo"/>
+                                <exclude reference="Pom-Ac-WmY"/>
+                            </mask>
+                        </variation>
+                        <variation key="widthClass=compact">
+                            <mask key="subviews">
+                                <include reference="0RW-Yo-dpx"/>
+                            </mask>
+                            <mask key="constraints">
+                                <include reference="1oI-sA-uMp"/>
+                                <include reference="b86-LA-tcL"/>
+                                <include reference="kfA-Iq-vIo"/>
+                                <include reference="Pom-Ac-WmY"/>
+                            </mask>
+                        </variation>
+                    </view>
+                    <navigationItem key="navigationItem" id="LvU-aF-eon">
+                        <barButtonItem key="rightBarButtonItem" title="Post" id="eze-me-GHV">
+                            <color key="tintColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                        </barButtonItem>
+                    </navigationItem>
+                    <simulatedNavigationBarMetrics key="simulatedTopBarMetrics" translucent="NO" prompted="NO"/>
+                    <connections>
+                        <outlet property="messageTextView" destination="0RW-Yo-dpx" id="USF-Yi-23c"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="ON6-VL-dN5" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="8782.5" y="-1163"/>
         </scene>
         <!--Register View Controller-->
         <scene sceneID="gCc-mG-uMy">
@@ -806,9 +874,27 @@
             </objects>
             <point key="canvasLocation" x="5940" y="-415"/>
         </scene>
+        <!--Navigation Controller-->
+        <scene sceneID="hCd-KE-vPd">
+            <objects>
+                <navigationController automaticallyAdjustsScrollViewInsets="NO" id="KgB-7G-o33" sceneMemberID="viewController">
+                    <toolbarItems/>
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="eyJ-ro-QZe">
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                    </navigationBar>
+                    <nil name="viewControllers"/>
+                    <connections>
+                        <segue destination="9IX-6w-o4x" kind="relationship" relationship="rootViewController" id="Boq-bn-Uws"/>
+                    </connections>
+                </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="JaH-cm-Mzw" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="7864.5" y="-1163"/>
+        </scene>
     </scenes>
     <inferredMetricsTieBreakers>
-        <segue reference="lYC-7M-L8Q"/>
+        <segue reference="1Qj-JZ-Z4l"/>
         <segue reference="Tql-ko-zoF"/>
     </inferredMetricsTieBreakers>
     <color key="tintColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>

@@ -12,4 +12,5 @@ enum Errors : String {
     case Success = "Success"
     case UserExists = "User already exists"
     case IncorrectLoginPassword = "Incorrect login or password"
+    case AlbumAddError = "Failed to add album"
 }

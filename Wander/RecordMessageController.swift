@@ -147,7 +147,7 @@ class RecordMessageController: UIViewController, PBJVisionDelegate {
         
         FileUtils.addVideoToAlbum(self.library, videourl : Messages.lastVideoFile, album: Constants.albumName)
         
-        var postVideoController : PostVideoController = self.storyboard?.instantiateViewControllerWithIdentifier("postVideoController") as! PostVideoController
+        var postVideoController : ReviewVideoController = self.storyboard?.instantiateViewControllerWithIdentifier("postVideoController") as! ReviewVideoController
         var navigationController : UINavigationController = UINavigationController(rootViewController: postVideoController)
         self.presentViewController(navigationController, animated: true, completion: nil)
 

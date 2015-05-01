@@ -11,6 +11,10 @@ import MediaPlayer
 
 class UserPostTableViewCell: UITableViewCell {
   
+    var _videoURL : NSURL!
+    
+    @IBOutlet weak var showCommentsButton: UIButton!
+    
     @IBOutlet weak var videoImageView: UIImageView! {
         didSet {
             if self._videoURL != nil {
@@ -21,9 +25,6 @@ class UserPostTableViewCell: UITableViewCell {
         }
     }
     
-    @IBOutlet weak var showCommentsButton: UIButton!
-    
-    var _videoURL : NSURL!
     var videoURL : NSURL! {
         get {
             return self._videoURL
@@ -49,5 +50,5 @@ class UserPostTableViewCell: UITableViewCell {
         super.setSelected(selected, animated: animated)
         // Configure the view for the selected state
     }
-    
+
 }

@@ -12,4 +12,6 @@ class Constants {
     static var albumName : String = "Wandr"
     static var maxVideoDurationInSec : Double = 5
     static var videoFramesPerSec : Int32 = 600
+    static var videoWidth : Int32 = 320
+    static var videoHeight : Int32 = 426
 }
