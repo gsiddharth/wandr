@@ -35,6 +35,8 @@
 		3590928D1A99A8F200723DBD /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3590928C1A99A8F200723DBD /* LoginViewController.swift */; };
 		3590928F1A99AB6B00723DBD /* RegisterViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3590928E1A99AB6B00723DBD /* RegisterViewController.swift */; };
 		359092921A9A40BD00723DBD /* RecordMessageController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 359092911A9A40BD00723DBD /* RecordMessageController.swift */; };
+		35EBA98A1AF3815300ED9FDC /* PostVideoController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 35EBA9891AF3815300ED9FDC /* PostVideoController.swift */; };
+		35EBA98D1AF383F900ED9FDC /* PostMessageTextView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 35EBA98C1AF383F900ED9FDC /* PostMessageTextView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -82,6 +84,8 @@
 		3590928E1A99AB6B00723DBD /* RegisterViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RegisterViewController.swift; sourceTree = "<group>"; };
 		359092901A9A404A00723DBD /* Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "Bridging-Header.h"; sourceTree = "<group>"; };
 		359092911A9A40BD00723DBD /* RecordMessageController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RecordMessageController.swift; sourceTree = "<group>"; };
+		35EBA9891AF3815300ED9FDC /* PostVideoController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PostVideoController.swift; sourceTree = "<group>"; };
+		35EBA98C1AF383F900ED9FDC /* PostMessageTextView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PostMessageTextView.swift; sourceTree = "<group>"; };
 		5B020F186947E7D801C12849 /* Pods-Wander.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Wander.release.xcconfig"; path = "Pods/Target Support Files/Pods-Wander/Pods-Wander.release.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -117,6 +121,7 @@
 		35633EC01AE23D70002042B5 /* Views */ = {
 			isa = PBXGroup;
 			children = (
+				35EBA98B1AF383BE00ED9FDC /* TextViews */,
 				35633ED11AEAA41A002042B5 /* Cells */,
 				35633EB91ADCD5D4002042B5 /* Buttons */,
 			);
@@ -219,6 +224,7 @@
 				359092911A9A40BD00723DBD /* RecordMessageController.swift */,
 				3586FBD51AC0A702000022E6 /* HomeViewController.swift */,
 				35633EC41AE3C113002042B5 /* ReviewVideoController.swift */,
+				35EBA9891AF3815300ED9FDC /* PostVideoController.swift */,
 				35633ECE1AE433F0002042B5 /* Main.storyboard */,
 				359092731A99374400723DBD /* Images.xcassets */,
 				35633ECA1AE40F3E002042B5 /* play.png */,
@@ -254,6 +260,14 @@
 				359092811A99374500723DBD /* Info.plist */,
 			);
 			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
+		35EBA98B1AF383BE00ED9FDC /* TextViews */ = {
+			isa = PBXGroup;
+			children = (
+				35EBA98C1AF383F900ED9FDC /* PostMessageTextView.swift */,
+			);
+			name = TextViews;
 			sourceTree = "<group>";
 		};
 		E1F84137462399D7507DDD12 /* Pods */ = {
@@ -436,6 +450,7 @@
 				35633EBB1ADCD5FD002042B5 /* CircleProgressButton.swift in Sources */,
 				359092921A9A40BD00723DBD /* RecordMessageController.swift in Sources */,
 				3590926F1A99374400723DBD /* ViewController.swift in Sources */,
+				35EBA98D1AF383F900ED9FDC /* PostMessageTextView.swift in Sources */,
 				3584BCCA1ABE159D0097DCA9 /* Errors.swift in Sources */,
 				3586FBD81AC8163D000022E6 /* VideoCameraInputManager.swift in Sources */,
 				3586FBD61AC0A702000022E6 /* HomeViewController.swift in Sources */,
@@ -448,6 +463,7 @@
 				35633ECD1AE41BE1002042B5 /* Messages.swift in Sources */,
 				3590928F1A99AB6B00723DBD /* RegisterViewController.swift in Sources */,
 				3584BCC81ABDCB000097DCA9 /* User.swift in Sources */,
+				35EBA98A1AF3815300ED9FDC /* PostVideoController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

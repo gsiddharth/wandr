@@ -10,12 +10,12 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "Wander/FileUtils.swift"
-            timestampString = "451647824.024393"
+            timestampString = "452179874.634948"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "115"
-            endingLineNumber = "115"
-            landmarkName = "generateThumbnail(_:size:)"
+            startingLineNumber = "120"
+            endingLineNumber = "120"
+            landmarkName = "generateThumbnail(_:size:isPortrait:)"
             landmarkType = "5">
          </BreakpointContent>
       </BreakpointProxy>
