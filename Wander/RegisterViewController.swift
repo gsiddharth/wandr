@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import SwiftHTTP
 
 class RegisterViewController: UIViewController {
 
@@ -40,10 +41,57 @@ class RegisterViewController: UIViewController {
         if identifier == "ProfileSuccessSegue" {
 
             if passwordTextField.text == password2TextField.text {
-                return true
+                
+                if StringUtils.validEmail(emailTextField.text) {
+                
+                    var request = HTTPTask()
+                
+                    request.requestSerializer = JSONRequestSerializer()
+                    request.responseSerializer = JSONResponseSerializer()
+
+                    let params: Dictionary<String, AnyObject> = Dictionary<String, AnyObject>()
+
+                    request.POST(Networking.instance.getRegisterURL(usernameTextField.text, name: nameTextField.text, password: passwordTextField.text, email : emailTextField.text, phone : "", gender: ""), parameters: params, success: { (response : HTTPResponse) -> Void in
+                        
+                        if let dict = response.responseObject as? Dictionary<String,AnyObject> {
+                            
+                            if let err: AnyObject = dict["ErrorDescription"] {
+                                dispatch_async(dispatch_get_main_queue()) {
+                                    self.statusLabel.text = err as? String
+                                }
+                            }else{
+                                var loginViewController : LoginViewController = self.storyboard?.instantiateViewControllerWithIdentifier("loginViewController") as! LoginViewController
+                                
+                                var navigationController : UINavigationController = UINavigationController(rootViewController: loginViewController)
+                                
+                                dispatch_async(dispatch_get_main_queue()) {
+                                    self.presentViewController(navigationController, animated: true, completion: nil)
+                                }
+                            }
+                        }
+                        
+                        }, failure: { (err : NSError, response : HTTPResponse?) -> Void in
+                        
+                    })
+                    
+                    return false
+                    
+                } else {
+                    
+                    dispatch_async(dispatch_get_main_queue()) {
+                        self.statusLabel.text = "Invalid email"
+                    }
+                    
+                    return false
+                }
             } else {
-                self.statusLabel.text = "Passwords do not match"
+                
+                dispatch_async(dispatch_get_main_queue()) {
+                    self.statusLabel.text = "Passwords do not match"
+                }
+                
                 return false
+                
             }
             
         }

@@ -143,12 +143,19 @@ class RecordMessageController: UIViewController, PBJVisionDelegate {
         
         var videoPath : String = videoDict?[PBJVisionVideoPathKey] as! String
         
-        Messages.lastVideoFile =  NSURL(fileURLWithPath: videoPath)
+        FileUtils.addVideoToAlbum(self.library, videourl : NSURL(fileURLWithPath: videoPath), album: Constants.albumName)
         
-        FileUtils.addVideoToAlbum(self.library, videourl : Messages.lastVideoFile, album: Constants.albumName)
+        loadReviewVideoController(videoPath)
         
-        var postVideoController : ReviewVideoController = self.storyboard?.instantiateViewControllerWithIdentifier("postVideoController") as! ReviewVideoController
-        var navigationController : UINavigationController = UINavigationController(rootViewController: postVideoController)
+    }
+    
+    func loadReviewVideoController(videoFilePath : String){
+        
+        var reviewVideoController : ReviewVideoController = self.storyboard?.instantiateViewControllerWithIdentifier("reviewVideoController") as! ReviewVideoController
+        reviewVideoController.setVideoFilePath(videoFilePath)
+        
+        var navigationController : UINavigationController = UINavigationController(rootViewController: reviewVideoController)
+        
         self.presentViewController(navigationController, animated: true, completion: nil)
 
     }
@@ -170,7 +177,7 @@ class RecordMessageController: UIViewController, PBJVisionDelegate {
     }
     
     override func shouldPerformSegueWithIdentifier(identifier: String?, sender: AnyObject?) -> Bool {
-        if identifier == "recordToPostSegue" {
+        if identifier == "recordToReviewSegue" {
             var vision = PBJVision.sharedInstance()
             vision.endVideoCapture()
             return false

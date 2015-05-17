@@ -12,11 +12,12 @@ import Foundation
 import QuartzCore
 import MediaPlayer
 import Player
+import SwiftHTTP
 
 
-class ReviewVideoController: UIViewController, PlayerDelegate {
+class ReviewVideoController: UIViewController, PlayerDelegate, VideoMessageProcessorDelegate {
 
-     var player : Player!
+    var player : Player!
     
     @IBOutlet weak var videoPlayerView: UIView!
     
@@ -26,9 +27,13 @@ class ReviewVideoController: UIViewController, PlayerDelegate {
         }
     }
     
+    var videoFile : NSURL!
+    
     override func viewDidLoad() {
+        
         super.viewDidLoad()
-        if Messages.lastVideoFile != nil {
+        
+        if self.videoFile != nil {
             self.navigationController!.navigationBar.translucent = false;
             self.player = Player()
             self.player.view.frame = self.videoPlayerView.bounds
@@ -39,9 +44,13 @@ class ReviewVideoController: UIViewController, PlayerDelegate {
             self.player.didMoveToParentViewController(self)
             self.player.fillMode = AVLayerVideoGravityResizeAspectFill
             self.player.delegate = self
-            self.player.path = Messages.lastVideoFile.description
+            self.player.path = self.videoFile.description
             self.player.playFromBeginning()
         }
+    }
+    
+    func setVideoFilePath(path : String) {
+        videoFile = NSURL(fileURLWithPath: path)!
     }
     
     @IBAction func onPlayPauseButtonClick(sender: PlayPauseButton) {
@@ -56,10 +65,27 @@ class ReviewVideoController: UIViewController, PlayerDelegate {
         }
     }
     
-    @IBAction func onPostButtonClick(sender: AnyObject) {
-
+    override func shouldPerformSegueWithIdentifier(identifier: String?, sender: AnyObject?) -> Bool {
+        if identifier == "reviewToPostSegue" {
+            loadPostVideoController()
+            return false
+        }
+        
+        return false
     }
-    
+
+    func loadPostVideoController(){
+        
+        var postVideoController : PostVideoController = self.storyboard?.instantiateViewControllerWithIdentifier("postVideoController") as! PostVideoController
+        
+        postVideoController.setVideoFilePath(videoFile.path!)
+        
+        var navigationController : UINavigationController = UINavigationController(rootViewController: postVideoController)
+        
+        self.presentViewController(navigationController, animated: true, completion: nil)
+        
+    }
+
     func playerBufferingStateDidChange(player: Player) {
         if player.playbackState == PlaybackState.Paused || player.playbackState == PlaybackState.Stopped  {
             playPauseButton.playing = false

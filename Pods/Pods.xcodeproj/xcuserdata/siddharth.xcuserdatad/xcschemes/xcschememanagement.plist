@@ -14,6 +14,11 @@
 			<key>isShown</key>
 			<false/>
 		</dict>
+		<key>Pods-Wander-SwiftHTTP.xcscheme</key>
+		<dict>
+			<key>isShown</key>
+			<false/>
+		</dict>
 		<key>Pods-Wander.xcscheme</key>
 		<dict>
 			<key>isShown</key>
@@ -22,17 +27,22 @@
 	</dict>
 	<key>SuppressBuildableAutocreation</key>
 	<dict>
-		<key>2B59BC1AC0609E4925F341B2</key>
+		<key>3B27A3CA263B9DFAA5809EBE</key>
 		<dict>
 			<key>primary</key>
 			<true/>
 		</dict>
-		<key>95DF6F93378583C0E225ADFF</key>
+		<key>A371FB8574F43E10EBFA4417</key>
 		<dict>
 			<key>primary</key>
 			<true/>
 		</dict>
-		<key>C52B8D4CB0E8C3EC4666CEA4</key>
+		<key>A748D2D0E002EE1003FD4229</key>
+		<dict>
+			<key>primary</key>
+			<true/>
+		</dict>
+		<key>E25E6A1400CE2407FD0B0BB9</key>
 		<dict>
 			<key>primary</key>
 			<true/>

@@ -14,4 +14,5 @@ class Constants {
     static var videoFramesPerSec : Int32 = 600
     static var videoWidth : Int32 = 320
     static var videoHeight : Int32 = 320
+    
 }

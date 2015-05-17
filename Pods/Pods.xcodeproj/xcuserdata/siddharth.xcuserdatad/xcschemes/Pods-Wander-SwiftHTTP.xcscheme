@@ -14,9 +14,9 @@
             buildForAnalyzing = "YES">
             <BuildableReference
                BuildableIdentifier = "primary"
-               BlueprintIdentifier = "3B27A3CA263B9DFAA5809EBE"
-               BuildableName = "PBJVision.framework"
-               BlueprintName = "Pods-Wander-PBJVision"
+               BlueprintIdentifier = "A371FB8574F43E10EBFA4417"
+               BuildableName = "SwiftHTTP.framework"
+               BlueprintName = "Pods-Wander-SwiftHTTP"
                ReferencedContainer = "container:Pods.xcodeproj">
             </BuildableReference>
          </BuildActionEntry>

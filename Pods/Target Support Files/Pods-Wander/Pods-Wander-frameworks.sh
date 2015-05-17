@@ -50,8 +50,10 @@ code_sign() {
 if [[ "$CONFIGURATION" == "Debug" ]]; then
   install_framework 'PBJVision.framework'
   install_framework 'Player.framework'
+  install_framework 'SwiftHTTP.framework'
 fi
 if [[ "$CONFIGURATION" == "Release" ]]; then
   install_framework 'PBJVision.framework'
   install_framework 'Player.framework'
+  install_framework 'SwiftHTTP.framework'
 fi
