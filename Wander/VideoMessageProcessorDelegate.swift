@@ -9,5 +9,5 @@
 import Foundation
 
 protocol VideoMessageProcessorDelegate {
-    func setVideoFilePath(path : String)
+    func setVideoFilePath(path : String, length : Float64)
 }

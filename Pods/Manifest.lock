@@ -1,16 +1,25 @@
 PODS:
   - PBJVision (0.4.1)
   - Player (0.0.5)
-  - SwiftHTTP (0.9.4)
+  - SwiftHTTP (0.9.5)
 
 DEPENDENCIES:
   - PBJVision
   - Player
-  - SwiftHTTP (~> 0.9.2)
+  - SwiftHTTP (from `https://github.com/daltoniam/SwiftHTTP`)
+
+EXTERNAL SOURCES:
+  SwiftHTTP:
+    :git: https://github.com/daltoniam/SwiftHTTP
+
+CHECKOUT OPTIONS:
+  SwiftHTTP:
+    :commit: ede6ae397e821137b3ec49dcdde35c4e9d1c8d8d
+    :git: https://github.com/daltoniam/SwiftHTTP
 
 SPEC CHECKSUMS:
   PBJVision: 1d7fb2d44d41eff64cd641ba2b63024da9ab2deb
   Player: b5611abde6be7b3eeeaf57537b3979cd7531daad
-  SwiftHTTP: c2f880b1723e6e97c31517dab29a1b5c0bc1f49d
+  SwiftHTTP: cd7b248bc07db02926ff54cf19b580b78f7abfa1
 
 COCOAPODS: 0.36.4

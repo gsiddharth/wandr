@@ -118,6 +118,7 @@ class FileUtils {
         var img : CGImageRef = assetImgGenerate.copyCGImageAtTime(time, actualTime: nil, error: &error)
         var frameImg : UIImage = UIImage(CGImage: img)!
         var scaledImage = FileUtils.imageWithImage(frameImg, scaledToSize : newsize)
+
         return scaledImage
     }
     

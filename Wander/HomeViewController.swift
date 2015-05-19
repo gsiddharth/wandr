@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import SwiftHTTP
 
 class HomeViewController: UIViewController, UITableViewDataSource, UITableViewDelegate{
     
@@ -31,6 +32,27 @@ class HomeViewController: UIViewController, UITableViewDataSource, UITableViewDe
         
         tableView.registerNib(nib,
             forCellReuseIdentifier: cellTableIdentifier)
+        
+
+        
+        var request = HTTPTask()
+        
+        request.responseSerializer = JSONResponseSerializer()
+        
+        let params: Dictionary<String, AnyObject> = Dictionary<String, AnyObject>()
+        
+        request.POST(Networking.instance.getVideoInformationURL("Mumbai", longitude: 0, latitude: 0), parameters: params) { (response : HTTPResponse) -> Void in
+            
+            if let dict = response.responseObject as? Dictionary<String,AnyObject> {
+                
+                if let err = response.error {
+                    
+                }else{
+                    if let result : = dict["Result"] as? Dictionary<String,AnyObject> {
+                    }
+                }
+            }
+        }
         
         FileUtils.getAllVideo(self.library, album: Constants.albumName) { (url : NSURL) -> Void in
             self.videoURLs.append(url)

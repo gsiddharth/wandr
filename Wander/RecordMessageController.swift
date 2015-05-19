@@ -150,9 +150,12 @@ class RecordMessageController: UIViewController, PBJVisionDelegate {
     }
     
     func loadReviewVideoController(videoFilePath : String){
+
+        var vision = PBJVision.sharedInstance()
         
         var reviewVideoController : ReviewVideoController = self.storyboard?.instantiateViewControllerWithIdentifier("reviewVideoController") as! ReviewVideoController
-        reviewVideoController.setVideoFilePath(videoFilePath)
+
+        reviewVideoController.setVideoFilePath(videoFilePath, length: vision.capturedVideoSeconds)
         
         var navigationController : UINavigationController = UINavigationController(rootViewController: reviewVideoController)
         

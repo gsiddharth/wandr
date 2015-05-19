@@ -28,6 +28,7 @@ class ReviewVideoController: UIViewController, PlayerDelegate, VideoMessageProce
     }
     
     var videoFile : NSURL!
+    var videoLength : Float64!
     
     override func viewDidLoad() {
         
@@ -49,8 +50,9 @@ class ReviewVideoController: UIViewController, PlayerDelegate, VideoMessageProce
         }
     }
     
-    func setVideoFilePath(path : String) {
+    func setVideoFilePath(path : String, length : Float64) {
         videoFile = NSURL(fileURLWithPath: path)!
+        videoLength = length
     }
     
     @IBAction func onPlayPauseButtonClick(sender: PlayPauseButton) {
@@ -78,7 +80,7 @@ class ReviewVideoController: UIViewController, PlayerDelegate, VideoMessageProce
         
         var postVideoController : PostVideoController = self.storyboard?.instantiateViewControllerWithIdentifier("postVideoController") as! PostVideoController
         
-        postVideoController.setVideoFilePath(videoFile.path!)
+        postVideoController.setVideoFilePath(videoFile.path!, length: self.videoLength)
         
         var navigationController : UINavigationController = UINavigationController(rootViewController: postVideoController)
         

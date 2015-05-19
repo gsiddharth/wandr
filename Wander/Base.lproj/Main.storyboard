@@ -207,8 +207,11 @@
                         </variation>
                     </view>
                     <navigationItem key="navigationItem" id="yjq-BR-swW">
-                        <barButtonItem key="leftBarButtonItem" title="Ooo" id="Gwg-s1-ndx"/>
+                        <barButtonItem key="leftBarButtonItem" title="Ooo" id="Gwg-s1-ndx">
+                            <color key="tintColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                        </barButtonItem>
                         <barButtonItem key="rightBarButtonItem" systemItem="add" id="WmK-G6-LZ1">
+                            <color key="tintColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                             <connections>
                                 <segue destination="ECW-Nw-ZPC" kind="showDetail" id="1Qj-JZ-Z4l"/>
                             </connections>
@@ -250,7 +253,8 @@
                                         <exclude reference="SIe-L8-Rbe"/>
                                     </mask>
                                 </variation>
-                                <variation key="widthClass=compact">
+                                <variation key="widthClass=compact" misplaced="YES">
+                                    <rect key="frame" x="140" y="0.0" width="320" height="320"/>
                                     <mask key="constraints">
                                         <include reference="7vT-Ar-Yif"/>
                                         <include reference="SIe-L8-Rbe"/>
@@ -273,7 +277,8 @@
                                         <exclude reference="nXB-kd-Tc9"/>
                                     </mask>
                                 </variation>
-                                <variation key="widthClass=compact">
+                                <variation key="widthClass=compact" misplaced="YES">
+                                    <rect key="frame" x="280" y="476" width="40" height="40"/>
                                     <mask key="constraints">
                                         <include reference="d7w-Hb-H6s"/>
                                         <include reference="nXB-kd-Tc9"/>
@@ -360,6 +365,7 @@
                             </connections>
                         </barButtonItem>
                         <barButtonItem key="rightBarButtonItem" title="Next" id="4nf-7F-aUm">
+                            <color key="tintColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                             <connections>
                                 <segue destination="hUp-Yu-tlr" kind="presentation" identifier="recordToReviewSegue" id="BZS-dc-jSL"/>
                             </connections>
@@ -404,7 +410,8 @@
                                         <exclude reference="laY-RZ-Ukt"/>
                                     </mask>
                                 </variation>
-                                <variation key="widthClass=compact">
+                                <variation key="widthClass=compact" misplaced="YES">
+                                    <rect key="frame" x="140" y="0.0" width="320" height="320"/>
                                     <mask key="constraints">
                                         <include reference="k1d-iF-heH"/>
                                         <include reference="laY-RZ-Ukt"/>
@@ -424,7 +431,8 @@
                                         <exclude reference="WET-eM-580"/>
                                     </mask>
                                 </variation>
-                                <variation key="widthClass=compact">
+                                <variation key="widthClass=compact" misplaced="YES">
+                                    <rect key="frame" x="280" y="486" width="40" height="40"/>
                                     <mask key="constraints">
                                         <include reference="5ew-OT-N5e"/>
                                         <include reference="WET-eM-580"/>
@@ -907,7 +915,7 @@
         </scene>
     </scenes>
     <inferredMetricsTieBreakers>
-        <segue reference="lYC-7M-L8Q"/>
+        <segue reference="1Qj-JZ-Z4l"/>
         <segue reference="Tql-ko-zoF"/>
     </inferredMetricsTieBreakers>
     <color key="tintColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>

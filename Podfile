@@ -6,7 +6,7 @@ use_frameworks!
 target 'Wander' do
 pod 'Player'
 pod 'PBJVision'
-pod 'SwiftHTTP', '~> 0.9.2'
+pod 'SwiftHTTP', :git  => 'https://github.com/daltoniam/SwiftHTTP'
 end
 
 target 'WanderTests' do

@@ -19,7 +19,7 @@ class Networking {
         }
     }
 
-    var _server : String = "192.168.0.100"
+    var _server : String = "192.168.0.104"
     var server : String {
         get {
             return _server
@@ -94,7 +94,7 @@ class Networking {
     
     func setRequestHeaders(inout task : HTTPTask) {
         task.requestSerializer.headers[sessionKeyHeader] = sessionKey
-        task.requestSerializer.headers[sessionSecretHeader] = sessionSecretHeader
+        task.requestSerializer.headers[sessionSecretHeader] = sessionSecret
     }
     
     func getRegisterURL(username: String, name : String, password : String, email :String, phone :String, gender : String) -> String {
@@ -112,6 +112,10 @@ class Networking {
         return st
     }
     
+    func getAuthenticateURL() -> String {
+        var st : String = "http://" + server + ":" + String(port) + "/authenticate"
+        return st
+    }
     
     func getVideoUploadURL() -> String {
         var st : String = "http://" + server + ":" + String(port) + "/video"
@@ -119,4 +123,9 @@ class Networking {
         return st
     }
 
+    func getVideoInformationURL(city : String, longitude : Float, latitude : Float) -> String {
+        var st : String = "http://" + server + ":" + String(port) + "/recommendedvideos/" + city + "/" + longitude.description + "/" + latitude.description
+        
+        return st
+    }
 }

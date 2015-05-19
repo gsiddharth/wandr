@@ -45,21 +45,20 @@ class RegisterViewController: UIViewController {
                 if StringUtils.validEmail(emailTextField.text) {
                 
                     var request = HTTPTask()
-                
-                    request.requestSerializer = JSONRequestSerializer()
+                    
                     request.responseSerializer = JSONResponseSerializer()
-
+                
                     let params: Dictionary<String, AnyObject> = Dictionary<String, AnyObject>()
-
-                    request.POST(Networking.instance.getRegisterURL(usernameTextField.text, name: nameTextField.text, password: passwordTextField.text, email : emailTextField.text, phone : "", gender: ""), parameters: params, success: { (response : HTTPResponse) -> Void in
+                    
+                    request.POST(Networking.instance.getRegisterURL(usernameTextField.text, name: nameTextField.text, password: passwordTextField.text, email : emailTextField.text, phone : "", gender: ""), parameters: params, completionHandler: { (response : HTTPResponse) -> Void in
                         
                         if let dict = response.responseObject as? Dictionary<String,AnyObject> {
-                            
-                            if let err: AnyObject = dict["ErrorDescription"] {
+
+                            if let err = response.error {
                                 dispatch_async(dispatch_get_main_queue()) {
-                                    self.statusLabel.text = err as? String
+                                    self.statusLabel.text = dict["Status"] as? String
                                 }
-                            }else{
+                            } else {
                                 var loginViewController : LoginViewController = self.storyboard?.instantiateViewControllerWithIdentifier("loginViewController") as! LoginViewController
                                 
                                 var navigationController : UINavigationController = UINavigationController(rootViewController: loginViewController)
@@ -69,8 +68,6 @@ class RegisterViewController: UIViewController {
                                 }
                             }
                         }
-                        
-                        }, failure: { (err : NSError, response : HTTPResponse?) -> Void in
                         
                     })
                     
