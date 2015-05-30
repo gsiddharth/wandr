@@ -30,7 +30,10 @@ public struct JSONResponseSerializer : HTTPResponseSerializer {
     */
     public func responseObjectFromResponse(response: NSURLResponse, data: NSData) -> (object: AnyObject?, error: NSError?) {
         var error: NSError?
-        let response: AnyObject? = NSJSONSerialization.JSONObjectWithData(data, options: NSJSONReadingOptions(), error: &error)
-        return (response,error)
+        if let response: AnyObject? = NSJSONSerialization.JSONObjectWithData(data, options: NSJSONReadingOptions(), error: &error){
+            return (response,error)
+        } else {
+            return (nil,error)
+        }
     }
 }

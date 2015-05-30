@@ -168,13 +168,15 @@ class RecordMessageController: UIViewController, PBJVisionDelegate {
         dispatch_async(dispatch_get_global_queue(Int(QOS_CLASS_USER_INITIATED.value), 0)) {
             
             var vision = PBJVision.sharedInstance()
-            
+            var oldTime = vision.capturedVideoSeconds as NSTimeInterval
             while vision.recording || vision.paused {
                 var newTime = vision.capturedVideoSeconds as NSTimeInterval
-                dispatch_async(dispatch_get_main_queue()) {
-                    self.recordMessageButton.elapsedTime = newTime
+                if newTime - oldTime > 0.1 {
+                    dispatch_async(dispatch_get_main_queue()) {
+                        self.recordMessageButton.elapsedTime = newTime
+                    }
+                    oldTime = newTime
                 }
-                sleep(1)
             }
         }
     }

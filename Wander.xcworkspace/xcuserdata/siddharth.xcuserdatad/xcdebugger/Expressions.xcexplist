@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<VariablesViewState
+   version = "1.0">
+   <ContextStates>
+      <ContextState
+         contextName = "function signature specialization &lt;Arg[4] = Dead, Arg[5] = Value Promoted from InOut&gt; of SwiftHTTP.HTTPTask.(create (SwiftHTTP.HTTPTask) -&gt; (Swift.String, method : SwiftHTTP.HTTPMethod, parameters : Swift.ImplicitlyUnwrappedOptional&lt;Swift.Dictionary&lt;Swift.String, Swift.AnyObject&gt;&gt;, completionHandler : Swift.ImplicitlyUnwrappedOptional&lt;(SwiftHTTP.HTTPResponse) -&gt; ()&gt;) -&gt; Swift.Optional&lt;SwiftHTTP.HTTPOperation&gt;).(closure #1):HTTPTask.swift">
+         <PersistentStrings>
+            <PersistentString
+               value = "self.responseSerializer">
+            </PersistentString>
+         </PersistentStrings>
+      </ContextState>
+   </ContextStates>
+</VariablesViewState>

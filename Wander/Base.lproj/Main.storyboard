@@ -799,7 +799,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="DDX-PY-ewd" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-379.5" y="1770"/>
+            <point key="canvasLocation" x="-244.5" y="1778"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="HW1-jx-z4g">
@@ -818,7 +818,7 @@
                 </navigationController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Pv4-9u-6yx" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="385.5" y="879"/>
+            <point key="canvasLocation" x="511.5" y="313"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="Sv1-1c-6aD">
@@ -915,8 +915,8 @@
         </scene>
     </scenes>
     <inferredMetricsTieBreakers>
+        <segue reference="iwO-AH-ZNm"/>
         <segue reference="1Qj-JZ-Z4l"/>
-        <segue reference="Tql-ko-zoF"/>
     </inferredMetricsTieBreakers>
     <color key="tintColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
 </document>

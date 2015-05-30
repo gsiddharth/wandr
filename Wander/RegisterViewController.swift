@@ -45,14 +45,14 @@ class RegisterViewController: UIViewController {
                 if StringUtils.validEmail(emailTextField.text) {
                 
                     var request = HTTPTask()
-                    
-                    request.responseSerializer = JSONResponseSerializer()
                 
                     let params: Dictionary<String, AnyObject> = Dictionary<String, AnyObject>()
                     
-                    request.POST(Networking.instance.getRegisterURL(usernameTextField.text, name: nameTextField.text, password: passwordTextField.text, email : emailTextField.text, phone : "", gender: ""), parameters: params, completionHandler: { (response : HTTPResponse) -> Void in
+                    request.POST(Networking.instance.getRegisterURL(usernameTextField.text, name: nameTextField.text, password: passwordTextField.text, email : emailTextField.text, phone : "", gender: ""), parameters: params, completionHandler: { (resp : HTTPResponse) -> Void in
                         
-                        if let dict = response.responseObject as? Dictionary<String,AnyObject> {
+                        var response = Convertors.toMap(resp)
+                        
+                        if let dict = response.object as? Dictionary<String,AnyObject> {
 
                             if let err = response.error {
                                 dispatch_async(dispatch_get_main_queue()) {

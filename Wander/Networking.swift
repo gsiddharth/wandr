@@ -19,7 +19,7 @@ class Networking {
         }
     }
 
-    var _server : String = "192.168.0.104"
+    var _server : String = "192.168.0.103"
     var server : String {
         get {
             return _server

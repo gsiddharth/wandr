@@ -31,8 +31,6 @@ class PostVideoController: UIViewController, VideoMessageProcessorDelegate {
     @IBAction func onPostButtonClick(sender: AnyObject) {
         var task = HTTPTask()
         
-        println("uploading file")
-        
         Networking.instance.setRequestHeaders(&task)
         
         var thumbnail = FileUtils.generateThumbnail(self.videoFile, size: CGSizeMake(CGFloat(Constants.videoWidth), CGFloat(Constants.videoHeight)), isPortrait : true)
@@ -46,19 +44,20 @@ class PostVideoController: UIViewController, VideoMessageProcessorDelegate {
         
         task.upload(Networking.instance.getVideoUploadURL(), method: .POST, parameters: params, progress: { (value: Double) in
             println("progress: \(value)")
-            }, completionHandler: { (response: HTTPResponse) in
+            }, completionHandler: { (resp: HTTPResponse) in
                 
-                if let err = response.error {
-                    println("error: \(err.localizedDescription)")
-                    return //also notify app of failure as needed
-                }
+                var response = Convertors.toMap(resp)
                 
-                if let data = response.responseObject as? NSData {
-                    let str = NSString(data: data, encoding: NSUTF8StringEncoding)
-                    println("response: \(str!)") //prints the response
-                    println("file uploaded successfully")
-                    self.loadHomeViewController()
-
+                if let dict = response.object as? Dictionary<String,AnyObject> {
+                    
+                    if let err = response.error {
+                      println("Failed to upload video")
+                    } else {
+                        self.loadHomeViewController()
+                    }
+                    
+                }else {
+                    println("Failed to upload video")
                 }
         })
         
@@ -73,5 +72,4 @@ class PostVideoController: UIViewController, VideoMessageProcessorDelegate {
         self.presentViewController(navigationController, animated: true, completion: nil)
         
     }
-    
 }

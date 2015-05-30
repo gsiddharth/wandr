@@ -18,9 +18,27 @@ class UserPostTableViewCell: UITableViewCell {
     @IBOutlet weak var videoImageView: UIImageView! {
         didSet {
             if self._videoURL != nil {
-                var thumbnail : UIImage = FileUtils.generateThumbnail(self._videoURL, size: videoImageView.frame.size, isPortrait : false)
                 videoImageView.clipsToBounds = true
-                videoImageView.image = thumbnail
+                loadImageFromURL()
+            }
+        }
+    }
+    
+    func loadImageFromURL(){
+        if self.videoImageView.image != nil {
+            
+            dispatch_async(dispatch_get_global_queue(Int(QOS_CLASS_USER_INITIATED.value), 0)) {
+                var error: NSError?
+                var imgData = NSData(contentsOfURL: self._videoURL, options: NSDataReadingOptions(), error: &error)
+            
+                dispatch_async(dispatch_get_main_queue()) {
+                    if imgData != nil {
+                        var image = UIImage(data: imgData!)
+                        if image != nil {
+                            self.videoImageView.image = image
+                        }
+                    }
+                }
             }
         }
     }
@@ -33,10 +51,8 @@ class UserPostTableViewCell: UITableViewCell {
             self._videoURL = newValue
             
             if videoImageView != nil {
-                println(videoImageView.frame.size.height.description + " " + videoImageView.frame.size.width.description)
-                var thumbnail : UIImage = FileUtils.generateThumbnail(newValue, size: videoImageView.frame.size, isPortrait : false)
                 videoImageView.clipsToBounds = true
-                videoImageView.image = thumbnail
+                loadImageFromURL()
             }
         }
     }

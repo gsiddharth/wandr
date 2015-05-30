@@ -37,28 +37,35 @@ class HomeViewController: UIViewController, UITableViewDataSource, UITableViewDe
         
         var request = HTTPTask()
         
-        request.responseSerializer = JSONResponseSerializer()
-        
+        Networking.instance.setRequestHeaders(&request)
         let params: Dictionary<String, AnyObject> = Dictionary<String, AnyObject>()
         
-        request.POST(Networking.instance.getVideoInformationURL("Mumbai", longitude: 0, latitude: 0), parameters: params) { (response : HTTPResponse) -> Void in
+        request.POST(Networking.instance.getVideoInformationURL("Mumbai", longitude: 0, latitude: 0), parameters: params) { (resp : HTTPResponse) -> Void in
             
-            if let dict = response.responseObject as? Dictionary<String,AnyObject> {
-                
+            var response = Convertors.toMap(resp)
+            
+            if let dict = response.object as? Dictionary<String,AnyObject> {
                 if let err = response.error {
                     
                 }else{
-                    if let result : = dict["Result"] as? Dictionary<String,AnyObject> {
+                    if let resultArray = dict["Result"] as? Array<AnyObject>! {
+                        for elem in resultArray {
+                            if let videoDetails = elem as? Dictionary<String,AnyObject> {
+                                if let thumbnails = videoDetails["Thumbnails"] as? Array<AnyObject> {
+                                    var url = thumbnails[0]["Url"] as? String
+                                    dispatch_async(dispatch_get_main_queue()) {
+                                        self.videoURLs.append(NSURL(string: url!)!)
+                                    }
+                                }
+                            }
+                        }
+                        
+                        dispatch_async(dispatch_get_main_queue()) {
+                            self.tableView.reloadData()
+                        }
                     }
                 }
             }
-        }
-        
-        FileUtils.getAllVideo(self.library, album: Constants.albumName) { (url : NSURL) -> Void in
-            self.videoURLs.append(url)
-            dispatch_async(dispatch_get_main_queue(), { () -> Void in
-                self.tableView.reloadData()
-            })
         }
         
         // Do any additional setup after loading the view.

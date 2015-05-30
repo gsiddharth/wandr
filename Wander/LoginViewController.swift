@@ -28,28 +28,43 @@ class LoginViewController: UIViewController {
         if identifier == "LoginSuccessSegue" {
             
             var request = HTTPTask()
-            
-            request.responseSerializer = JSONResponseSerializer()
-            
+                        
             let params: Dictionary<String, AnyObject> = Dictionary<String, AnyObject>()
             
-            request.POST(Networking.instance.getLoginURL(username, password: password), parameters: params, completionHandler: { (response : HTTPResponse) -> Void in
-
+            request.POST(Networking.instance.getLoginURL(username, password: password), parameters: params, completionHandler: { (resp : HTTPResponse) -> Void in
                 
-                if let dict = response.responseObject as? Dictionary<String,AnyObject> {
+                var response = Convertors.toMap(resp)
+                
+                if let dict = response.object as? Dictionary<String,AnyObject> {
 
                     if let err = response.error {
+                        
                         dispatch_async(dispatch_get_main_queue()) {
-                            self.statusLabel.text = dict["Status"] as? String
+                            if let status : String = dict["Status"] as? String{
+                                self.statusLabel.text = status
+                            } else {
+                                self.statusLabel.text = "Error while logging in"
+                            }
+                            
                         }
+                        
                     }else{
+                        
                         if let result : Dictionary<String,AnyObject> = dict["Result"] as? Dictionary<String,AnyObject> {
+                            
                             if let sessionSecret:AnyObject = result["SessionSecret"] as? Dictionary<String,AnyObject> {
+                                
                                 Networking.instance.sessionSecret = (sessionSecret["Secret"] as? String)!
                                 Networking.instance.sessionKey = (sessionSecret["Key"] as? String)!
+                                
                                 self.loadHomeView()
                             }
                         }
+                    }
+                } else {
+                    
+                    dispatch_async(dispatch_get_main_queue()) {
+                        self.statusLabel.text = "Error while logging in"
                     }
                 }
                 

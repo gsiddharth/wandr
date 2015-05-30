@@ -7,6 +7,7 @@
 //
 
 import Foundation
+import SwiftHTTP
 
 class Convertors {
     static func convertCGColorToUIColor (cgColor : CGColor!) -> UIColor! {
@@ -15,5 +16,18 @@ class Convertors {
     
     static func convertUIColorToCGColor(uiColor : UIColor) -> CGColor {
         return uiColor.CGColor
+    }
+    
+    static func toMap(response : HTTPResponse) -> (object: AnyObject?, error: NSError?){
+        var error: NSError?
+        if response.responseObject != nil {
+            var data = (response.responseObject as? NSData)!
+            var options = NSJSONReadingOptions.AllowFragments
+        
+            let resp:   AnyObject? = NSJSONSerialization.JSONObjectWithData(data, options: options, error: &error)
+            return (resp, error)
+        } else {
+            return (nil, error)
+        }
     }
 }
